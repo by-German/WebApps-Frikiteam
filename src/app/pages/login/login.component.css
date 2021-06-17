@@ -9,11 +9,13 @@
 
 .container-login {
   width: 50%;
-  height: 500px;
+  height: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-flow: column wrap;
+  border: 2px dashed green;
+
 }
 
 .container-forms {
@@ -41,7 +43,7 @@
 }
 
 .divider {
-  height: 30px;
+  height: 5%;
 }
 
 .container-button {
