@@ -11,7 +11,7 @@ import { MatToolbarModule} from "@angular/material/toolbar";
 import { MatButtonModule} from "@angular/material/button";
 import { HttpClientModule} from "@angular/common/http";
 import { MatGridListModule} from "@angular/material/grid-list";
-import { FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { MatIconModule} from "@angular/material/icon";
 import { MatFormFieldModule} from "@angular/material/form-field";
 import { MatInputModule} from "@angular/material/input";
@@ -19,6 +19,12 @@ import { MatPaginatorModule} from "@angular/material/paginator";
 import { MatTableModule} from "@angular/material/table";
 import {MatCardModule} from "@angular/material/card";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatSelectModule} from "@angular/material/select";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatOptionModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -43,7 +49,21 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatTableModule,
     MatPaginatorModule,
     HttpClientModule,
-    MatTooltipModule
+    MatTooltipModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTableModule,
+    MatDividerModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

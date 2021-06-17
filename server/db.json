@@ -1,6 +1,6 @@
 {
-  "persons": [
-    {"id": 1, "name": "German"},
-    {"id": 2, "name": "Brayan"}
+  "people": [
+    {"id": 1, "firstName": "German", "lastName": "Mamani"},
+    {"id": 2, "firstName": "Daniel", "lastName": "Santillan"}
   ]
 }
