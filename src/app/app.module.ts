@@ -9,13 +9,16 @@ import { EventComponent } from './pages/event/event.component';
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from '@angular/material/icon';
+import { NavBarComponent } from './pages/nav-bar/nav-bar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    EventComponent
+    EventComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,8 @@ import { MatIconModule } from '@angular/material/icon';
     BrowserAnimationsModule,
     MatSidenavModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

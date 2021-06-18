@@ -1,9 +1,15 @@
 .container {
   width: 100vw;
-  height: 100vh;
+  height: 93%; /* nav bar is 7% of height */
   border: 1px solid rgba(0, 0, 0, 0.5);
   background-color: #18161A;
   color: #8BB0E8;
+}
+.divider {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 100%;
+  border-bottom: 1px solid #99DCFF;
 }
 
 /**
@@ -40,14 +46,15 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  color: #b4acdc;
 }
 .info-organizer {
   align-items: center;
   height: 30%;
 }
 .profile {
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   border-radius: 50%;
   background-size: cover !important;
   background-position: center !important;
@@ -71,12 +78,6 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
-}
-.divider {
-  margin-top: 5%;
-  margin-bottom: 5%;
-  width: 100%;
-  border-bottom: 1px solid #99DCFF;
 }
 /*Event options*/
 .content h1 {
