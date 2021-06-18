@@ -2,5 +2,106 @@
   "persons": [
     {"id": 1, "name": "German"},
     {"id": 2, "name": "Brayan"}
+  ],
+  "events": [
+    {
+      "id": 1,
+      "event_type_id": 1,
+      "organizer_id": 1,
+      "place_id": 1,
+      "information": "This is a basic information about the event. You can get more info pressing the general view card of the event",
+      "name": "Friki Festival",
+      "price": 30,
+      "quantity": 150,
+      "verified": true,
+      "logo": "../assets/img/event1.svg",
+      "stars": [1, 2,3,4],
+      "startDate": "06/02/2021"
+    },
+    {
+      "id": 2,
+      "event_type_id": 2,
+      "organizer_id": 1,
+      "place_id": 1,
+      "information": "This is a basic information about the event. You can get more info pressing the general view card of the event",
+      "name": "Friki Festival",
+      "price": 20,
+      "quantity": 180,
+      "verified": true,
+      "logo": "../assets/img/event2.svg",
+      "stars": [1, 2,3],
+      "startDate": "06/02/2021"
+    },
+    {
+      "id": 3,
+      "event_type_id": 1,
+      "organizer_id": 2,
+      "place_id": 1,
+      "information": "This is a basic information about the event. You can get more info pressing the general view card of the event",
+      "name": "Friki Festival",
+      "price": 30,
+      "quantity": 150,
+      "verified": true,
+      "logo": "../assets/img/event3.svg",
+      "stars": [1, 2,3,4, 5],
+      "startDate": "06/02/2021"
+    },
+    {
+      "id": 4,
+      "event_type_id": 2,
+      "organizer_id": 2,
+      "place_id": 1,
+      "information": "This is a basic information about the event. You can get more info pressing the general view card of the event",
+      "name": "Friki Festival",
+      "price": 30,
+      "quantity": 200,
+      "verified": true,
+      "logo": "../assets/img/event4.svg",
+      "stars": [1, 2,3,4],
+      "startDate": "06/02/2021"
+    },
+    {
+      "id": 5,
+      "event_type_id": 2,
+      "organizer_id": 3,
+      "place_id": 2,
+      "information": "This is a basic information about the event. You can get more info pressing the general view card of the event",
+      "name": "Friki Festival",
+      "price": 30,
+      "quantity": 200,
+      "verified": true,
+      "logo": "../assets/img/event5.svg",
+      "stars": [1, 2,3],
+      "startDate": "06/02/2021"
+    },
+    {
+      "id": 6,
+      "event_type_id": 2,
+      "organizer_id": 3,
+      "place_id": 2,
+      "information": "This is a basic information about the event. You can get more info pressing the general view card of the event",
+      "name": "Friki Festival",
+      "price": 40,
+      "quantity": 130,
+      "verified": true,
+      "logo": "../assets/img/event6.svg",
+      "stars": [1, 2,3,4, 5],
+      "startDate": "06/02/2021"
+    },
+    {
+      "id": 7,
+      "event_type_id": 3,
+      "organizer_id": 4,
+      "place_id": 3,
+      "information": "This is a basic information about the event. You can get more info pressing the general view card of the event",
+      "name": "Friki Festival",
+      "price": 30,
+      "quantity": 200,
+      "verified": true,
+      "logo": "../assets/img/event7.svg",
+      "stars": [1, 2,3,4],
+      "startDate": "06/02/2021"
+    }
   ]
+
 }

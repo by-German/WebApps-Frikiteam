@@ -1,0 +1,86 @@
+
+.event-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:  center;
+  align-items: center;
+  width: 85%;
+  gap: 30px;
+}
+.header-home {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.search {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.header-home h1 {
+  font-size: 45px;
+  font-weight: bold;
+  text-shadow: 5px 5px #7E50B9;
+  margin-bottom: 40px;
+}
+.header-home  {
+  font-size: 19px;
+}
+.header-home {
+  color: white;
+}
+.card {
+  max-width: 230px;
+  background-color: #464448;
+ }
+
+mat-form-field {
+  width: 400px;
+  background-color: rgba(250, 250, 250, .3);
+  padding: 10px;
+  padding-bottom: 0;
+  border-radius: 10px;
+  margin-bottom: 40px;
+
+}
+input::placeholder {
+  font-style: italic;
+  color:  rgba(250, 250, 250, .4);
+}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white;
+}
+input.mat-input-element {
+  color: white;
+}
+mat-label, input, mat-icon{
+  color: white;
+}
+mat-label {
+  font-size: 15px;
+}
+
+mat-card-title {
+  color: white;
+}
+
+mat-card-content p {
+  color: #BDBDBD
+}
+.stars mat-icon {
+  color: yellow;
+}
+
+
+
+
+
+
+
