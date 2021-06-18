@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Organizer} from "../../models/organizer";
+import {OrganizersApiService} from "../../services/organizers-api.service";
 
 @Component({
   selector: 'app-event',
@@ -6,11 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event.component.css']
 })
 export class EventComponent implements OnInit {
-  showFiller = false;
+  organizer : Organizer;
 
-  constructor() { }
+  constructor(private organizers : OrganizersApiService) {
+    this.organizer = {} as Organizer
+  }
 
   ngOnInit(): void {
+    this.organizers.getOrganizerById(1)
+      .subscribe( ( result => {
+        this.organizer = result;
+        console.log(result)
+      }))
   }
 
 }
