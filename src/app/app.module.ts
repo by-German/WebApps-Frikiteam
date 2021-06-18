@@ -9,22 +9,36 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './pages/home/home.component';
 import { EventComponent } from './pages/event/event.component';
 import { MatSidenavModule } from "@angular/material/sidenav";
-import { MatButtonModule } from "@angular/material/button";
 import { NavBarComponent } from './pages/nav-bar/nav-bar.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-
-import { MatCardModule } from '@angular/material/card';
-import { MatGridListModule } from "@angular/material/grid-list";
-import { MatFormFieldModule } from "@angular/material/form-field";
+import { LoginComponent } from './pages/login/login.component';
+import { SignupFrikiComponent } from './pages/signup-friki/signup-friki.component';
+import { SignupOrganizerComponent } from './pages/signup-organizer/signup-organizer.component';
+import { MatToolbarModule} from "@angular/material/toolbar";
+import { MatButtonModule} from "@angular/material/button";
+import { MatGridListModule} from "@angular/material/grid-list";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatIconModule } from "@angular/material/icon";
-import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatTableModule } from "@angular/material/table";
+import { MatCardModule } from "@angular/material/card";
+import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatSelectModule } from "@angular/material/select";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { MatDividerModule } from "@angular/material/divider";
+import { MatOptionModule } from "@angular/material/core";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     EventComponent,
-    NavBarComponent
+    NavBarComponent,
+    LoginComponent,
+    SignupFrikiComponent,
+    SignupOrganizerComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +52,35 @@ import { MatInputModule } from '@angular/material/input';
     MatGridListModule,
     MatFormFieldModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    HttpClientModule,
+    MatTooltipModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTableModule,
+    MatDividerModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

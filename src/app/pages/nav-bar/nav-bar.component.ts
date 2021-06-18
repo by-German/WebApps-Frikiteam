@@ -17,4 +17,9 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['/events'])
       .then(() => console.log('Navigated to events'));
   }
+
+  navigateToLogin(): void {
+    this.router.navigate(['/login'])
+      .then(() => console.log('Navigated to login'));
+  }
 }

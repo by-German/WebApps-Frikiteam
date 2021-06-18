@@ -1,4 +1,3 @@
-
 <div class="event-list">
   <div class="header-home">
     <p>Somos FrikiTeam, un espacio pensado para ti.
@@ -19,7 +18,7 @@
   <div class="content">
 
     <div *ngFor="let event of events">
-      <mat-card class="card">
+      <mat-card class="card" (click)="navigateToEvent(1)">
 
         <img mat-card-image src="{{ event.logo }}" alt="">
         <mat-card-header>
@@ -39,3 +38,4 @@
   </div>
 
 </div>
+

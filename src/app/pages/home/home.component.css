@@ -1,9 +1,9 @@
-
 .event-list {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  background-color: #18161A;
 }
 .content {
   display: flex;
@@ -76,6 +76,13 @@ mat-card-content p {
 }
 .stars mat-icon {
   color: yellow;
+}
+
+
+/*animations*/
+.card:hover {
+  cursor: pointer;
+  filter: brightness(70%);
 }
 
 

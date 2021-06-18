@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {EventsApiService} from "../../services/events-api.service";
 import {MatTableDataSource} from "@angular/material/table";
 import { Model } from "../../models/event";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   dataSource = new MatTableDataSource();
   isSearching = false;
 
-  constructor(private eventsApi: EventsApiService) {
+  constructor(private eventsApi: EventsApiService, private router: Router) {
     //this.eventData = {} as Event;
   }
 
@@ -34,6 +35,11 @@ export class HomeComponent implements OnInit {
     const searchValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = searchValue.trim().toLowerCase();
     this.isSearching = !!searchValue;
+  }
+
+  navigateToEvent(id: number): void {
+    this.router.navigate(['/events/'+id])
+      .then(() => console.log('Navigated to event with id' + id));
   }
 
 
