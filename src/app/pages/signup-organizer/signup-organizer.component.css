@@ -69,4 +69,8 @@
   color: rgba(251,241,253,255);
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
 

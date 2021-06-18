@@ -12,7 +12,7 @@ export class LoginComponent {
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
-      return 'Debes ingresar un usuario';
+      return 'Debes ingresar un correo electronico';
     }
     return this.email.hasError('email') ? 'Usuario no valido' : '';
   }
