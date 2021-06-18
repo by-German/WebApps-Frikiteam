@@ -2,5 +2,33 @@
   "persons": [
     {"id": 1, "name": "German"},
     {"id": 2, "name": "Brayan"}
+  ],
+  "organizers": [
+    {
+      "id": 1,
+      "firstName": "James",
+      "lastName": "Bond",
+      "password": "123",
+      "email": "james@gmail.com",
+      "logo": "https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "description": "I'm an organizer",
+      "verified": true
+    }
+  ],
+  "events-information": [
+    {
+      "id": 1,
+      "title": "Que es Friki Events",
+      "description": "El mundo está cambiando. Todos los países lo hacen, de hecho. Sí que es cierto que algunos más aceleradamente que otros, pero la realidad no puede mantenerse estática. En esta nueva dimensión se acumulan los eventos que quieren regalar los sentidos de los amantes de la cultura oriental.\n\nMuchos piensan que para disfrutar de estas ferias es necesario ser un gran amante de la cultura japonesa. Nada más lejos de la realidad. Con que te guste un poco ya puedes pasarlo en grande. Es más, si ni siquiera has tenido contacto con este ocio pero sientes curiosidad, no hay mejor momento en el calendario.\n\nSe trata de una feria que es apropiada recomendar en el Día del Orgullo Friki para todos los habitantes de Perú. Está dirigida a los amantes de la cultura oriental. Se manifiesta en forma de manga, anime y videojuegos.\n",
+      "image": "https://imagenes.milenio.com/X9l0zHEQiXudj6AM6B8uRR3TqZc=/958x596/smart/https://www.milenio.com/uploads/media/2019/04/26/premier-avenger-endgame-foto-yazmin_1_0_1157_720.jpg",
+      "eventId": 1
+    },
+    {
+      "id": 2,
+      "title": "",
+      "description": "El mundo está cambiando. Todos los países lo hacen, de hecho. Sí que es cierto que algunos más aceleradamente que otros, pero la realidad no puede mantenerse estática. En esta nueva dimensión se acumulan los eventos que quieren regalar los sentidos de los amantes de la cultura oriental.\n\nMuchos piensan que para disfrutar de estas ferias es necesario ser un gran amante de la cultura japonesa. Nada más lejos de la realidad. Con que te guste un poco ya puedes pasarlo en grande. Es más, si ni siquiera has tenido contacto con este ocio pero sientes curiosidad, no hay mejor momento en el calendario.\n\nSe trata de una feria que es apropiada recomendar en el Día del Orgullo Friki para todos los habitantes de Perú. Está dirigida a los amantes de la cultura oriental. Se manifiesta en forma de manga, anime y videojuegos.\n",
+      "image": "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/17/15871580531828.jpg",
+      "eventId": 1
+    }
   ]
 }
