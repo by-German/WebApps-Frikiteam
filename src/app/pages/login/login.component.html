@@ -14,16 +14,15 @@
       <div class="container-forms">
 
         <mat-form-field class="form-field-mail" appearance="fill">
-          <mat-label>Usuario o correo electronico</mat-label>
-          <input matInput placeholder="mail@example.com" [formControl]="email" required>
-          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          <mat-label>Usuario</mat-label>
+          <input matInput placeholder="Id de usuario" required [(ngModel)]="correo">
         </mat-form-field>
 
         <mat-divider class="divider"></mat-divider>
 
         <mat-form-field class="form-field-password" appearance="fill">
           <mat-label>Contraseña</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'">
+          <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="clave" required>
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
@@ -34,7 +33,7 @@
       <mat-divider class="divider"></mat-divider>
 
       <div class="container-button">
-        <button mat-button class="button-login">Iniciar sesión</button>
+        <button mat-button class="button-login" (click)="login()">Iniciar sesión</button>
       </div>
 
       <mat-divider style="height: 5px"></mat-divider>

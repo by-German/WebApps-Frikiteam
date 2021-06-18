@@ -16,21 +16,21 @@
         <div class="forms-group">
           <mat-form-field class="form-field firstName" appearance="fill">
             <mat-label>Nombre</mat-label>
-            <input matInput placeholder="Nombre" required>
+            <input matInput placeholder="Nombre" required [(ngModel)]="firstNameModel">
           </mat-form-field>
 
           <mat-divider class="divider"></mat-divider>
 
           <mat-form-field class="form-field lastName" appearance="fill">
             <mat-label>Apellidos</mat-label>
-            <input matInput placeholder="Apellidos" required>
+            <input matInput placeholder="Apellidos" required [(ngModel)]="lastNameModel">
           </mat-form-field>
         </div>
 
         <div class="forms-group">
           <mat-form-field class="form-field mail" appearance="fill">
             <mat-label>Usuario o correo electronico</mat-label>
-            <input matInput placeholder="mail@example.com" [formControl]="email" required>
+            <input matInput placeholder="mail@example.com" [formControl]="email" required [(ngModel)]="mailModel">
             <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
           </mat-form-field>
 
@@ -38,7 +38,7 @@
 
           <mat-form-field class="form-field dni" appearance="fill">
             <mat-label>Documento de identidad</mat-label>
-            <input type="number" matInput placeholder="DNI" required>
+            <input type="number" matInput placeholder="DNI" required [(ngModel)]="idModel">
           </mat-form-field>
 
         </div>
@@ -46,7 +46,7 @@
         <div class="forms-group">
           <mat-form-field class="form-field password" appearance="fill">
             <mat-label>Contraseña</mat-label>
-            <input matInput [type]="hidePassword ? 'password' : 'text'" required>
+            <input matInput [type]="hidePassword ? 'password' : 'text'" required [(ngModel)]="passwordModel">
             <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
               <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
@@ -56,7 +56,7 @@
 
           <mat-form-field class="form-field repeat-password" appearance="fill">
             <mat-label>Repetir Contraseña</mat-label>
-            <input matInput [type]="hideRepeatPassword ? 'password' : 'text'" required>
+            <input matInput [type]="hideRepeatPassword ? 'password' : 'text'" required [(ngModel)]="passwordModel">
             <button mat-icon-button matSuffix (click)="hideRepeatPassword = !hideRepeatPassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideRepeatPassword">
               <mat-icon>{{hideRepeatPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
@@ -66,7 +66,7 @@
       </div>
 
       <div class="container-button">
-        <button mat-button class="button-login">Registrarme</button>
+        <button mat-button class="button-login" (click)="signup()">Registrarme</button>
       </div>
 
       <mat-divider style="height: 5px"></mat-divider>

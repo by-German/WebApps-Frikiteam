@@ -16,21 +16,21 @@
         <div class="forms-group">
           <mat-form-field class="form-field firstName" appearance="fill">
             <mat-label>Nombre de organizador</mat-label>
-            <input matInput placeholder="Organizador" required>
+            <input matInput placeholder="Organizador" required [(ngModel)]="firstNameModel">
           </mat-form-field>
 
           <mat-divider class="divider"></mat-divider>
 
           <mat-form-field class="form-field lastName" appearance="fill">
             <mat-label>Identificación Tributaria</mat-label>
-            <input type="number" matInput placeholder="RUC" required>
+            <input type="number" matInput placeholder="RUC" required [(ngModel)]="idModel">
           </mat-form-field>
         </div>
 
         <div class="forms-group">
           <mat-form-field class="form-field mail" appearance="fill">
             <mat-label>Correo electronico</mat-label>
-            <input matInput placeholder="mail@example.com" [formControl]="email" required>
+            <input matInput placeholder="mail@example.com" [formControl]="email" required [(ngModel)]="mailModel">
             <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
           </mat-form-field>
 
@@ -38,7 +38,7 @@
 
           <mat-form-field class="form-field password" appearance="fill">
             <mat-label>Contraseña</mat-label>
-            <input matInput [type]="hidePassword ? 'password' : 'text'" required>
+            <input matInput [type]="hidePassword ? 'password' : 'text'" required [(ngModel)]="passwordModel">
             <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
               <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
@@ -63,7 +63,7 @@
       </div>
 
       <div class="container-button">
-        <button mat-button class="button-login">Registrarme</button>
+        <button mat-button class="button-login" (click)="signup()">Registrarme</button>
       </div>
 
       <mat-divider style="height: 5px"></mat-divider>

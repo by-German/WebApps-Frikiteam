@@ -1,6 +1,71 @@
 {
-  "people": [
-    {"id": 1, "firstName": "German", "lastName": "Mamani"},
-    {"id": 2, "firstName": "Daniel", "lastName": "Santillan"}
+  "organizers": [
+    {
+      "id": 1,
+      "firstName": "Paolo",
+      "lastName": "Guerrero",
+      "email": "paolo@gmail.com",
+      "password": "123paolo",
+      "description": "The best organizer",
+      "verified": true,
+      "logo": "logo/1"
+    },
+    {
+      "id": 2,
+      "firstName": "Daniel",
+      "lastName": "Santillan",
+      "email": "daniel@gmail.com",
+      "password": "123daniel",
+      "description": "Organizer OTAKU",
+      "verified": false,
+      "logo": "logo/2"
+    },
+    {
+      "id": 3,
+      "firstName": "German",
+      "lastName": "Mamani",
+      "email": "germa@gmail.com",
+      "password": "123german",
+      "description": "Fandom Organizer",
+      "verified": true,
+      "logo": "logo/3"
+    },
+    {
+      "id": 738292347,
+      "email": "cumbiastar@gmail.com",
+      "firstName": "CumbiaStar",
+      "lastName": "CumbiaStar",
+      "password": "123cumbiastar"
+    }
+  ],
+  "customers": [
+    {
+      "id": 4,
+      "firstName": "Juan",
+      "lastName": "Quiroz",
+      "email": "jqr@hotmail.com",
+      "password": "123juan"
+    },
+    {
+      "id": 5,
+      "firstName": "Jefferson",
+      "lastName": "Farfan",
+      "email": "jeffre@hotmail.com",
+      "password": "123foquita"
+    },
+    {
+      "id": 6,
+      "firstName": "Edison",
+      "lastName": "Flores",
+      "email": "tubeibi@hotmail.com",
+      "password": "123orejas"
+    },
+    {
+      "id": 76395035,
+      "email": "carlitos@hotmail.com",
+      "firstName": "Carlos",
+      "lastName": "Mendez",
+      "password": "123carlos"
+    }
   ]
 }
