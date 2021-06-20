@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   background-color: #18161A;
+  min-height: 93%;
 }
 .content {
   display: flex;
@@ -24,11 +25,10 @@
   margin-bottom: 40px;
 }
 
-.header-home h1 {
-  font-size: 45px;
-  font-weight: bold;
-  text-shadow: 5px 5px #7E50B9;
-  margin-bottom: 40px;
+.header-home h2 {
+  font-size: 150%;
+  margin: 5%;
+  color: #8BB0E8;
 }
 .header-home  {
   font-size: 19px;
