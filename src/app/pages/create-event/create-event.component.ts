@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CreateEventI} from "../../models/create-event";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-event',
@@ -9,15 +10,21 @@ import {CreateEventI} from "../../models/create-event";
 export class CreateEventComponent implements OnInit {
   public Create_Event: CreateEventI;
 
-  constructor() {
+  constructor(private router: Router) {
     this.Create_Event = new CreateEventI('','','',10,'','','');
   }
 
   ngOnInit(): void {
   }
 
-  onSubmit(): void{
+  onSubmit(form: any): void{
+    form.reset();
     alert("Se ha creado el evento correctamente");
+  }
+
+  navigateToEvents(): void {
+    this.router.navigate(['/events'])
+      .then(() => console.log('Navigated to events'));
   }
 
 }
