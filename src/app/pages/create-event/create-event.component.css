@@ -1,0 +1,27 @@
+.container {
+  width: 100vw;
+  height: 93%; /* nav bar is 7% of height */
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: #18161A;
+  color: #8BB0E8;
+}
+
+.title{
+  margin-left: 10%;
+  color: #a4a2ea;
+  font-size: 30px;
+  padding-top: 4%;
+}
+
+.texts{
+  color: gray;
+  font-size: 20px;
+  padding-left: 15%;
+  padding-top: 40%;
+  margin-top: 40%;
+}
+
+.inp{
+color: red;
+  margin-left: 15%;
+}
