@@ -43,48 +43,51 @@
             </mat-grid-tile>
 
             <!-- Profile Info -->
-            <mat-grid-tile rowspan="7" id="user-info" >
-              <mat-card id="user-info-card" style="background-color: transparent;" class="mat-elevation-z0" >
-                <div class="user-info-item-list">
-                  <mat-list>
-                    <mat-list-item>
-                      <h1>Full Name</h1>
-                    </mat-list-item>
+            <mat-grid-tile rowspan="7" >
+              <div id="user-info-tile">
+                <mat-card style="background-color: transparent;" class="mat-elevation-z0" >
+                  <div class="user-info-item-list">
+                    <mat-list>
+                      <mat-list-item>
+                        <h1>Full Name</h1>
+                      </mat-list-item>
 
-                    <mat-list-item>
-                      <h2>{{ userData.firstName + " " + userData.lastName}}</h2>
-                    </mat-list-item>
-                  </mat-list>
-                </div>
+                      <mat-list-item>
+                        <h2>{{ userData.firstName + " " + userData.lastName}}</h2>
+                      </mat-list-item>
+                    </mat-list>
+                  </div>
 
-                <div class="user-info-item-list">
-                  <mat-list>
-                    <mat-list-item>
-                      <h1>Email</h1>
-                    </mat-list-item>
+                  <div class="user-info-item-list">
+                    <mat-list>
+                      <mat-list-item>
+                        <h1>Email</h1>
+                      </mat-list-item>
 
-                    <mat-list-item>
-                      <h2>{{ userData.email }}</h2>
-                    </mat-list-item>
-                  </mat-list>
-                </div>
+                      <mat-list-item>
+                        <h2>{{ userData.email }}</h2>
+                      </mat-list-item>
+                    </mat-list>
+                  </div>
 
-                <div class="user-info-item-list">
-                  <mat-list>
-                    <mat-list-item>
-                      <h1>Birth Date</h1>
-                    </mat-list-item>
+                  <div class="user-info-item-list">
+                    <mat-list>
+                      <mat-list-item>
+                        <h1>Birth Date</h1>
+                      </mat-list-item>
 
-                    <mat-list-item>
-                      <h2>{{ userData.date_bird}}</h2>
-                    </mat-list-item>
-                  </mat-list>
-                </div>
+                      <mat-list-item>
+                        <h2>{{ userData.date_bird}}</h2>
+                      </mat-list-item>
+                    </mat-list>
+                  </div>
 
-                <mat-card-actions align="end">
-                  <button mat-button class="button1" color="primary" >Sign Out</button>
-                </mat-card-actions>
-              </mat-card>
+                  <mat-card-actions align="end">
+                    <button mat-button class="button1" color="primary" >Sign Out</button>
+                  </mat-card-actions>
+                </mat-card>
+              </div>
+
             </mat-grid-tile>
 
           </mat-grid-list>
@@ -131,9 +134,13 @@
               </mat-grid-tile>
 
               <mat-grid-tile colspan="2">
-                <div class="progress">
-                  <div class="progress-value"></div>
+                <div>
+                  <h2 style="font-size: small">Sold tickets 70/100</h2>
+                  <div class="progress">
+                    <div class="progress-value"></div>
+                  </div>
                 </div>
+
               </mat-grid-tile>
 
               <mat-grid-tile>
