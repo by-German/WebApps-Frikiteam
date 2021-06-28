@@ -1,5 +1,6 @@
 #user-profile-view {
   background-color: #18161A;
+  min-height: 93vh;
 }
 
 h1 {
@@ -113,3 +114,5 @@ body {
   0% { width: 0; }
   100% { width: 68%; }
 }
+
+
