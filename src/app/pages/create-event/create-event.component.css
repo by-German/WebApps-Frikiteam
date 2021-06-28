@@ -1,0 +1,85 @@
+.container {
+  width: 100vw;
+  height: 93%; /* nav bar is 7% of height */
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: #18161A;
+  color: #8BB0E8;
+}
+
+.flex-container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  text-align: center;
+  line-height: 45px;
+}
+
+.title{
+  color: #a4a2ea;
+  font-size: 35px;
+  padding-top: 25%;
+
+}
+
+.texts{
+  color: gray;
+  font-size: 20px;
+  margin-top: 40%;
+  width: 200%;
+  font-weight: bold;
+}
+
+.fin{
+  color: gray;
+  font-size: 20px;
+  padding-top: 15%;
+  font-weight: bold;
+}
+
+.inp{
+width: 85%;
+  margin-left: 5%;
+}
+.btn{
+  margin-top: 2%;
+  font-size: 20px;
+  background: plum;
+  border-radius: 20px;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.btn_2{
+  margin-top: 35%;
+  font-size: 20px;
+  background: plum;
+  border-radius: 20px;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.line{
+  align: "center";
+  margin-top: 20%;
+  width: 65%;
+}
+
+.cont{
+  border: 2px solid white;
+  margin: 40px;
+  padding: 50px;
+  width: 250px;
+  height: 100px;
+}
+
+.cont input{
+  font-size: 20px;
+  background: #99DCFF;
+  border-radius: 20px;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  margin: 15px;
+}

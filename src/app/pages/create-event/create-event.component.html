@@ -1,0 +1,64 @@
+
+<mat-drawer-container class="container" autosize>
+
+
+<div class ="flex-container">
+
+  <div>
+    <h1 class="title">Data of event:</h1><br/>
+    <form #formElement>
+      <mat-label class = "texts"> Name of the event:</mat-label><br/>
+      <input type="text" name = "Name" class = "inp"/>
+
+      <mat-label class = "texts"> Date and time of the event:</mat-label><br/>
+      <input type="text" name = "Name" class = "inp"/>
+
+      <mat-label class = "texts"> Public recommended:</mat-label><br/>
+      <input type="text" name = "Name" class = "inp"/>
+
+      <mat-label class = "texts"> Total tickets available:</mat-label><br/>
+      <input type="text" name = "Name" class = "inp"/>
+
+      <mat-label class = "texts"> Temary:</mat-label><br/>
+      <input type="text" name = "Name" class = "inp"/>
+
+      <mat-label class = "texts"> Detailed information:</mat-label><br/>
+      <input type="text" name = "Name" class = "inp"/>
+
+      <input type="submit" value="img (optional)" class = "btn" />
+
+      <hr class = "line"><br/>
+
+      <mat-label class = "texts"> Optional data:</mat-label><br/><br/>
+
+      <mat-label class = "texts"> Official page of the event:</mat-label><br/>
+      <input type="text" name = "Name" class = "inp"/>
+
+      <mat-label class = "texts">Associate social networks:</mat-label><br/>
+      <input type="text" name = "Name" class = "inp"/><br/><br/>
+
+    </form>
+  </div>
+  <div>
+
+    <input type="submit" value="To post" class = "btn_2" (click)="onSubmit(formElement)" />
+    <input type="submit" value="Cancel" class = "btn_2" (click)="navigateToEvents()"/><br/><br/>
+    <mat-label class = "texts">Select event logo image:</mat-label><br/>
+  <p class = "cont">
+    <input type="submit" value="Select image"/>
+  </p>
+
+    <hr class = "line">
+
+    <p class = "fin">
+      <mat-label class = "texts">Event address:</mat-label><br/>
+      <input type="text" name = "Name" class = "inp"/><br/><br/>
+    </p>
+
+    <p>Readjust the point on the map</p>
+
+    <p class = "cont"></p>
+
+  </div>
+</div>
+</mat-drawer-container>

@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './pages/app/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { CreateComponent} from './pages/create/create.component'
+import { CreateEventComponent }from './pages/create-event/create-event.component';
 import { HomeComponent } from './pages/home/home.component';
 import { EventComponent } from './pages/event/event.component';
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -30,6 +32,7 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatOptionModule } from "@angular/material/core";
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +41,9 @@ import { MatOptionModule } from "@angular/material/core";
     NavBarComponent,
     LoginComponent,
     SignupFrikiComponent,
-    SignupOrganizerComponent
+    SignupOrganizerComponent,
+    CreateEventComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,

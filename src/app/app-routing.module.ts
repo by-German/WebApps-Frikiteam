@@ -6,6 +6,8 @@ import {EventComponent} from "./pages/event/event.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {SignupFrikiComponent} from "./pages/signup-friki/signup-friki.component";
 import {SignupOrganizerComponent} from "./pages/signup-organizer/signup-organizer.component";
+import {CreateEventComponent} from "./pages/create-event/create-event.component";
+import {CreateComponent} from "./pages/create/create.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,7 +15,9 @@ const routes: Routes = [
   { path: 'events/:id', component: EventComponent},
   { path: 'login', component: LoginComponent },
   { path: 'signup/friki', component: SignupFrikiComponent },
-  { path: 'signup/organizer', component: SignupOrganizerComponent }
+  { path: 'signup/organizer', component: SignupOrganizerComponent },
+  { path: 'create-event', component: CreateEventComponent },
+  { path: 'create', component: CreateComponent}
 ];
 
 @NgModule({
