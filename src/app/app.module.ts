@@ -33,7 +33,7 @@ import { MatDividerModule } from "@angular/material/divider";
 import { MatOptionModule } from "@angular/material/core";
 import {MatListModule} from "@angular/material/list";
 import {MatMenuModule} from "@angular/material/menu";
-
+import {UserProfileComponent} from "./pages/user-profile/user-profile.component";
 
 @NgModule({
   declarations: [
@@ -45,7 +45,8 @@ import {MatMenuModule} from "@angular/material/menu";
     SignupFrikiComponent,
     SignupOrganizerComponent,
     CreateEventComponent,
-    CreateComponent
+    CreateComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
