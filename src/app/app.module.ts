@@ -31,6 +31,8 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatOptionModule } from "@angular/material/core";
+import {MatListModule} from "@angular/material/list";
+import {MatMenuModule} from "@angular/material/menu";
 
 
 @NgModule({
@@ -83,7 +85,9 @@ import { MatOptionModule } from "@angular/material/core";
     MatSlideToggleModule,
     MatSelectModule,
     MatOptionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatListModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]

@@ -1,24 +1,64 @@
+<!--<mat-toolbar>-->
+<!--  <div class="icon">-->
+<!--    <h1>FIND EVENTS</h1>-->
+<!--  </div>-->
+<!--  <div class="options">-->
+<!--    <button mat-icon-button>-->
+<!--      <mat-icon>notifications_none</mat-icon>-->
+<!--    </button>-->
+<!--    <button mat-icon-button>-->
+<!--      <mat-icon (click)="navigateToEvents()" >menu</mat-icon>-->
+<!--    </button>-->
+<!--    <button mat-icon-button>-->
+<!--      <mat-icon>favorite_border</mat-icon>-->
+<!--    </button>-->
+<!--    <button mat-icon-button>-->
+<!--      <mat-icon (click) = "navigateToCreate()">add_circle_outline</mat-icon>-->
+<!--    </button>-->
+<!--  </div>-->
+<!--  <div class="profile">-->
+<!--    <button mat-icon-button (click)="navigateToLogin()">-->
+<!--      <mat-icon>account_circle</mat-icon>-->
+<!--    </button>-->
+<!--  </div>-->
+<!--</mat-toolbar>-->
+
 <mat-toolbar>
-  <div class="icon">
-    <h1>FIND EVENTS</h1>
-  </div>
-  <div class="options">
-    <button mat-icon-button>
-      <mat-icon>notifications_none</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon (click)="navigateToEvents()" >menu</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>favorite_border</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon (click) = "navigateToCreate()">add_circle_outline</mat-icon>
-    </button>
-  </div>
-  <div class="profile">
-    <button mat-icon-button (click)="navigateToLogin()">
-      <mat-icon>account_circle</mat-icon>
-    </button>
-  </div>
+  <button mat-button (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+    <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+  </button>
+  <span>FINDEVENTS</span>
+<!--  navbar items-->
+  <button mat-button>NOTIFICATION</button>
+  <button mat-button (click)="navigateToEvents()">EVENTS</button>
+  <button mat-button>FAVORITE</button>
+  <button mat-button (click)="navigateToCreate()">CREATE</button>
+
+  <span class="spacer"></span>
+
+  <button mat-button [matMenuTriggerFor]="appMenu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item>Settings</button>
+    <button mat-menu-item>Help</button>
+  </mat-menu>
 </mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav role="navigation" mode="over">
+    <mat-nav-list style="background-color: #464361">
+      <mat-list-item (click)="sidenav.close();">NOTIFICATION</mat-list-item>
+      <mat-list-item (click)="sidenav.close();">EVENTS</mat-list-item>
+      <mat-list-item (click)="sidenav.close();">FAVORITES</mat-list-item>
+      <mat-list-item (click)="sidenav.close();">CREATE EVENT</mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

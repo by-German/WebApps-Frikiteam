@@ -13,3 +13,12 @@ mat-toolbar {
   justify-content: space-around;
   align-items: center;
 }
+/*.spacer {*/
+/*  flex: 1 1 auto;*/
+/*}*/
+mat-sidenav {
+  background-color: #464361;
+}
+mat-list-item {
+  color: #a4a2ea !important;
+}
