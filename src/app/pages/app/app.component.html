@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Learning Center</span>
+    <span class="default-spacer"></span>
+
+    <div>
+      <a mat-flat-button color="primary" routerLink="/" routerLinkActive="active">Home</a>
+      <a mat-flat-button color="primary" routerLink="/user-profile" routerLinkActive="active">Students</a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

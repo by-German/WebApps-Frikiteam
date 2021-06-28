@@ -1,6 +1,14 @@
 {
-  "persons": [
-    {"id": 1, "name": "German"},
-    {"id": 2, "name": "Brayan"}
+  "customers": [
+    {
+      "id": 1,
+      "user_name": "Ger123",
+      "first_name": "German",
+      "last_name": "Garmendia",
+      "email": "germansito@gmail.com",
+      "password": "123",
+      "date_bird": "Thu Jun 14 1998",
+      "profile_img": "https://bigbangtheoryla.files.wordpress.com/2009/05/jim_parsons.jpg?w=584"
+    }
   ]
 }
