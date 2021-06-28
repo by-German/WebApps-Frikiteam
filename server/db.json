@@ -155,31 +155,43 @@
   "customers": [
     {
       "id": 4,
+      "user_name": "Juancho_99",
       "firstName": "Juan",
       "lastName": "Quiroz",
       "email": "jqr@hotmail.com",
-      "password": "123juan"
+      "password": "123juan",
+      "date_bird": "Thu Jun 14 1998",
+      "profile_img": "https://bigbangtheoryla.files.wordpress.com/2009/05/jim_parsons.jpg?w=584"
     },
     {
       "id": 5,
+      "user_name": "Ger123",
       "firstName": "Jefferson",
       "lastName": "Farfan",
       "email": "jeffre@hotmail.com",
-      "password": "123foquita"
+      "password": "123foquita",
+      "date_bird": "Thu Jun 14 1998",
+      "profile_img": "https://bigbangtheoryla.files.wordpress.com/2009/05/jim_parsons.jpg?w=584"
     },
     {
       "id": 6,
+      "user_name": "Ger123",
       "firstName": "Edison",
       "lastName": "Flores",
       "email": "tubeibi@hotmail.com",
-      "password": "123orejas"
+      "password": "123orejas",
+      "date_bird": "Thu Jun 14 1998",
+      "profile_img": "https://bigbangtheoryla.files.wordpress.com/2009/05/jim_parsons.jpg?w=584"
     },
     {
       "id": 76395035,
+      "user_name": "Ger123",
       "email": "carlitos@hotmail.com",
       "firstName": "Carlos",
       "lastName": "Mendez",
-      "password": "123carlos"
+      "password": "123carlos",
+      "date_bird": "Thu Jun 14 1998",
+      "profile_img": "https://bigbangtheoryla.files.wordpress.com/2009/05/jim_parsons.jpg?w=584"
     }
   ]
 }

@@ -31,6 +31,8 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatOptionModule } from "@angular/material/core";
+import {UserProfileComponent} from "./pages/user-profile/user-profile.component";
+import {MatListModule} from "@angular/material/list";
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import { MatOptionModule } from "@angular/material/core";
     SignupFrikiComponent,
     SignupOrganizerComponent,
     CreateEventComponent,
-    CreateComponent
+    CreateComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +86,8 @@ import { MatOptionModule } from "@angular/material/core";
     MatSlideToggleModule,
     MatSelectModule,
     MatOptionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]

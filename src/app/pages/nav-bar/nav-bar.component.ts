@@ -27,4 +27,8 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['/create'])
       .then(() => console.log('Navigated to create'));
   }
+  navigateToUserProfile(): void {
+    this.router.navigate(['/user-profile'])
+      .then(() => console.log('Navigated to user profile'));
+  }
 }
