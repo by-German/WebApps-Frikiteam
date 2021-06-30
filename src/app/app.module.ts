@@ -34,6 +34,7 @@ import { MatOptionModule } from "@angular/material/core";
 import {MatListModule} from "@angular/material/list";
 import {MatMenuModule} from "@angular/material/menu";
 import {UserProfileComponent} from "./pages/user-profile/user-profile.component";
+import {authInterceptorProviders} from "./helpers/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -90,7 +91,7 @@ import {UserProfileComponent} from "./pages/user-profile/user-profile.component"
     MatListModule,
     MatMenuModule
   ],
-  providers: [],
+  providers: [ authInterceptorProviders ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

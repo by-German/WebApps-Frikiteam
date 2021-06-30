@@ -1,57 +1,58 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from "@angular/forms";
-import {Organizer} from "../../models/organizer";
-import {Customer} from "../../models/customer";
 import {Router} from "@angular/router";
-import {EventsApiService} from "../../services/events-api.service";
+import {AuthService} from "../../services/auth.service";
+import {TokenStorageService} from "../../services/token-storage.service";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  hide = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
+export class LoginComponent implements OnInit{
 
-  correo!: number;
-  clave: any;
+  form = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(3)])
+  })
 
-  organizer = {} as Organizer;
-  customer = {} as Customer;
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
 
-  constructor(private eventsApi: EventsApiService, private router: Router) {
+  constructor(private router: Router, private authService: AuthService, private tokenStorageService: TokenStorageService) {
   }
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'Debes ingresar un usuario';
-    }
-    return this.email.hasError('email') ? 'Usuario no valido' : '';
+  ngOnInit(): void {
+
   }
 
-  login() {
-    //inside home or not
-    if(this.getBool()){
-      this.router.navigate(['']);
+  onSubmit(): void {
+    if (this.form.invalid) {
+      return;
     }
+    console.log(this.form.value);
+    this.authService.login(this.form.value).subscribe(
+      data => {
+        console.log(data);
+        this.tokenStorageService.saveToken(data.token);
+        this.tokenStorageService.saveUser(data);
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorageService.getUser().roles;
+        return this.router.navigate(['/']).then(() => {
+          console.log(this.router.url);
+          window.location.reload();
+        });
+      },
+      error => {
+        console.log(error.error.errorMessage);
+        this.errorMessage = error.error.errorMessage;
+        this.isLoginFailed = true;
+        this.isLoggedIn = false;
+      }
+    );
   }
 
-  getBool(): boolean {
-    if (this.correo != undefined && this.clave != undefined) {
-      this.eventsApi.getOrganizerById(this.correo).subscribe((response: any) => {
-        this.organizer = response;
-      });
-
-      this.eventsApi.getCustomerById(this.correo).subscribe((response: any) => {
-        this.customer = response;
-      });
-    }
-
-    if(this.clave === this.organizer.password || this.clave === this.customer.password){
-      return true;
-    }
-    else
-      return false;
-  }
 }

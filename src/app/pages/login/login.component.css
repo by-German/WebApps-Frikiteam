@@ -1,67 +1,46 @@
-.general {
-  width: 100%;
+.container {
+  background-color: #18161a;
   min-height: 93vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  background: rgba(24,22,27,255);
-
+  justify-content: space-evenly;
+  user-select: none;
 }
 
-.container-login {
-  width: 50%;
-  height: 90%;
+img  {
+  width: 25%;
+}
+
+.form {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column wrap;
+  flex-direction: column;
+  width: 25%;
+  height: 250px;
+  justify-content: space-around;
 }
 
-.container-forms {
-  width: 90%;
-  height: 40%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 15px;
-  flex-flow: column wrap;
+a {
+  color: #a4a2ea;
 }
 
-.form-field-mail {
-  width: 60%;
-  background: rgba(255,255,254,255);
-  border-radius: 5px;
-  height: 55px;
+/*button*/
+::ng-deep .mat-raised-button {
+  background-color: #726dc2;
+  color: white;
+}
+::ng-deep .mat-button-disabled {
+  background-color: #383845 !important;
+  color: white !important;
 }
 
-.form-field-password {
-  width: 60%;
-  background: rgba(255,255,254,255);
-  border-radius: 5px;
-  height: 55px;
+/*fields*/
+::ng-deep .mat-focused .mat-form-field-label {
+  color: #726dc2 !important;
 }
-
-.divider {
-  height: 30px;
+::ng-deep.mat-form-field-ripple {
+  background-color: white !important;;
 }
-
-.container-button {
-  width: 90%;
-  display: flex;
-  justify-content: center;
-}
-
-.button-login {
-  background-color: rgba(194,153,254,255);
-  border: 2px solid rgb(177, 105, 255);
-
-  color: rgba(251,241,253,255);
-  font-size: 20px;
-  text-transform: uppercase;
-  text-align: center;
-  width: 30%;
-}
-
-.txt-signin {
-  color: rgba(251,241,253,255);
+::ng-deep .mat-form-field .mat-form-field-flex {
+  background-color: white;
 }
