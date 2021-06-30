@@ -1,0 +1,85 @@
+<div class="container">
+
+  <img src="assets/img/logo.png" alt="Findevents">
+
+  <mat-tab-group mat-align-tabs="center">
+    <mat-tab label="USER">
+      <div class="mat-content">
+        <form [formGroup]="user" (ngSubmit)="userRegister()" class="form">
+
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="email">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>First name</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="firstName">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Last name</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="lastName">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Date of birth</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="dateBirth">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="password" type="password">
+          </mat-form-field>
+
+          <button mat-raised-button type="submit" [disabled]="user.invalid" class="btn-submit">
+            REGISTER
+          </button>
+
+        </form>
+      </div>
+
+    </mat-tab>
+
+
+
+    <mat-tab label="ORGANIZER">
+      <div class="mat-content">
+        <form [formGroup]="organizer" (ngSubmit)="organizerRegister()" class="form">
+
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="email">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>First name</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="firstName">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Last name</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="lastName">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="password" type="password">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Description (Optional)</mat-label>
+            <textarea matInput formControlName="description" placeholder="Insert your description"></textarea>
+          </mat-form-field>
+
+          <button mat-raised-button type="submit" [disabled]="organizer.invalid" class="btn-submit">
+            REGISTER
+          </button>
+
+        </form>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+
