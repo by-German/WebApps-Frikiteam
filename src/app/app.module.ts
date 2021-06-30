@@ -13,8 +13,6 @@ import { EventComponent } from './pages/event/event.component';
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { NavBarComponent } from './pages/nav-bar/nav-bar.component';
 import { LoginComponent } from './pages/login/login.component';
-import { SignupFrikiComponent } from './pages/signup-friki/signup-friki.component';
-import { SignupOrganizerComponent } from './pages/signup-organizer/signup-organizer.component';
 import { MatToolbarModule} from "@angular/material/toolbar";
 import { MatButtonModule} from "@angular/material/button";
 import { MatGridListModule} from "@angular/material/grid-list";
@@ -31,10 +29,12 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatOptionModule } from "@angular/material/core";
-import {MatListModule} from "@angular/material/list";
-import {MatMenuModule} from "@angular/material/menu";
-import {UserProfileComponent} from "./pages/user-profile/user-profile.component";
-import {authInterceptorProviders} from "./helpers/auth.interceptor";
+import { MatListModule } from "@angular/material/list";
+import { MatMenuModule } from "@angular/material/menu";
+import { UserProfileComponent } from "./pages/user-profile/user-profile.component";
+import { RegisterComponent } from './pages/register/register.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { authInterceptorProviders } from "./helpers/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -43,11 +43,10 @@ import {authInterceptorProviders} from "./helpers/auth.interceptor";
     EventComponent,
     NavBarComponent,
     LoginComponent,
-    SignupFrikiComponent,
-    SignupOrganizerComponent,
     CreateEventComponent,
     CreateComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -89,7 +88,8 @@ import {authInterceptorProviders} from "./helpers/auth.interceptor";
     MatOptionModule,
     MatProgressSpinnerModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTabsModule
   ],
   providers: [ authInterceptorProviders ],
   bootstrap: [ AppComponent ]

@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
 import { Model } from "../models/event";
+import { BASE_PATH } from "./common/http.common";
 
 import {Organizer} from "../models/organizer";
 import {Customer} from "../models/customer";
@@ -12,9 +13,9 @@ import {Customer} from "../models/customer";
 })
 export class EventsApiService {
   //Endpoint
-  basePath1 = 'http://localhost:3000/api/organizers';
-  basePath2 = 'http://localhost:3000/api/customers';
-  basePath = 'http://localhost:3000/api/events';
+  basePath1 = BASE_PATH + '/organizers';
+  basePath2 = BASE_PATH + '/customers';
+  basePath = BASE_PATH + '/events';
 
   constructor(private http: HttpClient) { }
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})};

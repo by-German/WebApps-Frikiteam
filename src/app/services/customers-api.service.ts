@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {Customer} from "../models/customer";
 import {catchError, retry} from "rxjs/operators";
+import { BASE_PATH } from "./common/http.common";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,6 @@ import {catchError, retry} from "rxjs/operators";
 export class CustomersApiService {
   // Customers Endpoints
 
-  basePath = 'http://localhost:3000/api/customers';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -21,28 +21,28 @@ export class CustomersApiService {
 
   // Create Customer
   addCustomer(item: any): Observable<Customer> {
-    return this.http.post<Customer>(this.basePath, JSON.stringify(item), this.httpOptions)
+    return this.http.post<Customer>(BASE_PATH + "/customers", JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   // Get Customer by Id
   getCustomerById(id: number): Observable<Customer> {
-    return this.http.get<Customer>(`${this.basePath}/${id}`, this.httpOptions )
+    return this.http.get<Customer>(`${BASE_PATH}/customers/${id}`, this.httpOptions )
       .pipe(retry(2), catchError(this.handleError));
   }
-  // Get Customer Data
+  // Get Customers
   getAllCustomers(): Observable<Customer>{
-    return this.http.get<Customer>(this.basePath)
+    return this.http.get<Customer>(BASE_PATH + '/customers')
       .pipe(retry(2), catchError(this.handleError));
   }
   // Update Customer
   updateCustomer(id: number, item: Customer): Observable<Customer>{
-    return this.http.put<Customer>(`${this.basePath}/${id}`, JSON.stringify(item), this.httpOptions)
+    return this.http.put<Customer>(`${BASE_PATH}/customers/${id}`, JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
   // Delete Customer
   deleteCustomer(id: number): Observable<any> {
-    return this.http.delete<Customer>(`${this.basePath}/${id}`, this.httpOptions)
+    return this.http.delete<Customer>(`${BASE_PATH}/customers/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 

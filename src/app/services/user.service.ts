@@ -4,8 +4,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {BASE_PATH} from "./common/http.common";
 
-const API_URL = 'http://localhost:8080/api/users/';
+const API_URL = BASE_PATH + '/users/';
+
 @Injectable({
   providedIn: 'root'
 })
