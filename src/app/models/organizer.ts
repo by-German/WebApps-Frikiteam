@@ -7,4 +7,5 @@ export interface Organizer {
   logo: string
   description: string
   verified: boolean
+  profile_img: string
 }

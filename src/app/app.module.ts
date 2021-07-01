@@ -35,6 +35,7 @@ import { UserProfileComponent } from "./pages/user-profile/user-profile.componen
 import { RegisterComponent } from './pages/register/register.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { authInterceptorProviders } from "./helpers/auth.interceptor";
+import { OrganizerProfileComponent } from './pages/organizer-profile/organizer-profile.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { authInterceptorProviders } from "./helpers/auth.interceptor";
     CreateEventComponent,
     CreateComponent,
     UserProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    OrganizerProfileComponent
   ],
   imports: [
     BrowserModule,

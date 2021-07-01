@@ -1,32 +1,33 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {MatTableDataSource} from "@angular/material/table";
-import {Customer} from "../../models/customer";
-import {CustomersApiService} from "../../services/customers-api.service";
+import {Organizer} from "../../models/organizer";
 import {ActivatedRoute, Router} from "@angular/router";
+import {OrganizersApiService} from "../../services/organizers-api.service";
 
 @Component({
-  selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css']
+  selector: 'app-organizer-profile',
+  templateUrl: './organizer-profile.component.html',
+  styleUrls: ['./organizer-profile.component.css']
 })
-export class UserProfileComponent implements OnInit {
-  @ViewChild('userProfileForm', { static : false}) userProfileForm !: NgForm;
+export class OrganizerProfileComponent implements OnInit {
+  @ViewChild('organizerProfileForm', { static : false}) organizerProfileForm !: NgForm;
   isEditMode = false;
   userId!: number;
   dataSource = new MatTableDataSource();
-  userData: Customer = {} as Customer;
-  defaultUser: Customer = {
+  userData: Organizer = {} as Organizer;
+  defaultUser: Organizer = {
     id: 0,
-    user_name: '',
     firstName: '',
     lastName: '',
-    email: '',
     password: '',
-    date_bird: '',
+    email: '',
+    logo: '',
+    description: '',
+    verified: false,
     profile_img: '',
   }
-  constructor(private customersApi: CustomersApiService,
+  constructor(private organizersApi: OrganizersApiService,
               private router: Router,
               private route: ActivatedRoute) { }
 
@@ -51,7 +52,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   retrieveUser(id: number): void {
-    this.customersApi.getCustomerById(id)
+    this.organizersApi.getOrganizerById(id)
       .subscribe(response => {
         this.userData = response;
       });
@@ -66,7 +67,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   updateUser(): void {
-    this.customersApi.updateCustomer(this.userData.id, this.userData as Customer)
+    this.organizersApi.updateOrganizer(this.userData.id, this.userData as Organizer)
       .subscribe(response => {
         console.log(response);
       });
