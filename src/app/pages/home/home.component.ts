@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {EventsApiService} from "../../services/events-api.service";
-import {MatTableDataSource} from "@angular/material/table";
+import { EventsApiService } from "../../services/events-api.service";
+import { MatTableDataSource} from "@angular/material/table";
 import { Model } from "../../models/event";
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   events: Model.Event[] = [];
   dataSource = new MatTableDataSource(this.events);
   isSearching = false;
-
+  arr = [];
 
 
   constructor(private eventsApi: EventsApiService, private router: Router) {
@@ -27,10 +27,13 @@ export class HomeComponent implements OnInit {
   }
 
   getAllEvents(): void {
+
     this.eventsApi.getAllEvents().subscribe((response: Model.Event[]) => {
       console.log(response);
+
       this.events = response;
     });
+
   }
 
 

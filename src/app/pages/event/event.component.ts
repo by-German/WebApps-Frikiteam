@@ -6,6 +6,7 @@ import {EventsApiService} from "../../services/events-api.service";
 import {subscribeToResult} from "rxjs/internal-compatibility";
 import {EventsInformationApiService} from "../../services/events-information-api.service";
 
+
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
@@ -21,6 +22,7 @@ export class EventComponent implements OnInit {
               private route: ActivatedRoute,
               private eventsApi: EventsApiService,
               private informationApi: EventsInformationApiService) {
+
     this.organizer = {} as Organizer
     this.informations = []
   }
@@ -41,6 +43,11 @@ export class EventComponent implements OnInit {
         });
     })
 
+  }
+
+  navigateToEventLocation(id: number): void {
+    this.router.navigate(['/events/'+id+'/location'])
+      .then(() => console.log('Navigate to event location with id' + id));
   }
 
 }

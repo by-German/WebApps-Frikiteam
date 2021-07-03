@@ -5,14 +5,16 @@
   <p class = "txt">Our event creation process has been <br/> designed <br/> to be simple. To get started,
     register or log in <br/>  to your Findevents account. Then, click on <br/> "Create an event"</p>
 
-  <button class = "btn" (click)="createEvent()">
-    Create an event
+  <button mat-raised-button color="primary" class="button" (click)="createEvent()">
+    CREATE AN EVENT
   </button>
 
 
   <hr class = "line">
+  <div class="my-events">
+    <h1 class ="title">MY EVENTS</h1>
 
-  <h1 class ="title">MY EVENTS</h1>
+    <p class = "final">No more events found....</p>
+  </div>
 
-  <p class = "final">No more events found....</p>
 </mat-drawer-container>

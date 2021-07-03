@@ -39,3 +39,13 @@
   margin-top: 2%;
   width: 32%;
 }
+
+.button {
+  margin-top: 20px;
+  font-size: 18px;
+  padding: 5px 50px;
+}
+
+.my-events {
+  margin-bottom: 30px;
+}

@@ -15,6 +15,7 @@ export class EventsApiService {
   //Endpoint
   basePath1 = BASE_PATH + '/organizers';
   basePath2 = BASE_PATH + '/customers';
+  basePath3 = BASE_PATH + ':id/qualification';
   basePath = BASE_PATH + '/events';
 
   constructor(private http: HttpClient) { }
@@ -36,6 +37,12 @@ export class EventsApiService {
 
   getAllEvents(): any {
     return this.http.get<Model.Event[]>(this.basePath);
+
+  }
+
+  getEventQualification(id: number): any {
+    return this.http.get<Model.Event[]>(`${this.basePath3}/${id}`, this.httpOptions);
+
   }
 
   // move to organizer and customer to organizer and customer service
