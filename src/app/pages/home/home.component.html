@@ -18,7 +18,7 @@
   <div class="content">
 
     <div *ngFor="let event of events">
-      <mat-card class="card" (click)="navigateToEvent(1)">
+      <mat-card class="card" (click)="navigateToEvent(event.id)">
 
           <img mat-card-image src="{{ event.logo }}" alt="">
           <mat-card-header>

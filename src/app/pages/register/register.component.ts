@@ -30,13 +30,11 @@ export class RegisterComponent implements OnInit {
     description: new FormControl('' )
   });
 
-  roles: string[] = [];
-
-  constructor( private router: Router, private tokenStorageService: TokenStorageService, private auth: AuthService,
-    private customerApi: CustomersApiService,
-    private organizerApi: OrganizersApiService ) {
-
-  }
+  constructor( private router: Router,
+               private storage: TokenStorageService,
+               private auth: AuthService,
+               private customerApi: CustomersApiService,
+               private organizerApi: OrganizersApiService ) { }
 
   ngOnInit() {
   }
@@ -44,21 +42,34 @@ export class RegisterComponent implements OnInit {
   userRegister(): void {
     this.user.value.logo = "default"
     console.log(this.user.value);
+
+    this.customerApi.addCustomer(this.user.value)
+      .subscribe( result => {
+        if (result) {
+          this.auth.login(this.user.value).subscribe(result => {
+            this.storage.saveToken(result.token);
+            this.storage.saveUser(result);
+            this.storage.assignRole('customer')
+            this.router.navigate(['/']).then()
+          })
+        }
+      });
   }
 
   organizerRegister(): void {
     this.organizer.value.logo = "default"
     this.organizer.value.verified = false
 
-    console.log("Organizer");
-    console.log(this.organizer.value);
     this.organizerApi.addOrganizer(this.organizer.value)
       .subscribe( result => {
         if (result) {
-          // TODO: realize auth and redirect to home
+          this.auth.login(this.organizer.value).subscribe(result => {
+            this.storage.saveToken(result.token);
+            this.storage.saveUser(result);
+            this.storage.assignRole('organizer')
+            this.router.navigate(['/']).then()
+          })
         }
-        console.log("Resultado:");
-        console.log(result);
       });
   }
 }

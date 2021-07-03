@@ -56,7 +56,7 @@
 
 <!--    <button mat-raised-button color="primary" (click)="drawer.toggle()">MORE INFO</button>-->
 
-    <h1>TITLE OF EVENT</h1>
+    <h1>{{event.name}}</h1>
 
     <div class="divider"></div>
 
@@ -68,9 +68,9 @@
 
     <div class="divider"></div>
 
-    <div class="event-description" *ngFor="let item of [1, 2]">
-      <div class="title"><h2>TITLE OF DESCRIPTION</h2></div>
-      <div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque exercitationem harum hic, molestias nihil nulla obcaecati quia quis quod repudiandae? Explicabo hic maiores nisi porro, praesentium sapiente similique unde vitae.</div>
+    <div class="event-description" *ngFor="let item of informations">
+      <div class="title"><h2>{{item.title}}</h2></div>
+      <div class="description">{{item.description}}</div>
       <img src="https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/17/15871580531828.jpg" alt="img-event">
     </div>
 
