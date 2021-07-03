@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
 
+import { AgmCoreModule } from '@agm/core';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './pages/app/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,6 +37,7 @@ import { UserProfileComponent } from "./pages/user-profile/user-profile.componen
 import { RegisterComponent } from './pages/register/register.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { authInterceptorProviders } from "./helpers/auth.interceptor";
+import { EventLocationComponent } from './pages/event-location/event-location.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,8 @@ import { authInterceptorProviders } from "./helpers/auth.interceptor";
     CreateEventComponent,
     CreateComponent,
     UserProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    EventLocationComponent
   ],
   imports: [
     BrowserModule,
@@ -89,7 +93,10 @@ import { authInterceptorProviders } from "./helpers/auth.interceptor";
     MatProgressSpinnerModule,
     MatListModule,
     MatMenuModule,
-    MatTabsModule
+    MatTabsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCtz7v_IiSCZxQwE0Fz6vtfuXFjseNXAJY'
+    })
   ],
   providers: [ authInterceptorProviders ],
   bootstrap: [ AppComponent ]

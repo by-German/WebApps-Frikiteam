@@ -11,9 +11,12 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent implements OnInit {
 
+
   events: Model.Event[] = [];
-  dataSource = new MatTableDataSource();
+  dataSource = new MatTableDataSource(this.events);
   isSearching = false;
+
+
 
   constructor(private eventsApi: EventsApiService, private router: Router) {
     //this.eventData = {} as Event;
@@ -36,6 +39,8 @@ export class HomeComponent implements OnInit {
     this.dataSource.filter = searchValue.trim().toLowerCase();
     this.isSearching = !!searchValue;
   }
+
+
 
   navigateToEvent(id: number): void {
     this.router.navigate(['/events/'+id])

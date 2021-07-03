@@ -20,19 +20,20 @@
     <div *ngFor="let event of events">
       <mat-card class="card" (click)="navigateToEvent(1)">
 
-        <img mat-card-image src="{{ event.logo }}" alt="">
-        <mat-card-header>
-          <mat-card-title>{{ event.name }}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>{{ event.information }}</p>
-          <p>{{ event.startDate }}</p>
-          <div class="stars">
-            <mat-icon  *ngFor="let i of event.stars">star rate</mat-icon>
-          </div>
-        </mat-card-content>
+          <img mat-card-image src="{{ event.logo }}" alt="">
+          <mat-card-header>
+            <mat-card-title>{{ event.name }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ event.information }}</p>
+            <p>{{ event.startDate }}</p>
+            <div class="stars">
+              <mat-icon *ngFor="let i of event.stars">star rate</mat-icon>
+            </div>
+          </mat-card-content>
 
       </mat-card>
+
     </div>
 
   </div>

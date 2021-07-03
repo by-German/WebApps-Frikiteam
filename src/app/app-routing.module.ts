@@ -8,6 +8,7 @@ import {CreateEventComponent} from "./pages/create-event/create-event.component"
 import {CreateComponent} from "./pages/create/create.component";
 import {UserProfileComponent} from "./pages/user-profile/user-profile.component";
 import {RegisterComponent} from "./pages/register/register.component";
+import {EventLocationComponent} from "./pages/event-location/event-location.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'create-event', component: CreateEventComponent },
   { path: 'create', component: CreateComponent},
   { path: 'user-profile', component: UserProfileComponent},
-  { path: 'register', component: RegisterComponent}
+  { path: 'register', component: RegisterComponent},
+  { path: 'events/:id/location', component: EventLocationComponent }
 ];
 
 @NgModule({
