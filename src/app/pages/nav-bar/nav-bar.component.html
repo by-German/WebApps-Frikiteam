@@ -30,9 +30,8 @@
   </button>
   <span>FINDEVENTS</span>
 <!--  navbar items-->
-  <button mat-button>NOTIFICATION</button>
   <button mat-button (click)="navigateToEvents()">EVENTS</button>
-  <button mat-button>FAVORITE</button>
+  <button mat-button (click)="navigateToFavorites()">FAVORITE</button>
   <button mat-button (click)="navigateToCreate()">CREATE</button>
 
   <span class="spacer"></span>
@@ -41,15 +40,16 @@
     <mat-icon>account_circle</mat-icon>
   </button>
   <mat-menu #appMenu="matMenu">
-    <button mat-menu-item>Settings</button>
-    <button mat-menu-item>Help</button>
+    <button mat-menu-item (click)="navigateToLogin()" [style.display]="isLogged() ? 'none' : 'block'">Login</button>
+    <button mat-menu-item (click)="navigateToRegister()" [style.display]="isLogged() ? 'none' : 'block'">Register</button>
+    <button mat-menu-item [style.display]="isLogged() ? 'block' : 'none'">Profile</button>
+    <button mat-menu-item (click)="logout()" [style.display]="isLogged() ? 'block' : 'none'">Logout</button>
   </mat-menu>
 </mat-toolbar>
 
 <mat-sidenav-container>
   <mat-sidenav #sidenav role="navigation" mode="over">
     <mat-nav-list style="background-color: #464361">
-      <mat-list-item (click)="sidenav.close();">NOTIFICATION</mat-list-item>
       <mat-list-item (click)="sidenav.close();">EVENTS</mat-list-item>
       <mat-list-item (click)="sidenav.close();">FAVORITES</mat-list-item>
       <mat-list-item (click)="sidenav.close();">CREATE EVENT</mat-list-item>

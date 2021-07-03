@@ -30,7 +30,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatDividerModule } from "@angular/material/divider";
-import { MatOptionModule } from "@angular/material/core";
+import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
 import { MatListModule } from "@angular/material/list";
 import { MatMenuModule } from "@angular/material/menu";
 import { UserProfileComponent } from "./pages/user-profile/user-profile.component";
@@ -39,6 +39,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { authInterceptorProviders } from "./helpers/auth.interceptor";
 import { EventLocationComponent } from './pages/event-location/event-location.component';
 import { OrganizerProfileComponent } from './pages/organizer-profile/organizer-profile.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,8 @@ import { OrganizerProfileComponent } from './pages/organizer-profile/organizer-p
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatCardModule,
     MatGridListModule,
     MatFormFieldModule,
@@ -98,9 +101,12 @@ import { OrganizerProfileComponent } from './pages/organizer-profile/organizer-p
     MatTabsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCtz7v_IiSCZxQwE0Fz6vtfuXFjseNXAJY'
-    })
+    }),
   ],
-  providers: [ authInterceptorProviders ],
+  providers: [
+    authInterceptorProviders,
+    MatDatepickerModule
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

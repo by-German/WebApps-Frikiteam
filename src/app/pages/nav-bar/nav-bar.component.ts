@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {TokenStorageService} from "../../services/token-storage.service";
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,7 +9,7 @@ import {Router} from "@angular/router";
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private storage: TokenStorageService) { }
 
   ngOnInit(): void {
   }
@@ -30,5 +31,22 @@ export class NavBarComponent implements OnInit {
   navigateToUserProfile(): void {
     this.router.navigate(['/user-profile'])
       .then(() => console.log('Navigated to user profile'));
+  }
+
+  logout() {
+    this.storage.signOut();
+    this.navigateToLogin();
+  }
+
+  navigateToFavorites() {
+    this.router.navigate(["/favorites"]).then();
+  }
+
+  navigateToRegister() {
+    this.router.navigate(['/register']).then();
+  }
+
+  isLogged(): boolean {
+    return !!this.storage.getUser();
   }
 }

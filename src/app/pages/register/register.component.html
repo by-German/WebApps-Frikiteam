@@ -22,10 +22,14 @@
             <input matInput placeholder="Placeholder" formControlName="lastName">
           </mat-form-field>
 
+
           <mat-form-field appearance="fill">
             <mat-label>Date of birth</mat-label>
-            <input matInput placeholder="Placeholder" formControlName="dateBirth">
+            <input matInput [matDatepicker]="picker" formControlName="dateBirth">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
+
 
           <mat-form-field appearance="fill">
             <mat-label>Password</mat-label>
