@@ -15,7 +15,7 @@ import {EventsInformationApiService} from "../../services/events-information-api
 export class EventComponent implements OnInit {
   organizer : Organizer;
   event : any;
-  informations : any[];
+  informations: any[] = [];
 
   constructor(private organizersApi : OrganizersApiService,
               private router: Router,
@@ -24,7 +24,6 @@ export class EventComponent implements OnInit {
               private informationApi: EventsInformationApiService) {
 
     this.organizer = {} as Organizer
-    this.informations = []
   }
 
   ngOnInit(): void {

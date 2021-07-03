@@ -49,4 +49,8 @@ export class NavBarComponent implements OnInit {
   isLogged(): boolean {
     return !!this.storage.getUser();
   }
+
+  navigateToProfile() {
+    this.router.navigate(['/organizer-profile']).then();
+  }
 }

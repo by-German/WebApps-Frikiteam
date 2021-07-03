@@ -42,7 +42,7 @@
   <mat-menu #appMenu="matMenu">
     <button mat-menu-item (click)="navigateToLogin()" [style.display]="isLogged() ? 'none' : 'block'">Login</button>
     <button mat-menu-item (click)="navigateToRegister()" [style.display]="isLogged() ? 'none' : 'block'">Register</button>
-    <button mat-menu-item [style.display]="isLogged() ? 'block' : 'none'">Profile</button>
+    <button mat-menu-item (click)="navigateToProfile()" [style.display]="isLogged() ? 'block' : 'none'">Profile</button>
     <button mat-menu-item (click)="logout()" [style.display]="isLogged() ? 'block' : 'none'">Logout</button>
   </mat-menu>
 </mat-toolbar>

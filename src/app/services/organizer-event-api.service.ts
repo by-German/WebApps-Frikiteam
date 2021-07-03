@@ -33,7 +33,7 @@ export class OrganizerEventApiService {
 
   createNewEvent(item: any, id: number): Observable<any> {
     return this.http.post(`${BASE_PATH}/organizers/${id}/events`, JSON.stringify({
-      logo: "default",
+      logo: "https://encrypted-tbn0.gstatic.com/images?https://i2.wp.com/geeklaak.com/wp-content/uploads/2020/08/maxresdefault.jpg?fit=660%2C365&ssl=1",
       information: item.information,
       name: item.name,
       price: item.price,
