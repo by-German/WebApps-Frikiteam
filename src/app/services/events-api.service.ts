@@ -29,6 +29,11 @@ export class EventsApiService {
     return throwError('Something happened with request, please try again later.');
   }
 
+  getEventById(id : number): any {
+    return this.http.get<any>(BASE_PATH + `/events/${id}`)
+  }
+
+
   getAllEvents(): any {
     return this.http.get<Model.Event[]>(this.basePath);
   }
@@ -39,6 +44,8 @@ export class EventsApiService {
     return this.http.post<Organizer>(this.basePath1, JSON.stringify(item), this.httpOptions)
       .pipe(retry(1), catchError(this.handleError));
   }
+
+
   // Get Organizer by Id
   getOrganizerById(id: number): Observable<Organizer> {
     return this.http.get<Organizer>(`${this.basePath1}/${id}`, this.httpOptions )

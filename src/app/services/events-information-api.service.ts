@@ -11,8 +11,8 @@ export class EventsInformationApiService {
   // api/events/1/information
   constructor(private http: HttpClient) { }
 
-  getEventInformationById(id : number) : Observable<Organizer[]>{
-    return this.http.get<Organizer[]>(`${BASE_PATH}/events/${id}/information`)
+  getEventInformation(eventId : number) : Observable<any[]>{
+    return this.http.get<any[]>(`${BASE_PATH}/events/${eventId}/information`)
   }
 
 }
