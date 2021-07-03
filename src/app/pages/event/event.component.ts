@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Organizer} from "../../models/organizer";
-import {OrganizersApiService} from "../../services/organizers-api.service";
+import { Organizer } from "../../models/organizer";
+import { OrganizersApiService } from "../../services/organizers-api.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-event',
@@ -10,7 +11,7 @@ import {OrganizersApiService} from "../../services/organizers-api.service";
 export class EventComponent implements OnInit {
   organizer : Organizer;
 
-  constructor(private organizers : OrganizersApiService) {
+  constructor(private organizers : OrganizersApiService, private router: Router) {
     this.organizer = {} as Organizer
   }
 
@@ -22,4 +23,9 @@ export class EventComponent implements OnInit {
       }))
   }
 
+  navigateToEventLocation(id: number): void {
+    this.router.navigate(['/events/'+id+'/location'])
+      .then(() => console.log('Navigate to event location with id' + id));
+  }
+  
 }

@@ -4,6 +4,7 @@ import {Organizer} from "../models/organizer";
 import {Observable, throwError} from 'rxjs';
 import {BASE_PATH} from "./common/http.common";
 import {catchError, retry} from "rxjs/operators";
+import {FormGroup} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,11 @@ export class OrganizersApiService {
       'Content-Type': 'application/json'
     })
   }
+
+
   constructor(private http: HttpClient) { }
+
+
 
   getOrganizerById(id : number) : Observable<Organizer>{
     return this.http.get<Organizer>(BASE_PATH + `/organizers/${id}`)
