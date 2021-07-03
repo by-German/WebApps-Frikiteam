@@ -18,7 +18,7 @@
                   <mat-grid-tile rowspan="3" >
                     <mat-list dense >
                       <mat-list-item>
-                        <h2 >2 assisted events</h2>
+                        <h2 >2 organized events</h2>
                       </mat-list-item>
 
                       <mat-list-item>
@@ -32,7 +32,7 @@
                   </mat-grid-tile>
 
                   <mat-grid-tile>
-                    <h1>{{userData.user_name}}</h1>
+                    <h1>{{userData.firstName + userData.lastName}}</h1>
                   </mat-grid-tile>
 
                   <mat-grid-tile>
@@ -73,11 +73,11 @@
                   <div class="user-info-item-list">
                     <mat-list>
                       <mat-list-item>
-                        <h1>Birth Date</h1>
+                        <h1>Description</h1>
                       </mat-list-item>
 
                       <mat-list-item>
-                        <h2>{{ userData.date_bird}}</h2>
+                        <h2>{{ userData.description}}</h2>
                       </mat-list-item>
                     </mat-list>
                   </div>
@@ -96,7 +96,7 @@
 
     </mat-grid-tile>
 
-    <!-- Mis eventos -->
+    <!-- Eventos asistidos / Mis eventos -->
     <mat-grid-tile rowspan="1" colspan="4">
       <div id="events-tile">
         <mat-card class="event-card">
