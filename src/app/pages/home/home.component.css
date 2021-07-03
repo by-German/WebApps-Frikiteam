@@ -41,6 +41,11 @@
   max-width: 230px;
   background-color: #464448;
  }
+@media (max-width: 760px){
+  .card {
+    max-width: 330px;
+  }
+}
 
 mat-form-field {
   width: 400px;

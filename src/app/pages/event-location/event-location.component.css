@@ -1,0 +1,99 @@
+.container {
+  width: 100vw;
+  height: 93%; /* nav bar is 7% of height */
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: #18161A;
+  color: #8BB0E8;
+}
+.divider {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 100%;
+  border-bottom: 1px solid #99DCFF;
+}
+
+/**
+ Sidenav content
+ */
+
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.sidenav {
+  width: 40%;
+  background-color: #282732;
+  color: #8BB0E8;
+}
+
+.side-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+/* side content follow */
+.card-info {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  justify-content: space-around;
+}
+.qualification {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: #b4acdc;
+}
+.info-organizer {
+  align-items: center;
+  height: 30%;
+}
+.profile {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background-size: cover !important;
+  background-position: center !important;
+}
+/* side content list information */
+.list-content {
+  font-size: medium;
+}
+.list-content ul {
+  list-style: none;
+}
+
+/**
+ Content
+ */
+
+.content {
+  margin: 5%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content mat-icon {
+  color: white;
+  cursor: pointer;
+}
+
+.main {
+  margin: 8%;
+}
+
+.main h1 {
+  font-size: 250%;
+  font-weight: bold;
+  color: #895cc7;
+}
+
+agm-map {
+  height: 300px;
+}
+
+
