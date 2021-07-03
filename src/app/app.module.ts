@@ -38,6 +38,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { authInterceptorProviders } from "./helpers/auth.interceptor";
 import { EventLocationComponent } from './pages/event-location/event-location.component';
+import { OrganizerProfileComponent } from './pages/organizer-profile/organizer-profile.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { EventLocationComponent } from './pages/event-location/event-location.co
     CreateComponent,
     UserProfileComponent,
     RegisterComponent,
-    EventLocationComponent
+    EventLocationComponent,
+    OrganizerProfileComponent
   ],
   imports: [
     BrowserModule,
