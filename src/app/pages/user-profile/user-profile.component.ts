@@ -4,6 +4,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {Customer} from "../../models/customer";
 import {CustomersApiService} from "../../services/customers-api.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {TokenStorageService} from "../../services/token-storage.service";
 
 @Component({
   selector: 'app-user-profile',
@@ -28,26 +29,29 @@ export class UserProfileComponent implements OnInit {
   }
   constructor(private customersApi: CustomersApiService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private storage: TokenStorageService) { }
 
   ngOnInit(): void {
-    this.userId = Number(this.route.params.subscribe( params => {
-      if (params.id) {
-        const id = params.id;
-        console.log(id);
-        this.retrieveUser(id);
-        this.isEditMode = true;
-        return id;
-      } else {
-        this.resetUser();
-        this.isEditMode = false;
-        return 0;
-      }
-    }));
+    // this.userId = Number(this.route.params.subscribe( params => {
+    //   if (params.id) {
+    //     const id = params.id;
+    //     console.log(id);
+    //     this.retrieveUser(id);
+    //     this.isEditMode = true;
+    //     return id;
+    //   } else {
+    //     this.resetUser();
+    //     this.isEditMode = false;
+    //     return 0;
+    //   }
+    // }));
 
-    //No esta obteniendo el id correctamente
-    this.userId = 4;
-    this.retrieveUser(this.userId);
+    let user = this.storage.getUser();
+    this.customersApi.getCustomerById(user.id).subscribe(result => {
+      console.log(result)
+      this.userData = result;
+    });
   }
 
   retrieveUser(id: number): void {

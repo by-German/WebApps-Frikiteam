@@ -6,35 +6,38 @@
 
   <div>
     <h1 class="title">Data of event:</h1><br/>
-    <form [formGroup]="create" >
+    <form [formGroup]="create" (ngSubmit)="registerEvent()">
       <mat-label class = "texts"> Name of the event:</mat-label>
       <mat-form-field appearance="fill" >
         <input matInput placeholder="Type the name!" class="input-type"  formControlName="name" required>
       </mat-form-field>
 
       <mat-label class = "texts"> Date and time of the event:</mat-label>
-      <mat-form-field appearance="fill" >
-        <input matInput placeholder="Type the name!" class="input-type" formControlName="startDate" required>
-      </mat-form-field>
-
-      <mat-label class = "texts"> Public recommended:</mat-label><br/>
-      <mat-form-field appearance="fill" >
-        <input matInput placeholder="Type the name!" class="input-type" formControlName="price" required>
+      <mat-form-field appearance="fill">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
       <mat-label class = "texts"> Total tickets available:</mat-label>
       <mat-form-field appearance="fill" >
-        <input matInput placeholder="Type the name!" class="input-type" formControlName="quantity" required>
+        <input type="number" matInput class="input-type" formControlName="quantity">
+      </mat-form-field>
+
+      <mat-label class = "texts">Price:</mat-label>
+      <mat-form-field appearance="fill" >
+        <input type="number" matInput class="input-type" formControlName="price">
       </mat-form-field>
 
       <mat-label class = "texts"> Temary:</mat-label>
       <mat-form-field appearance="fill" >
-        <input matInput placeholder="Type the name!" class="input-type"  required>
+        <input matInput placeholder="Type the name!" class="input-type">
       </mat-form-field>
 
-      <mat-label class = "texts"> Detailed information:</mat-label>
+      <mat-label class = "texts"> Information:</mat-label>
       <mat-form-field appearance="fill" autosize>
-        <input matInput placeholder="Type the name!" class="input-type"  required>
+        <input matInput placeholder="Type the name!" class="input-type" formControlName="information">
       </mat-form-field>
 
       <button mat-raised-button type="submit" color="primary" class="button">IMG (OPCIONAL)</button>
@@ -46,19 +49,20 @@
 
       <mat-label class = "texts" > Official page of the event:</mat-label>
       <mat-form-field appearance="fill" autosize>
-        <input matInput placeholder="Type the name!" class="input-type"  required>
+        <input matInput placeholder="Type the name!" class="input-type">
       </mat-form-field>
 
       <mat-label class = "texts">Associate social networks:</mat-label>
       <input type="text" name = "Name" class = "inp"/><br/><br/>
-      <button mat-raised-button type="submit" color="primary" class="button" (click)="registerEvent()">TO POST</button>
+      <button mat-raised-button type="submit" color="primary" class="button">
+        TO POST
+      </button>
 
     </form>
   </div>
   <div>
 
     <div class="group-buttons">
-
       <button mat-raised-button color="primary" class="button" (click)="navigateToEvents()">CANCEL</button>
     </div>
 

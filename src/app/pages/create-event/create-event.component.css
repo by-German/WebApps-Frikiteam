@@ -1,6 +1,6 @@
 .container {
   width: 100vw;
-  height: 93%; /* nav bar is 7% of height */
+  min-height: 93vh; /* nav bar is 7% of height */
   border: 1px solid rgba(0, 0, 0, 0.5);
   background-color: #18161A;
   color: #8BB0E8;

@@ -24,11 +24,11 @@ export class CreateEventComponent implements OnInit {
     name: new FormControl('', [Validators.required]),
     startDate: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required]),
-    quantity: new FormControl('', [Validators.required])
+    quantity: new FormControl('', [Validators.required]),
+    information: new FormControl('', [Validators.required])
   });
 
   registerEvent() : void {
-
     this.create.value.placeId = 1;
     console.log(this.create.value);
 

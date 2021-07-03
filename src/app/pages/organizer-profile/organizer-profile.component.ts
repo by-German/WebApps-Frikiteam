@@ -4,6 +4,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {Organizer} from "../../models/organizer";
 import {ActivatedRoute, Router} from "@angular/router";
 import {OrganizersApiService} from "../../services/organizers-api.service";
+import {TokenStorageService} from "../../services/token-storage.service";
 
 @Component({
   selector: 'app-organizer-profile',
@@ -29,7 +30,8 @@ export class OrganizerProfileComponent implements OnInit {
   }
   constructor(private organizersApi: OrganizersApiService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private storage: TokenStorageService) { }
 
   ngOnInit(): void {
     this.userId = Number(this.route.params.subscribe( params => {
@@ -46,9 +48,10 @@ export class OrganizerProfileComponent implements OnInit {
       }
     }));
 
-    //No esta obteniendo el id correctamente
-    this.userId = 4;
-    this.retrieveUser(this.userId);
+    let organizer = this.storage.getUser();
+    this.organizersApi.getOrganizerById(organizer.id).subscribe(result => {
+      this.userData = result;
+    })
   }
 
   retrieveUser(id: number): void {

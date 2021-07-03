@@ -26,9 +26,8 @@ export class CustomersApiService {
   }
 
   // Get Customer by Id
-  getCustomerById(id: number): Observable<Customer> {
-    return this.http.get<Customer>(`${BASE_PATH}/customers/${id}`, this.httpOptions )
-      .pipe(retry(2), catchError(this.handleError));
+  getCustomerById(id: number): Observable<any> {
+    return this.http.get<any>(`${BASE_PATH}/customers/${id}`);
   }
   // Get Customers
   getAllCustomers(): Observable<Customer>{
