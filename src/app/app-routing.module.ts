@@ -10,17 +10,22 @@ import {UserProfileComponent} from "./pages/user-profile/user-profile.component"
 import {RegisterComponent} from "./pages/register/register.component";
 import {EventLocationComponent} from "./pages/event-location/event-location.component";
 import {OrganizerProfileComponent} from "./pages/organizer-profile/organizer-profile.component";
+import {EventInformationComponent} from "./pages/event-information/event-information.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'events', component: HomeComponent},
-  { path: 'events/:id', component: EventComponent},
+  { path: 'events/:id', component: EventComponent,
+    children: [
+      { path: '', component: EventInformationComponent },
+      { path: 'information', component: EventInformationComponent },
+      { path: 'location', component: EventLocationComponent}
+    ]},
   { path: 'login', component: LoginComponent },
   { path: 'create-event', component: CreateEventComponent },
   { path: 'create', component: CreateComponent},
   { path: 'user-profile', component: UserProfileComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'events/:id/location', component: EventLocationComponent },
   { path: 'organizer-profile', component: OrganizerProfileComponent}
 ];
 

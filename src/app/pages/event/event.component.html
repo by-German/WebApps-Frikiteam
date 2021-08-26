@@ -13,26 +13,19 @@
         <div class="divider"></div>
         <div class="info-organizer card-info">
           <div class="profile" [ngStyle]="{'background' : 'url(https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)'}">
-            <router-outlet></router-outlet>
           </div>
           <h3>{{ organizer.firstName }} {{ organizer.lastName }}</h3>
           <button mat-raised-button color="primary">FOLLOW</button>
         </div>
       </div>
 
-      <div class="side-content">
-        <div class="list-content">
-          <h2>Recommended audience</h2>
-          <ul>
-            <li>Todas las edades</li>
-          </ul>
-        </div>
+      <div class="side-content-list">
 
         <div class="list-content">
           <h2>Itinerary</h2>
           <ul>
             <li>Concurso de cosplay</li>
-            <li>Venta de merchandising</li>
+            <li>Venta de merchandising merchandising merchandising  daslkdjas sadklasjdalsaa</li>
             <li>Entrevista actores de voz</li>
             <li>Presentacion de cosplay</li>
             <li>Espacion temáticos</li>
@@ -54,24 +47,25 @@
 
   <div class="content">
 
-<!--    <button mat-raised-button color="primary" (click)="drawer.toggle()">MORE INFO</button>-->
+    <button mat-raised-button color="primary" (click)="drawer.toggle()" class="toggle-side">
+      <mat-icon *ngIf="!drawer.opened">arrow_forward_ios</mat-icon>
+      <mat-icon *ngIf="drawer.opened">arrow_back_ios</mat-icon>
+    </button>
 
     <h1>{{event.name}}</h1>
 
     <div class="divider"></div>
 
     <div class="event-options">
+      <button mat-raised-button color="primary" (click)="renderInformation(event.id)">INFORMATION</button>
+      <button mat-raised-button color="primary" (click)="renderLocation(1)">SEE LOCATION</button>
       <button mat-raised-button color="primary">BUY TICKETS </button>
-      <button mat-raised-button color="primary" (click)="navigateToEventLocation(1)">SEE LOCATION</button>
-      <button mat-raised-button color="primary">GO TO WEBSITE</button>
     </div>
 
     <div class="divider"></div>
 
-    <div class="event-description" *ngFor="let item of informations">
-      <div class="title"><h2>{{item.title}}</h2></div>
-      <div class="description">{{item.description}}</div>
-      <img [src]="item.image" alt="img-event">
+    <div class="event-content">
+      <router-outlet></router-outlet>
     </div>
 
   </div>

@@ -40,6 +40,7 @@ import { authInterceptorProviders } from "./helpers/auth.interceptor";
 import { EventLocationComponent } from './pages/event-location/event-location.component';
 import { OrganizerProfileComponent } from './pages/organizer-profile/organizer-profile.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { EventInformationComponent } from './pages/event-information/event-information.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     UserProfileComponent,
     RegisterComponent,
     EventLocationComponent,
-    OrganizerProfileComponent
+    OrganizerProfileComponent,
+    EventInformationComponent
   ],
   imports: [
     BrowserModule,

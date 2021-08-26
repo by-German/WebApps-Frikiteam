@@ -15,38 +15,37 @@ import {EventsInformationApiService} from "../../services/events-information-api
 export class EventComponent implements OnInit {
   organizer : Organizer;
   event : any;
-  informations: any[] = [];
+  eventId : any;
 
   constructor(private organizersApi : OrganizersApiService,
               private router: Router,
               private route: ActivatedRoute,
-              private eventsApi: EventsApiService,
-              private informationApi: EventsInformationApiService) {
+              private eventsApi: EventsApiService) {
 
     this.organizer = {} as Organizer
+    this.eventId = this.route.snapshot.params.id
   }
 
   ngOnInit(): void {
-    let eventId = this.route.snapshot.params.id
-    this.eventsApi.getEventById(eventId).subscribe((result: any) => {
+    this.eventsApi.getEventById(this.eventId).subscribe((result: any) => {
       this.event = result;
       this.organizersApi.getOrganizerById(result.organizerId)
         .subscribe( ( result => {
           this.organizer = result;
           console.log(result)
         }));
-      this.informationApi.getEventInformation(result.id)
-        .subscribe(result => {
-          console.log(result)
-          this.informations = result;
-        });
     })
 
   }
 
-  navigateToEventLocation(id: number): void {
+  renderLocation(id: number): void {
     this.router.navigate(['/events/'+id+'/location'])
       .then(() => console.log('Navigate to event location with id' + id));
+  }
+
+  renderInformation(id: number): void {
+    this.router.navigate(['/events/'+id+'/information'] )
+      .then(() => console.log('render event information with id' + id));
   }
 
 }

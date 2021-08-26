@@ -1,0 +1,8 @@
+<div class="event-description" *ngFor="let item of informations">
+  <div class="title">
+    <h2>{{item.title}}</h2>
+  </div>
+  <div class="description">
+    {{item.description}}</div>
+  <img [src]="item.image" alt="img-event">
+</div>
