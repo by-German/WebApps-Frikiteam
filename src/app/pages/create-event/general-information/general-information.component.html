@@ -1,0 +1,84 @@
+<div class="container">
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+
+    <h2>Information</h2>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Title of event</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Short description</mat-label>
+      <textarea matInput formControlName="information" #a></textarea>
+      <mat-hint align="end"><p>{{a.value.length}} / 130</p></mat-hint>
+    </mat-form-field>
+
+    <h2>Event address</h2>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Country</mat-label>
+      <mat-select formControlName="countryId">
+        <mat-option *ngFor="let food of foods" [value]="food.id">
+          {{food.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>City</mat-label>
+      <mat-select formControlName="cityId">
+        <mat-option *ngFor="let food of foods" [value]="food.id">
+          {{food.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>District</mat-label>
+      <mat-select formControlName="districtId">
+        <mat-option *ngFor="let food of foods" [value]="food.id">
+          {{food.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Place / address</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Reference</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+
+    <h2>Business information</h2>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Price</mat-label>
+      <input matInput formControlName="price" type="number">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Number of entries</mat-label>
+      <input matInput formControlName="quantity" type="number">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [formGroup]="form" [rangePicker]="picker">
+        <input matStartDate formControlName="startDate" placeholder="Start date">
+        <input matEndDate formControlName="endDate" placeholder="End date">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+
+      <mat-error *ngIf="form.controls.startDate.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+      <mat-error *ngIf="form.controls.endDate.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <button mat-raised-button type="submit" [disabled]="form.invalid" class="btn-submit">
+      LOGIN
+    </button>
+
+  </form>
+
+</div>
+

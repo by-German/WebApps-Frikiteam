@@ -1,0 +1,49 @@
+h2 {
+  color: #726dc2;
+  margin-top: 30px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  user-select: none;
+}
+
+.form {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+
+
+
+
+/*button*/
+::ng-deep .mat-raised-button {
+  background-color: #726dc2;
+  color: white;
+}
+::ng-deep .mat-button-disabled {
+  background-color: #383845 !important;
+  color: white !important;
+}
+
+/*fields*/
+::ng-deep .mat-focused .mat-form-field-label {
+  color: #726dc2 !important;
+}
+::ng-deep.mat-form-field-ripple {
+  background-color: white !important;;
+}
+::ng-deep .mat-form-field .mat-form-field-flex {
+  background-color: white;
+}

@@ -1,0 +1,60 @@
+<div class="container">
+
+  <form [formGroup]="itineraries" (ngSubmit)="onSubmit()" class="form">
+
+    <h2>Itineraries</h2>
+
+    <div class="itineraries-component" *ngFor="let i of listItineraries">
+      <mat-form-field appearance="fill">
+        <mat-label>Itinerary {{ i }}</mat-label>
+        <input matInput [formControlName]="'itinerary'+ i">
+      </mat-form-field>
+    </div>
+    <button mat-icon-button (click)="addItinerary()">
+      <mat-icon style="color: white">add</mat-icon>
+    </button>
+
+    <br>
+    <button mat-raised-button type="submit" [disabled]="itineraries.invalid" class="btn-submit">
+      SAVE
+    </button>
+
+  </form>
+
+
+  <form [formGroup]="information" (ngSubmit)="onSubmit()" class="form">
+
+    <h2>Information Detailed</h2>
+
+    <div class="information-component" *ngFor="let i of listInformation">
+      <div *ngIf="i != 1"  class="divider"></div>
+
+      <mat-form-field appearance="fill">
+        <mat-label>title for content {{ i }}</mat-label>
+        <input matInput [formControlName]="'title'+ i">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>description for content {{ i }}</mat-label>
+        <textarea matInput [formControlName]="'description'+ i"></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>image for content {{ i }}</mat-label>
+        <input matInput [formControlName]="'image'+ i">
+      </mat-form-field>
+
+
+    </div>
+
+    <button mat-icon-button (click)="addInformation()">
+      <mat-icon style="color: white">add</mat-icon>
+    </button>
+
+    <br>
+    <button mat-raised-button type="submit" [disabled]="itineraries.invalid" class="btn-submit">
+      SAVE
+    </button>
+
+  </form>
+
+</div>
+

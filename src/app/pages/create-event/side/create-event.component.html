@@ -1,0 +1,25 @@
+<mat-drawer-container class="container" autosize>
+
+  <mat-drawer #drawer class="sidenav" mode="side" opened>
+    <mat-nav-list class="sidenav-list">
+      <h2>EVENT INFORMATION</h2>
+      <mat-list-item (click)="renderGeneralInformation()">GENERAL INFORMATION</mat-list-item>
+      <mat-list-item (click)="renderDetailedInformation()">DETAILED INFORMATION</mat-list-item>
+      <mat-list-item (click)="renderOptionalInformation()">OPTIONAL INFORMATION</mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <div class="content">
+    <button mat-raised-button color="primary" (click)="drawer.toggle()" class="toggle-side">
+      <mat-icon *ngIf="!drawer.opened">arrow_forward_ios</mat-icon>
+      <mat-icon *ngIf="drawer.opened">arrow_back_ios</mat-icon>
+    </button>
+
+    <div class="creation-content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+</mat-drawer-container>
+

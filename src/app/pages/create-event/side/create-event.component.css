@@ -1,0 +1,57 @@
+.container {
+  max-width: 100vw;
+  min-height: 93vh; /* nav bar is 7% of height */
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: #18161A;
+}
+.divider {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 100%;
+  border-bottom: 1px solid #99DCFF;
+}
+
+/**
+ Sidenav content
+ */
+.sidenav {
+  width: 40%;
+  background-color: #282732;
+  color: #a4a2ea;
+}
+.sidenav-list h2 {
+  margin-top: 10px;
+  filter: saturate(500%);
+}
+.sidenav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sidenav-list mat-list-item {
+  color: #a4a2ea !important;
+}
+.toggle-side {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #18161A !important;
+  margin: 5px 0 !important;
+  color: #a4a2ea;
+  box-shadow: none;
+}
+
+/**
+ Content
+ */
+
+.content {
+  margin: 5%;
+}
+
+/*buttons*/
+button {
+  margin: 3%;
+  background: #464361 !important;
+}
+

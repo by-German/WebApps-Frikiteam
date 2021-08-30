@@ -1,0 +1,20 @@
+<div class="container">
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+
+    <h2>Official page of the event</h2>
+
+    <mat-form-field appearance="fill">
+      <mat-label>insert link to the event page here</mat-label>
+      <input matInput formControlName="website">
+    </mat-form-field>
+
+    <br>
+    <button mat-raised-button type="submit" [disabled]="form.invalid" class="btn-submit">
+      SAVE
+    </button>
+
+  </form>
+
+</div>
+

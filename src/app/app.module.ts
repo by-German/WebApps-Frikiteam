@@ -9,7 +9,7 @@ import { AppComponent } from './pages/app/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CreateComponent} from './pages/create/create.component'
-import { CreateEventComponent }from './pages/create-event/create-event.component';
+import { CreateEventComponent }from './pages/create-event/side/create-event.component';
 import { HomeComponent } from './pages/home/home.component';
 import { EventComponent } from './pages/event/event.component';
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -41,6 +41,9 @@ import { EventLocationComponent } from './pages/event-location/event-location.co
 import { OrganizerProfileComponent } from './pages/organizer-profile/organizer-profile.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { EventInformationComponent } from './pages/event-information/event-information.component';
+import { GeneralInformationComponent } from './pages/create-event/general-information/general-information.component';
+import { DetailedInformationComponent } from './pages/create-event/detailed-information/detailed-information.component';
+import { OptionalInformationComponent } from './pages/create-event/optional-information/optional-information.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,10 @@ import { EventInformationComponent } from './pages/event-information/event-infor
     RegisterComponent,
     EventLocationComponent,
     OrganizerProfileComponent,
-    EventInformationComponent
+    EventInformationComponent,
+    GeneralInformationComponent,
+    DetailedInformationComponent,
+    OptionalInformationComponent
   ],
   imports: [
     BrowserModule,
