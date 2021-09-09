@@ -1,6 +1,6 @@
 <div class="container">
 
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form" enctype="multipart/form-data">
 
     <h2>Information</h2>
 
@@ -13,6 +13,14 @@
       <textarea matInput formControlName="information" #a></textarea>
       <mat-hint align="end"><p>{{a.value.length}} / 130</p></mat-hint>
     </mat-form-field>
+
+    <div class="flex-container-img">
+      <p>Choose an image for the event logo:</p>
+      <div class="img-upload">
+        <label for="input-img" class="btn-upload">UPLOAD IMAGE</label>
+        <input type="file" name="image" id="input-img" style="display: none" accept="image/png, image/jpeg, image/jpg">
+      </div>
+    </div>
 
     <h2>Event address</h2>
 
@@ -75,7 +83,7 @@
     <br>
 
     <button mat-raised-button type="submit" [disabled]="form.invalid" class="btn-submit">
-      LOGIN
+      SAVE
     </button>
 
   </form>
