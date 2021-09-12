@@ -42,13 +42,6 @@ export class GeneralInformationComponent implements OnInit {
   districts: any[] = []
 
   selectedValue: string | undefined;
-  foods: Name[] = [
-    {id: 1, name: 'Peru'},
-    {id: 2, name: 'Lima'},
-    {id: 3, name: 'Chorrillos'},
-    {id: 5, name: 'Arequipa'}
-  ];
-
 
   pathImg : string | undefined
 

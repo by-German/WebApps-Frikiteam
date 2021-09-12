@@ -30,7 +30,10 @@ export class EventComponent implements OnInit {
 
   ngOnInit(): void {
     this.eventsApi.getEventById(this.eventId).subscribe((result: any) => {
+      // event
       this.event = result;
+
+      // organizer
       this.organizersApi.getOrganizerById(result.organizerId)
         .subscribe( ( result => {
           this.organizer = result;
