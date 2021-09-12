@@ -37,11 +37,15 @@
         <mat-label>description for content {{ i }}</mat-label>
         <textarea matInput [formControlName]="'description'+ i"></textarea>
       </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>image for content {{ i }}</mat-label>
-        <input matInput [formControlName]="'image'+ i">
-      </mat-form-field>
 
+      <div class="flex-container-img">
+        <p>Choose an image for the event logo:</p>
+        <div class="img-upload" [style.background]="'url(' + pathImg[i-1] + ')'">
+          <label for="input-img" class="btn-upload">UPLOAD IMAGE</label>
+          <input type="file" name="image" id="input-img" (change)="onChange()"
+                 style="display: none" accept="image/png, image/jpeg, image/jpg">
+        </div>
+      </div>
 
     </div>
 
