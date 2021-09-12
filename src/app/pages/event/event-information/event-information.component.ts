@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
-import {EventsInformationApiService} from "../../services/events-information-api.service";
-import {EventsApiService} from "../../services/events-api.service";
+import {EventsInformationApiService} from "../../../services/Event/events-information-api.service";
+import {EventsApiService} from "../../../services/Event/events-api.service";
 
 @Component({
   selector: 'app-event-information',

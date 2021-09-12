@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {MatTableDataSource} from "@angular/material/table";
-import {Customer} from "../../models/customer";
-import {CustomersApiService} from "../../services/customers-api.service";
+import {Customer} from "../../../models/customer";
+import {CustomersApiService} from "../../../services/User/customers-api.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {TokenStorageService} from "../../services/token-storage.service";
+import {TokenStorageService} from "../../../services/token-storage.service";
 
 @Component({
   selector: 'app-user-profile',

@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {MatTableDataSource} from "@angular/material/table";
-import {Organizer} from "../../models/organizer";
+import {Organizer} from "../../../models/organizer";
 import {ActivatedRoute, Router} from "@angular/router";
-import {OrganizersApiService} from "../../services/organizers-api.service";
-import {TokenStorageService} from "../../services/token-storage.service";
+import {OrganizersApiService} from "../../../services/User/organizers-api.service";
+import {TokenStorageService} from "../../../services/token-storage.service";
 
 @Component({
   selector: 'app-organizer-profile',

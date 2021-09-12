@@ -4,7 +4,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {BASE_PATH} from "./common/http.common";
+import {BASE_PATH} from "../common/http.common";
 
 const API_URL = BASE_PATH + '/users/';
 

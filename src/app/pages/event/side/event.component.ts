@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Organizer} from "../../models/organizer";
-import {OrganizersApiService} from "../../services/organizers-api.service";
+import {Organizer} from "../../../models/organizer";
+import {OrganizersApiService} from "../../../services/User/organizers-api.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {EventsApiService} from "../../services/events-api.service";
+import {EventsApiService} from "../../../services/Event/events-api.service";
 import {subscribeToResult} from "rxjs/internal-compatibility";
-import {EventsInformationApiService} from "../../services/events-information-api.service";
+import {EventsInformationApiService} from "../../../services/Event/events-information-api.service";
 
 
 @Component({

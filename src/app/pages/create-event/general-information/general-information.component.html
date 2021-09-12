@@ -1,12 +1,13 @@
 <div class="container">
 
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form" enctype="multipart/form-data">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form"
+        enctype="multipart/form-data">
 
     <h2>Information</h2>
 
     <mat-form-field appearance="fill">
       <mat-label>Title of event</mat-label>
-      <input matInput formControlName="title">
+      <input matInput formControlName="name">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Short description</mat-label>
@@ -16,9 +17,10 @@
 
     <div class="flex-container-img">
       <p>Choose an image for the event logo:</p>
-      <div class="img-upload">
+      <div class="img-upload" [style.background]="'url(' + pathImg + ')'">
         <label for="input-img" class="btn-upload">UPLOAD IMAGE</label>
-        <input type="file" name="image" id="input-img" style="display: none" accept="image/png, image/jpeg, image/jpg">
+        <input type="file" name="image" id="input-img" (change)="onChange()"
+               style="display: none" accept="image/png, image/jpeg, image/jpg">
       </div>
     </div>
 
@@ -26,35 +28,35 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Country</mat-label>
-      <mat-select formControlName="countryId">
-        <mat-option *ngFor="let food of foods" [value]="food.id">
-          {{food.name}}
+      <mat-select formControlName="countryId" (ngModelChange)="getCities($event)">
+        <mat-option *ngFor="let country of countries" [value]="country.id">
+          {{country.name}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>City</mat-label>
-      <mat-select formControlName="cityId">
-        <mat-option *ngFor="let food of foods" [value]="food.id">
-          {{food.name}}
+      <mat-select formControlName="cityId" (ngModelChange)="getDistricts($event)">
+        <mat-option *ngFor="let city of cities" [value]="city.id">
+          {{city.name}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>District</mat-label>
       <mat-select formControlName="districtId">
-        <mat-option *ngFor="let food of foods" [value]="food.id">
-          {{food.name}}
+        <mat-option *ngFor="let district of districts" [value]="district.id">
+          {{district.name}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Place / address</mat-label>
-      <input matInput formControlName="title">
+      <input matInput formControlName="place">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Reference</mat-label>
-      <input matInput formControlName="title">
+      <input matInput formControlName="reference">
     </mat-form-field>
 
     <h2>Business information</h2>
@@ -82,7 +84,10 @@
 
     <br>
 
-    <button mat-raised-button type="submit" [disabled]="form.invalid" class="btn-submit">
+    <button mat-raised-button
+            type="submit"
+            class="btn-submit"
+            [disabled]="!form.valid">
       SAVE
     </button>
 

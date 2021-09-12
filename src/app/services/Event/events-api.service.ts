@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
-import { Model } from "../models/event";
-import { BASE_PATH } from "./common/http.common";
+import { Model } from "../../models/event";
+import { BASE_PATH } from "../common/http.common";
 
-import {Organizer} from "../models/organizer";
-import {Customer} from "../models/customer";
+import {Organizer} from "../../models/organizer";
+import {Customer} from "../../models/customer";
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +18,11 @@ export class EventsApiService {
   basePath3 = BASE_PATH + ':id/qualification';
   basePath = BASE_PATH + '/events';
 
-  constructor(private http: HttpClient) { }
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})};
+
+
+  constructor(private http: HttpClient) { }
+
   handleError(error: HttpErrorResponse): Observable<never> {
     if (error.error instanceof ErrorEvent) {
       console.log('An error occurred: ', error.error.message);
@@ -37,28 +40,22 @@ export class EventsApiService {
 
   getAllEvents(): any {
     return this.http.get<Model.Event[]>(this.basePath);
-
   }
 
   getEventQualification(id: number): any {
     return this.http.get<Model.Event[]>(`${this.basePath3}/${id}`, this.httpOptions);
-
   }
 
-  // move to organizer and customer to organizer and customer service
-
+  // TODO: move to organizer and customer to organizer and customer service
   addOrganizer(item: any): Observable<Organizer> {
     return this.http.post<Organizer>(this.basePath1, JSON.stringify(item), this.httpOptions)
       .pipe(retry(1), catchError(this.handleError));
   }
-
-
   // Get Organizer by Id
   getOrganizerById(id: number): Observable<Organizer> {
     return this.http.get<Organizer>(`${this.basePath1}/${id}`, this.httpOptions )
       .pipe(retry(1), catchError(this.handleError));
   }
-
   addCustomer(item: any): Observable<Customer> {
     return this.http.post<Customer>(this.basePath2, JSON.stringify(item), this.httpOptions)
       .pipe(retry(1), catchError(this.handleError));

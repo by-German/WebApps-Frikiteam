@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {Organizer} from "../models/organizer";
+import {Organizer} from "../../models/organizer";
 import {Observable, throwError} from 'rxjs';
-import {BASE_PATH} from "./common/http.common";
+import {BASE_PATH} from "../common/http.common";
 import {catchError, retry} from "rxjs/operators";
 import {FormGroup} from "@angular/forms";
 

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {AuthService} from "../../services/auth.service";
-import {TokenStorageService} from "../../services/token-storage.service";
-import {CustomersApiService} from "../../services/customers-api.service";
-import {OrganizersApiService} from "../../services/organizers-api.service";
+import {AuthService} from "../../../services/auth.service";
+import {TokenStorageService} from "../../../services/token-storage.service";
+import {CustomersApiService} from "../../../services/User/customers-api.service";
+import {OrganizersApiService} from "../../../services/User/organizers-api.service";
 import {colors} from "@angular/cli/utilities/color";
 
 @Component({

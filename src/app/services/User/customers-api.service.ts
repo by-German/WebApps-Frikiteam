@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
-import {Customer} from "../models/customer";
+import {Customer} from "../../models/customer";
 import {catchError, retry} from "rxjs/operators";
-import { BASE_PATH } from "./common/http.common";
+import { BASE_PATH } from "../common/http.common";
 
 @Injectable({
   providedIn: 'root'

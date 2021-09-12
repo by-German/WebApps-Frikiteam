@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "prueba-43bf8": {
+      "hosting": {
+        "FrikiTeam": [
+          "prueba-43bf8"
+        ]
+      }
+    }
+  }
+}

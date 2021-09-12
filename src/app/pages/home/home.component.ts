@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EventsApiService } from "../../services/events-api.service";
+import { EventsApiService } from "../../services/Event/events-api.service";
 import { MatTableDataSource} from "@angular/material/table";
 import { Model } from "../../models/event";
 import { Router } from "@angular/router";
