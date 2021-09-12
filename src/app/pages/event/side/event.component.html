@@ -23,13 +23,9 @@
 
         <div class="list-content">
           <h2>Itinerary</h2>
-          <ul>
-            <li>Concurso de cosplay</li>
-            <li>Venta de merchandising merchandising merchandising  daslkdjas sadklasjdalsaa</li>
-            <li>Entrevista actores de voz</li>
-            <li>Presentacion de cosplay</li>
-            <li>Espacion temáticos</li>
-            <li>Concierto de bandas</li>
+
+          <ul *ngFor="let itinerary of itineraries">
+            <li>{{itinerary.name}}</li>
           </ul>
         </div>
 

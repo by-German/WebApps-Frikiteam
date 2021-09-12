@@ -1,6 +1,6 @@
 <div class="container">
 
-  <form [formGroup]="itineraries" (ngSubmit)="onSubmit()" class="form">
+  <form [formGroup]="itineraries" (ngSubmit)="onSubmitItineraries()" class="form">
 
     <h2>Itineraries</h2>
 
@@ -22,7 +22,7 @@
   </form>
 
 
-  <form [formGroup]="information" (ngSubmit)="onSubmit()" class="form">
+  <form [formGroup]="information" (ngSubmit)="onSubmitInformation()" class="form">
 
     <h2>Information Detailed</h2>
 
@@ -50,7 +50,7 @@
     </button>
 
     <br>
-    <button mat-raised-button type="submit" [disabled]="itineraries.invalid" class="btn-submit">
+    <button mat-raised-button type="submit" [disabled]="information.invalid" class="btn-submit">
       SAVE
     </button>
 

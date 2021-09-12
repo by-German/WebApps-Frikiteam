@@ -14,15 +14,17 @@ export class CreateEventComponent implements OnInit {
   }
 
   renderGeneralInformation(): void {
-    this.router.navigate(['/create-event/general-information']);
+    this.router.navigate(['create-event/general-information']);
   }
 
   renderDetailedInformation(): void {
-    this.router.navigate(['/create-event/detailed-information']);
+    // if (eventId) update-event/id/detailed-information
+    // this.router.navigate(['update-event/id/detailed-information']);
   }
 
   renderOptionalInformation(): void {
-    this.router.navigate(['/create-event/optional-information']);
+    // if (eventId exist)
+    // this.router.navigate(['update-event/id/optional-information']);
 
   }
 

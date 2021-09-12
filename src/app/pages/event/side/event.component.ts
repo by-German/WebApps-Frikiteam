@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {Organizer} from "../../../models/organizer";
 import {OrganizersApiService} from "../../../services/User/organizers-api.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {EventsApiService} from "../../../services/Event/events-api.service";
+import {EventsApiService} from "../../../services/event/events-api.service";
 import {subscribeToResult} from "rxjs/internal-compatibility";
-import {EventsInformationApiService} from "../../../services/Event/events-information-api.service";
+import {EventsInformationApiService} from "../../../services/event/events-information-api.service";
+import {EventItinerariesApiService} from "../../../services/event/event-itineraries-api.service";
 
 
 @Component({
@@ -16,8 +17,9 @@ export class EventComponent implements OnInit {
   organizer : Organizer;
   event : any;
   eventId : any;
-
+  itineraries : any
   constructor(private organizersApi : OrganizersApiService,
+              private itinerariesApi : EventItinerariesApiService,
               private router: Router,
               private route: ActivatedRoute,
               private eventsApi: EventsApiService) {
@@ -35,6 +37,9 @@ export class EventComponent implements OnInit {
           console.log(result)
         }));
     })
+
+    this.itinerariesApi.getAllByEventId(this.eventId)
+      .subscribe(result => this.itineraries = result)
 
   }
 

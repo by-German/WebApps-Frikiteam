@@ -104,7 +104,7 @@
   align-items: center;
   height: 100%;
 }
-/*Event options*/
+/*event options*/
 .content h1 {
   font-size: 250%;
   font-weight: bold;
@@ -117,7 +117,7 @@
   width: 30%;
 }
 
-/*Event Description*/
+/*event Description*/
 .event-content {
   display: flex;
   flex-direction: column;

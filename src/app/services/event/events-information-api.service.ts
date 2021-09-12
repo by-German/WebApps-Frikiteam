@@ -15,4 +15,7 @@ export class EventsInformationApiService {
     return this.http.get<any[]>(`${BASE_PATH}/events/${eventId}/information`)
   }
 
+  postEventInformation(eventId: number, item :any) {
+    return this.http.post(`${BASE_PATH}/events/${eventId}/information`, item)
+  }
 }

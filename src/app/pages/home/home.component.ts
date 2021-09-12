@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EventsApiService } from "../../services/Event/events-api.service";
+import { EventsApiService } from "../../services/event/events-api.service";
 import { MatTableDataSource} from "@angular/material/table";
 import { Model } from "../../models/event";
 import { Router } from "@angular/router";
@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private eventsApi: EventsApiService, private router: Router) {
-    //this.eventData = {} as Event;
+    //this.eventData = {} as event;
   }
 
   ngOnInit(): void {

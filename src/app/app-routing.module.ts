@@ -23,15 +23,24 @@ const routes: Routes = [
       { path: '', component: EventInformationComponent },
       { path: 'information', component: EventInformationComponent },
       { path: 'location', component: EventLocationComponent}
-    ]},
+    ]
+  },
   { path: 'login', component: LoginComponent },
   { path: 'create-event', component: CreateEventComponent,
+    children: [
+      { path: 'general-information', component: GeneralInformationComponent },
+      { path: ':id/detailed-information', component: DetailedInformationComponent },
+      { path: ':id/optional-information', component: OptionalInformationComponent },
+    ]
+  },
+  { path: 'update-event/:id', component: CreateEventComponent,
     children: [
       { path: '', component: GeneralInformationComponent },
       { path: 'general-information', component: GeneralInformationComponent },
       { path: 'detailed-information', component: DetailedInformationComponent },
       { path: 'optional-information', component: OptionalInformationComponent },
-    ]},
+    ]
+  },
   { path: 'create', component: CreateComponent},
   { path: 'user-profile', component: UserProfileComponent},
   { path: 'register', component: RegisterComponent},

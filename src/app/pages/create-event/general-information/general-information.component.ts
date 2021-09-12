@@ -4,8 +4,8 @@ import {Router} from "@angular/router";
 import {AuthService} from "../../../services/auth.service";
 import {TokenStorageService} from "../../../services/token-storage.service";
 import {CloudinaryApiService} from "../../../services/cloudinary-api.service";
-import {OrganizerEventApiService} from "../../../services/Event/organizer-event-api.service";
-import {PlacesApiService} from "../../../services/Event/places-api.service";
+import {OrganizerEventApiService} from "../../../services/event/organizer-event-api.service";
+import {PlacesApiService} from "../../../services/event/places-api.service";
 import {subscribeToResult} from "rxjs/internal-compatibility";
 
 interface Name {
@@ -87,9 +87,14 @@ export class GeneralInformationComponent implements OnInit {
 
             // creation event by an organizer
             this.organizerEventService.createNewEvent(this.form.value, 1)
-              .subscribe(result => console.log(result))
+              .subscribe(result => {
+                console.log(result)
 
-            // TODO: navigate to detailed information with id of this event
+                // navigate next form
+                this.router.navigate([`create-event/${result.id}/detailed-information`])
+                  .then(() => console.log('Navigate to detailed information for event id ' + result.id));
+              })
+
           })
 
       })
