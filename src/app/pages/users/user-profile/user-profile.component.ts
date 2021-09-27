@@ -47,7 +47,7 @@ export class UserProfileComponent implements OnInit {
     //   }
     // }));
 
-    let user = this.storage.getUser();
+    let user = this.storage.getAuthUser();
     this.customersApi.getCustomerById(user.id).subscribe(result => {
       console.log(result)
       this.userData = result;

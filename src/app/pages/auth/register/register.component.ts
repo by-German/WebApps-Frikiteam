@@ -47,9 +47,7 @@ export class RegisterComponent implements OnInit {
       .subscribe( result => {
         if (result) {
           this.auth.login(this.user.value).subscribe(result => {
-            this.storage.saveToken(result.token);
-            this.storage.saveUser(result);
-            this.storage.assignRole('customer')
+            this.storage.saveUserAuth(result)
             this.router.navigate(['/']).then()
           })
         }
@@ -64,9 +62,7 @@ export class RegisterComponent implements OnInit {
       .subscribe( result => {
         if (result) {
           this.auth.login(this.organizer.value).subscribe(result => {
-            this.storage.saveToken(result.token);
-            this.storage.saveUser(result);
-            this.storage.assignRole('organizer')
+            this.storage.saveUserAuth(result)
             this.router.navigate(['/']).then()
           })
         }

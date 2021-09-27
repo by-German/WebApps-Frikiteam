@@ -11,11 +11,11 @@ import { Router } from "@angular/router";
 })
 export class HomeComponent implements OnInit {
 
-
   events: Model.Event[] = [];
   dataSource = new MatTableDataSource(this.events);
   isSearching = false;
   arr = [];
+  value = ""
 
 
   constructor(private eventsApi: EventsApiService, private router: Router) {
@@ -29,8 +29,6 @@ export class HomeComponent implements OnInit {
   getAllEvents(): void {
 
     this.eventsApi.getAllEvents().subscribe((response: Model.Event[]) => {
-      console.log(response);
-
       this.events = response;
     });
 
@@ -38,12 +36,19 @@ export class HomeComponent implements OnInit {
 
 
   applySearch(event: Event): void {
-    const searchValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = searchValue.trim().toLowerCase();
-    this.isSearching = !!searchValue;
+    // @ts-ignore
+    if (event.code == 'Enter' || event.code == 'NumpadEnter') {
+      this.searchEvents(this.value)
+    }
   }
 
-
+  searchEvents(searchValue : String) {
+    this.eventsApi.getSearchEvents(searchValue.trim().toLowerCase()).subscribe( (result:any) => {
+        console.log(result)
+        this.events = result;
+      }
+    )
+  }
 
   navigateToEvent(id: number): void {
     this.router.navigate([`/events/${id}`])

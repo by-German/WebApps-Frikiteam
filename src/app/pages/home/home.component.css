@@ -29,26 +29,16 @@
 }
 mat-form-field {
   width: 400px;
-  background-color: rgba(250, 250, 250, .3);
-  padding: 10px 10px 0;
-  border-radius: 10px;
-  margin-bottom: 40px;
+  /*background-color: rgba(250, 250, 250, .3);*/
 }
-input::placeholder {
-  font-style: italic;
-  color:  rgba(250, 250, 250, .4);
+::ng-deep .mat-focused .mat-form-field-label {
+  color: #726dc2 !important;
 }
-.mat-form-field-appearance-outline .mat-form-field-outline {
-  color: white;
+::ng-deep.mat-form-field-ripple {
+  background-color: white !important;;
 }
-input.mat-input-element {
-  color: white;
-}
-mat-label, input, mat-icon{
-  color: white;
-}
-mat-label {
-  font-size: 15px;
+::ng-deep .mat-form-field .mat-form-field-flex {
+  background-color: white;
 }
 
 /*content - list of events*/
@@ -83,7 +73,7 @@ mat-card-content p {
   color: #BDBDBD
 }
 .stars mat-icon {
-  color: yellow;
+  color: #988BE8;
 }
 
 /* animations */

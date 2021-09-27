@@ -42,11 +42,15 @@ export class EventsApiService {
     return this.http.get<Model.Event[]>(this.basePath);
   }
 
+  getSearchEvents(nameEvent : String) : any {
+    return this.http.get(BASE_PATH + `/events/search?name=${nameEvent}`);
+  }
+
   getEventQualification(id: number): any {
     return this.http.get<Model.Event[]>(`${this.basePath3}/${id}`, this.httpOptions);
   }
 
-  // TODO: move to organizer and customer to organizer and customer service
+  // TODO: move organizer and customer to organizer and customer service
   addOrganizer(item: any): Observable<Organizer> {
     return this.http.post<Organizer>(this.basePath1, JSON.stringify(item), this.httpOptions)
       .pipe(retry(1), catchError(this.handleError));

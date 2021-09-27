@@ -22,10 +22,12 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let authRequest = request;
-    const token = this.tokenStorageService.getToken();
-    if (token != null) {
+    const authUser = this.tokenStorageService.getAuthUser();
+    console.log("auth.interceptor")
+    console.log(authUser)
+    if (authUser != null) {
       authRequest = request.clone({
-        headers: request.headers.set(TOKEN_HEADER_KEY, `Bearer ${token}`)});
+        headers: request.headers.set(TOKEN_HEADER_KEY, `Bearer ${authUser.token}`)});
     }
     return next.handle(authRequest);
   }

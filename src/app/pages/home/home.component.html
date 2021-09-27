@@ -1,17 +1,18 @@
 <div class="event-list">
   <div class="header-home">
-    <h2>EVENTOS RECIENTES</h2>
-    <p>Somos Findevents, un espacio pensado para ti.
-      Encuentra eventos alucinantes sobre el mundo GEEK!!</p>
-    <p>Accede e los eventos de tu interés a un solo clic</p>
+    <h2>LAST EVENTS</h2>
+    <p>Somos Findevents, un espacio pensado para ti. Encuentra eventos alucinantes sobre el mundo Friki!!</p>
   </div>
-  <div class="search">
 
-    <mat-form-field>
-      <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applySearch($event)" placeholder="Event Geek" #input>
-      <mat-icon *ngIf="isSearching" matSuffix>search</mat-icon>
+  <div class="search">
+    <mat-form-field appearance="fill">
+      <mat-label>Search events</mat-label>
+      <input matInput type="text" [(ngModel)]="value" (keyup)="applySearch($event)">
+      <button matSuffix mat-icon-button (click)="searchEvents(value)">
+        <mat-icon>search</mat-icon>
+      </button>
     </mat-form-field>
+
 
   </div>
 

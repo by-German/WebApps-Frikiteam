@@ -47,7 +47,7 @@ export class NavBarComponent implements OnInit {
   }
 
   isLogged(): boolean {
-    return !!this.storage.getUser();
+    return !!this.storage.getAuthUser();
   }
 
   navigateToProfile() {

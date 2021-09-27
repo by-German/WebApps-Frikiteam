@@ -16,11 +16,6 @@ export class LoginComponent implements OnInit{
     password: new FormControl('', [Validators.required, Validators.minLength(3)])
   })
 
-  isLoggedIn = false;
-  isLoginFailed = false;
-  errorMessage = '';
-  roles: string[] = [];
-
   constructor(private router: Router, private authService: AuthService, private tokenStorageService: TokenStorageService) {
   }
 
@@ -32,27 +27,14 @@ export class LoginComponent implements OnInit{
     if (this.form.invalid) {
       return;
     }
-    console.log(this.form.value);
-    this.authService.login(this.form.value).subscribe(
-      data => {
-        console.log(data);
-        this.tokenStorageService.saveToken(data.token);
-        this.tokenStorageService.saveUser(data);
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-        this.roles = this.tokenStorageService.getUser().roles;
-        return this.router.navigate(['/']).then(() => {
-          console.log(this.router.url);
-          window.location.reload();
-        });
-      },
-      error => {
-        console.log(error.error.errorMessage);
-        this.errorMessage = error.error.errorMessage;
-        this.isLoginFailed = true;
-        this.isLoggedIn = false;
-      }
-    );
+
+    console.log(this.form.value)
+    this.authService.login(this.form.value).subscribe( result => {
+      this.tokenStorageService.saveUserAuth(result); // this return authUser
+      return this.router.navigate(['/']).then(() => window.location.reload())})
   }
 
+  navigateToRegister() {
+    this.router.navigate(['register'])
+  }
 }

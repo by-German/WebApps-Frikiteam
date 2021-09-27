@@ -48,7 +48,7 @@ export class OrganizerProfileComponent implements OnInit {
       }
     }));
 
-    let organizer = this.storage.getUser();
+    let organizer = this.storage.getAuthUser();
     this.organizersApi.getOrganizerById(organizer.id).subscribe(result => {
       this.userData = result;
     })
