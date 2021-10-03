@@ -51,6 +51,11 @@ export class DetailedInformationComponent implements OnInit {
     this.listInformation.push(++this.countInf)
   }
 
+  onSubmit() {
+    this.onSubmitItineraries()
+    this.onSubmitInformation()
+  }
+
   /*
   * Itineraries
   * */
@@ -92,7 +97,8 @@ export class DetailedInformationComponent implements OnInit {
             title: "" + this.information.value[`title${i}`],
             description: "" + this.information.value[`description${i}`],
             image: "" + url
-          }).subscribe(result => console.log(result))
+          }).subscribe(result =>  // navigate next form
+            this.router.navigate([`create-event/${this.eventId}/optional-information`]));
         })
       })
     }

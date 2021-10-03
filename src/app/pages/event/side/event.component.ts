@@ -3,8 +3,6 @@ import {Organizer} from "../../../models/organizer";
 import {OrganizersApiService} from "../../../services/User/organizers-api.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {EventsApiService} from "../../../services/event/events-api.service";
-import {subscribeToResult} from "rxjs/internal-compatibility";
-import {EventsInformationApiService} from "../../../services/event/events-information-api.service";
 import {EventItinerariesApiService} from "../../../services/event/event-itineraries-api.service";
 
 

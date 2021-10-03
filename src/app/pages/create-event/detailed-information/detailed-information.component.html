@@ -15,14 +15,14 @@
     </button>
 
     <br>
-    <button mat-raised-button type="submit" [disabled]="itineraries.invalid" class="btn-submit">
-      SAVE
-    </button>
+<!--    <button mat-raised-button type="submit" [disabled]="itineraries.invalid" class="btn-submit">-->
+<!--      SAVE-->
+<!--    </button>-->
 
   </form>
 
 
-  <form [formGroup]="information" (ngSubmit)="onSubmitInformation()" class="form">
+  <form [formGroup]="information" (ngSubmit)="onSubmit()" class="form">
 
     <h2>Information Detailed</h2>
 
@@ -54,8 +54,8 @@
     </button>
 
     <br>
-    <button mat-raised-button type="submit" [disabled]="information.invalid" class="btn-submit">
-      SAVE
+    <button mat-raised-button type="submit" [disabled]="information.invalid || itineraries.invalid" class="btn-submit">
+      NEXT
     </button>
 
   </form>

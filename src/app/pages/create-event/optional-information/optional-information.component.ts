@@ -11,7 +11,7 @@ import {TokenStorageService} from "../../../services/token-storage.service";
 })
 export class OptionalInformationComponent implements OnInit {
   form = new FormGroup({
-    website: new FormControl('', [Validators.required]),
+    website: new FormControl(''),
   })
 
   constructor(private router: Router, private authService: AuthService, private tokenStorageService: TokenStorageService) {
@@ -20,10 +20,7 @@ export class OptionalInformationComponent implements OnInit {
   ngOnInit(): void {  }
 
   onSubmit(): void {
-    if (this.form.invalid) {
-      return;
-    }
-    console.log(this.form.value);
+    this.router.navigate([`events`]);
   }
 
 }

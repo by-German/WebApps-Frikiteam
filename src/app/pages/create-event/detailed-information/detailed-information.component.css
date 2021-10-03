@@ -46,6 +46,9 @@ mat-form-field {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
 }
 .btn-upload {
   padding: 5px 10px;
