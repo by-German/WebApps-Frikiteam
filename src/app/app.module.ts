@@ -47,6 +47,7 @@ import { OptionalInformationComponent } from './pages/create-event/optional-info
 // Import the functions you need from the SDKs you need
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { UserComponent } from './pages/users/side/user.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCHOyue5J5xvSQMWy0wygE3HYKvF3Lexy4",
@@ -73,7 +74,8 @@ const firebaseConfig = {
     EventInformationComponent,
     GeneralInformationComponent,
     DetailedInformationComponent,
-    OptionalInformationComponent
+    OptionalInformationComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,50 @@
+<mat-drawer-container class="container" autosize>
+
+  <mat-drawer #drawer class="sidenav" mode="side" opened>
+
+    <div class="flex-container">
+      <div class="side-content">
+
+        <div class="card-info">
+          <img [src]="user.logo" style="width: 200px" alt="event">
+          <button *ngIf="user.id == userId" mat-raised-button color="primary">UPDATE</button>
+          <button *ngIf="user.id != userId"  mat-raised-button color="primary">FOLLOW</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div *ngIf="role == 'organizer'" class="text-info">
+          <h2>Followers:</h2><p>10</p>
+        </div>
+        <div class="text-info">
+          <h2>Following:</h2><p>12</p>
+        </div>
+        <div class="text-info">
+          <h2>Name:</h2><p>{{ user.firstName + " " +user.lastName }}</p>
+        </div>
+        <div class="text-info">
+          <h2>E-mail:</h2><p>{{ user.email}}</p>
+        </div>
+
+        <div class="divider"></div>
+
+
+      </div>
+    </div>
+  </mat-drawer>
+
+  <div class="content">
+
+    <button mat-raised-button color="primary" (click)="drawer.toggle()" class="toggle-side">
+      <mat-icon *ngIf="!drawer.opened">arrow_forward_ios</mat-icon>
+      <mat-icon *ngIf="drawer.opened">arrow_back_ios</mat-icon>
+    </button>
+
+    <div class="user-content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+</mat-drawer-container>
+

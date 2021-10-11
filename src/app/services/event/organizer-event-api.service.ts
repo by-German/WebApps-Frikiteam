@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
 import { BASE_PATH } from "../common/http.common";
-import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {Observable, throwError} from "rxjs";
-import { Model } from "../../models/event";
-import {catchError, retry} from "rxjs/operators";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable } from "rxjs";
+
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -33,4 +32,27 @@ export class OrganizerEventApiService {
       placeId: item.placeId
     }), httpOptions);
   }
+
+  getEventsByOrganizerId(id : number) {
+    return this.http.get(`${BASE_PATH}/organizers/${id}/events`)
+  }
+
+  deleteEvent(organizerId:number, eventId : number) {
+    return this.http.delete(`${BASE_PATH}/organizers/${organizerId}/events/${eventId}`, httpOptions)
+  }
+
+  updateEvent(item: any, organizerId: number, eventId: number) {
+    return this.http.put(`${BASE_PATH}/organizers/${organizerId}/events/${eventId}`, JSON.stringify({
+      logo: item.logo,
+      information: item.information,
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity,
+      verified: 0,
+      startDate: item.startDate,
+      endDate: item.endDate,
+      placeId: item.placeId
+    }), httpOptions);
+  }
+
 }

@@ -14,6 +14,7 @@ import {EventInformationComponent} from "./pages/event/event-information/event-i
 import {GeneralInformationComponent} from "./pages/create-event/general-information/general-information.component";
 import {DetailedInformationComponent} from "./pages/create-event/detailed-information/detailed-information.component";
 import {OptionalInformationComponent} from "./pages/create-event/optional-information/optional-information.component";
+import {UserComponent} from "./pages/users/side/user.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,7 +26,6 @@ const routes: Routes = [
       { path: 'location', component: EventLocationComponent}
     ]
   },
-  { path: 'login', component: LoginComponent },
   { path: 'create-event', component: CreateEventComponent,
     children: [
       { path: 'general-information', component: GeneralInformationComponent },
@@ -41,10 +41,16 @@ const routes: Routes = [
       { path: 'optional-information', component: OptionalInformationComponent },
     ]
   },
-  { path: 'create', component: CreateComponent},
-  { path: 'user-profile', component: UserProfileComponent},
+  { path: 'user-profile/:id', component: UserComponent,
+    children: [
+      {path: '', component: UserProfileComponent},
+      { path: 'events', component: UserProfileComponent },
+      { path: 'organizer', component: OrganizerProfileComponent },
+      { path: 'customer', component: OrganizerProfileComponent },
+    ]
+  },
+  { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
-  { path: 'organizer-profile', component: OrganizerProfileComponent}
 ];
 
 @NgModule({
