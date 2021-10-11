@@ -6,8 +6,11 @@
       <div class="side-content">
 
         <div class="card-info">
-          <img [src]="user.logo" style="width: 200px" alt="event">
-          <button *ngIf="user.id == userId" mat-raised-button color="primary">UPDATE</button>
+          <img [src]="pathImg" style="width: 200px" alt="{{user.firstName}}">
+          <button *ngIf="user.id == userId"
+                  mat-raised-button
+                  color="primary"
+                  (click)="showDialog()">UPDATE</button>
           <button *ngIf="user.id != userId"  mat-raised-button color="primary">FOLLOW</button>
         </div>
 
@@ -47,4 +50,57 @@
   </div>
 
 </mat-drawer-container>
+
+
+<div *ngIf="update" class="dialog">
+
+  <div class="show" [formGroup]="form">
+    <h1>Update your data</h1>
+
+    <div class="dialog-content" >
+
+      <div class="flex-container-img">
+        <p>Choose an image fot your profile:</p>
+        <div class="img-upload" [style.background]="'url(' + pathImg + ')'">
+          <label for="input-img" class="btn-upload">UPLOAD IMAGE</label>
+          <input type="file" name="image" id="input-img" (change)="onChange()"
+                 style="display: none" accept="image/png, image/jpeg, image/jpg">
+        </div>
+      </div>
+
+      <div class="inputs">
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>E-mail</mat-label>
+          <input matInput formControlName="email" type="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password">
+        </mat-form-field>
+      </div>
+
+
+    </div>
+
+    <div class="options">
+      <button mat-raised-button color="primary"
+              [disabled]="!form.valid"
+              (click)="onSubmit()">SAVE</button>
+      <button mat-raised-button color="primary"
+              (click)="update = !update">CANCEL</button>
+    </div>
+
+  </div>
+</div>
 

@@ -1,18 +1,22 @@
-<div id="user-info" *ngFor="let event of events; let i = index">
-  <h1 *ngIf="i == 0">My Events</h1>
-  <div *ngIf="i == 0" class="divider"></div>
+  <div class="center">
+    <h1 *ngIf="user.role == 'customer'">MY EVENTS BOUGHT</h1>
+    <h1 *ngIf="user.role == 'organizer'" >MY EVENTS</h1>
+  </div>
+  <div class="divider"></div>
+
+  <div id="user-info" *ngFor="let event of events; let i = index">
 
   <div class="event-card">
 
     <div class="card-info">
 
-      <img class="image" src="{{ event.logo }}" alt="">
+      <img class="image" src="{{ event.logo }}" alt="{{ event.name }}">
 
       <div class="text-content">
         <h2>{{ event.name }}</h2>
         <p>{{ event.information }}</p>
 
-        <div class="options">
+        <div *ngIf="user.role == 'organizer'" class="options">
           <button mat-icon-button>
             <mat-icon (click)="updateEvent(event.id)" >mode_edit</mat-icon>
           </button>
@@ -33,7 +37,6 @@
   </div>
 
   <div class="divider not-border"></div>
-
 
 </div>
 

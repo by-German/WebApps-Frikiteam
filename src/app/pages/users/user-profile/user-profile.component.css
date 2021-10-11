@@ -13,7 +13,10 @@
 .not-border {
   border-bottom: 0;
 }
+.center {
 
+  text-align: center;
+}
 /**
 * Event card
 */

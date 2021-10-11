@@ -26,8 +26,10 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.storage.getAuthUser()
-    this.getEventsOrganizer(this.user.id)
-
+    if (this.user.role == "organizer")
+      this.getEventsOrganizer(this.user.id)
+    else
+      this.getEventsCustomer(this.user.id)
   }
 
   getEventsOrganizer(id : number) {
@@ -46,6 +48,10 @@ export class UserProfileComponent implements OnInit {
   }
 
   updateEvent(id : number) {
+
+  }
+
+  getEventsCustomer(id: number) {
 
   }
 

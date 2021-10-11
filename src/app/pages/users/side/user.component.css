@@ -11,6 +11,9 @@
   width: 100%;
   border-bottom: 1px solid #464361;
 }
+.not-border {
+  border-bottom: 0;
+}
 
 /**
  Sidenav properties
@@ -95,4 +98,79 @@
 /*buttons*/
 button {
   background: #464361 !important;
+}
+
+
+/**
+ Show Dialog
+ */
+
+.dialog {
+  position: absolute;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  top: 100px;
+  left: 0;
+}
+.dialog .show {
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: white;
+  border-radius: 5px 5px;
+}
+.dialog-content {
+  width: 100%;
+  display: flex;
+  align-content: space-evenly;
+  justify-content: space-evenly;
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.options {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+/*upload image*/
+
+.flex-container-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.img-upload {
+  border: 1px solid #535252;
+  width: 230px;
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-size: cover !important;
+}
+
+.btn-upload {
+  padding: 5px 10px;
+  background: #464361;
+  color:#ffffff;
+}
+.btn-upload:hover {
+  opacity: .5;
+  cursor: pointer;
 }

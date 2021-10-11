@@ -38,7 +38,6 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { authInterceptorProviders } from "./helpers/auth.interceptor";
 import { EventLocationComponent } from './pages/event/event-location/event-location.component';
-import { OrganizerProfileComponent } from './pages/users/organizer-profile/organizer-profile.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { EventInformationComponent } from './pages/event/event-information/event-information.component';
 import { GeneralInformationComponent } from './pages/create-event/general-information/general-information.component';
@@ -70,7 +69,6 @@ const firebaseConfig = {
     UserProfileComponent,
     RegisterComponent,
     EventLocationComponent,
-    OrganizerProfileComponent,
     EventInformationComponent,
     GeneralInformationComponent,
     DetailedInformationComponent,
