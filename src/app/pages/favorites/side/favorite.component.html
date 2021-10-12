@@ -1,0 +1,33 @@
+<mat-drawer-container class="container" autosize>
+
+  <mat-drawer #drawer class="sidenav" mode="side" opened>
+    <mat-nav-list class="sidenav-list">
+      <mat-list-item (click)="renderFavoritesEvents()">EVENTS FOLLOWED</mat-list-item>
+      <div class="divider"></div>
+      <h3>ORGANIZERS FOLLOWED:</h3>
+      <p *ngIf="organizers.length == 0">You do not follow any organizer yet</p>
+
+      <div class="list-organizers" *ngFor="let organizer of organizers; let i = index">
+        <mat-list-item (click)="renderOrganizerEvents(organizer.id)">
+          <img src="{{organizer.logo}}" alt="">
+          {{organizer.firstName + " " + organizer.lastName}}
+        </mat-list-item>
+      </div>
+
+    </mat-nav-list>
+  </mat-drawer>
+
+  <div class="content">
+    <button mat-raised-button color="primary" (click)="drawer.toggle()" class="toggle-side">
+      <mat-icon *ngIf="!drawer.opened">arrow_forward_ios</mat-icon>
+      <mat-icon *ngIf="drawer.opened">arrow_back_ios</mat-icon>
+    </button>
+
+    <div class="creation-content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+</mat-drawer-container>
+

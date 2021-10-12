@@ -47,6 +47,8 @@ import { OptionalInformationComponent } from './pages/create-event/optional-info
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { UserComponent } from './pages/users/side/user.component';
+import { FavoriteComponent } from './pages/favorites/side/favorite.component';
+import { FollowsComponent } from './pages/favorites/follows/follows.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCHOyue5J5xvSQMWy0wygE3HYKvF3Lexy4",
@@ -74,6 +76,8 @@ const firebaseConfig = {
     DetailedInformationComponent,
     OptionalInformationComponent,
     UserComponent,
+    FavoriteComponent,
+    FollowsComponent,
   ],
   imports: [
     BrowserModule,

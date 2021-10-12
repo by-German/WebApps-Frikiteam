@@ -8,15 +8,18 @@
           <div class="qualification" >
             <mat-icon  *ngFor="let i of [1,2,3,4,5]">star rate</mat-icon>
           </div>
-          <button mat-raised-button color="primary">FOLLOW</button>
+          <button *ngIf="!followingEvent" mat-raised-button color="primary" (click)="followEvent(event.id)">FOLLOW</button>
+          <button *ngIf="followingEvent" mat-raised-button color="primary" (click)="notFollowEvent(event.id)">FOLLOWING</button>
         </div>
         <div class="divider"></div>
         <div class="info-organizer card-info">
           <div class="profile" [ngStyle]="{'background' : 'url('+organizer.logo+')'}">
           </div>
           <h3>{{ organizer.firstName }} {{ organizer.lastName }}</h3>
-          <button mat-raised-button color="primary">FOLLOW</button>
+          <button *ngIf="!followingOrganizer" mat-raised-button color="primary" (click)="followOrganizer(organizer.id)">FOLLOW</button>
+          <button *ngIf="followingOrganizer" mat-raised-button color="primary" (click)="notFollowOrganizer(organizer.id)">FOLLOWING</button>
         </div>
+        <div class="divider"></div>
       </div>
 
       <div class="side-content-list">

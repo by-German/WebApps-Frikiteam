@@ -13,6 +13,8 @@ import {GeneralInformationComponent} from "./pages/create-event/general-informat
 import {DetailedInformationComponent} from "./pages/create-event/detailed-information/detailed-information.component";
 import {OptionalInformationComponent} from "./pages/create-event/optional-information/optional-information.component";
 import {UserComponent} from "./pages/users/side/user.component";
+import {FavoriteComponent} from "./pages/favorites/side/favorite.component";
+import {FollowsComponent} from "./pages/favorites/follows/follows.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,6 +39,12 @@ const routes: Routes = [
       { path: 'general-information', component: GeneralInformationComponent },
       { path: 'detailed-information', component: DetailedInformationComponent },
       { path: 'optional-information', component: OptionalInformationComponent },
+    ]
+  },
+  { path: 'favorites', component: FavoriteComponent,
+    children: [
+      {path: '', component: FollowsComponent},
+      {path: 'organizers/:id', component: FollowsComponent},
     ]
   },
   { path: 'user-profile/:id', component: UserComponent,

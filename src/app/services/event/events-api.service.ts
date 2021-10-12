@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
-import {catchError, retry} from "rxjs/operators";
 import { Model } from "../../models/event";
 import { BASE_PATH } from "../common/http.common";
-
-import {Organizer} from "../../models/organizer";
-import {Customer} from "../../models/customer";
 
 @Injectable({
   providedIn: 'root'
@@ -50,22 +46,4 @@ export class EventsApiService {
     return this.http.get<Model.Event[]>(`${this.basePath3}/${id}`, this.httpOptions);
   }
 
-  // TODO: move organizer and customer to organizer and customer service
-  addOrganizer(item: any): Observable<Organizer> {
-    return this.http.post<Organizer>(this.basePath1, JSON.stringify(item), this.httpOptions)
-      .pipe(retry(1), catchError(this.handleError));
-  }
-  // Get Organizer by Id
-  getOrganizerById(id: number): Observable<Organizer> {
-    return this.http.get<Organizer>(`${this.basePath1}/${id}`, this.httpOptions )
-      .pipe(retry(1), catchError(this.handleError));
-  }
-  addCustomer(item: any): Observable<Customer> {
-    return this.http.post<Customer>(this.basePath2, JSON.stringify(item), this.httpOptions)
-      .pipe(retry(1), catchError(this.handleError));
-  }
-  getCustomerById(id: number): Observable<Customer> {
-    return this.http.get<Customer>(`${this.basePath2}/${id}`, this.httpOptions )
-      .pipe(retry(1), catchError(this.handleError));
-  }
 }

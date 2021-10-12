@@ -1,0 +1,25 @@
+<div class="center">
+  <h1>EVENTS</h1>
+</div>
+<div class="divider"></div>
+
+<div id="favorite-info" *ngFor="let event of events; let i = index">
+
+  <div class="event-card" (click)="selectEvent(event.id)">
+
+    <div class="card-info">
+      <img class="image" src="{{ event.logo }}" alt="{{ event.name }}">
+      <div class="text-content">
+        <h2>{{ event.name }}</h2>
+        <p>{{ event.information }}</p>
+        <p>{{ event.startDate }}</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider not-border"></div>
+
+</div>
+
+
