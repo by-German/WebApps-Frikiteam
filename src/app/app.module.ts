@@ -38,7 +38,6 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { authInterceptorProviders } from "./helpers/auth.interceptor";
 import { EventLocationComponent } from './pages/event/event-location/event-location.component';
-import { OrganizerProfileComponent } from './pages/users/organizer-profile/organizer-profile.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { EventInformationComponent } from './pages/event/event-information/event-information.component';
 import { GeneralInformationComponent } from './pages/create-event/general-information/general-information.component';
@@ -47,6 +46,7 @@ import { OptionalInformationComponent } from './pages/create-event/optional-info
 // Import the functions you need from the SDKs you need
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { UserComponent } from './pages/users/side/user.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCHOyue5J5xvSQMWy0wygE3HYKvF3Lexy4",
@@ -69,11 +69,11 @@ const firebaseConfig = {
     UserProfileComponent,
     RegisterComponent,
     EventLocationComponent,
-    OrganizerProfileComponent,
     EventInformationComponent,
     GeneralInformationComponent,
     DetailedInformationComponent,
-    OptionalInformationComponent
+    OptionalInformationComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

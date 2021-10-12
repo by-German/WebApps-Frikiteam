@@ -6,6 +6,8 @@ mat-toolbar {
   justify-content: space-around;
   background-color: #464361;
   color: #a4a2ea;
+  /*z-index: 99;*/
+  /*position: fixed;*/
 }
 .options {
   display: flex;

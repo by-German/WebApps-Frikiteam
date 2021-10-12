@@ -1,0 +1,106 @@
+<mat-drawer-container class="container" autosize>
+
+  <mat-drawer #drawer class="sidenav" mode="side" opened>
+
+    <div class="flex-container">
+      <div class="side-content">
+
+        <div class="card-info">
+          <img [src]="pathImg" style="width: 200px" alt="{{user.firstName}}">
+          <button *ngIf="user.id == userId"
+                  mat-raised-button
+                  color="primary"
+                  (click)="showDialog()">UPDATE</button>
+          <button *ngIf="user.id != userId"  mat-raised-button color="primary">FOLLOW</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div *ngIf="role == 'organizer'" class="text-info">
+          <h2>Followers:</h2><p>10</p>
+        </div>
+        <div class="text-info">
+          <h2>Following:</h2><p>12</p>
+        </div>
+        <div class="text-info">
+          <h2>Name:</h2><p>{{ user.firstName + " " +user.lastName }}</p>
+        </div>
+        <div class="text-info">
+          <h2>E-mail:</h2><p>{{ user.email}}</p>
+        </div>
+
+        <div class="divider"></div>
+
+
+      </div>
+    </div>
+  </mat-drawer>
+
+  <div class="content">
+
+    <button mat-raised-button color="primary" (click)="drawer.toggle()" class="toggle-side">
+      <mat-icon *ngIf="!drawer.opened">arrow_forward_ios</mat-icon>
+      <mat-icon *ngIf="drawer.opened">arrow_back_ios</mat-icon>
+    </button>
+
+    <div class="user-content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+</mat-drawer-container>
+
+
+<div *ngIf="update" class="dialog">
+
+  <div class="show" [formGroup]="form">
+    <h1>Update your data</h1>
+
+    <div class="dialog-content" >
+
+      <div class="flex-container-img">
+        <p>Choose an image fot your profile:</p>
+        <div class="img-upload" [style.background]="'url(' + pathImg + ')'">
+          <label for="input-img" class="btn-upload">UPLOAD IMAGE</label>
+          <input type="file" name="image" id="input-img" (change)="onChange()"
+                 style="display: none" accept="image/png, image/jpeg, image/jpg">
+        </div>
+      </div>
+
+      <div class="inputs">
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>E-mail</mat-label>
+          <input matInput formControlName="email" type="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password">
+        </mat-form-field>
+      </div>
+
+
+    </div>
+
+    <div class="options">
+      <button mat-raised-button color="primary"
+              [disabled]="!form.valid"
+              (click)="onSubmit()">SAVE</button>
+      <button mat-raised-button color="primary"
+              (click)="update = !update">CANCEL</button>
+    </div>
+
+  </div>
+</div>
+

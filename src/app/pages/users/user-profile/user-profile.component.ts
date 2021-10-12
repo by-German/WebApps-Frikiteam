@@ -5,6 +5,8 @@ import {Customer} from "../../../models/customer";
 import {CustomersApiService} from "../../../services/User/customers-api.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TokenStorageService} from "../../../services/token-storage.service";
+import {OrganizersApiService} from "../../../services/User/organizers-api.service";
+import {OrganizerEventApiService} from "../../../services/event/organizer-event-api.service";
 
 @Component({
   selector: 'app-user-profile',
@@ -12,68 +14,45 @@ import {TokenStorageService} from "../../../services/token-storage.service";
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  @ViewChild('userProfileForm', { static : false}) userProfileForm !: NgForm;
-  isEditMode = false;
-  userId!: number;
-  dataSource = new MatTableDataSource();
-  userData: Customer = {} as Customer;
-  defaultUser: Customer = {
-    id: 0,
-    user_name: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    date_bird: '',
-    profile_img: '',
-  }
+  user : any
+  events : any
+
   constructor(private customersApi: CustomersApiService,
+              private organizerApi: OrganizersApiService,
+              private organizerEventsApi : OrganizerEventApiService,
               private router: Router,
               private route: ActivatedRoute,
               private storage: TokenStorageService) { }
 
   ngOnInit(): void {
-    // this.userId = Number(this.route.params.subscribe( params => {
-    //   if (params.id) {
-    //     const id = params.id;
-    //     console.log(id);
-    //     this.retrieveUser(id);
-    //     this.isEditMode = true;
-    //     return id;
-    //   } else {
-    //     this.resetUser();
-    //     this.isEditMode = false;
-    //     return 0;
-    //   }
-    // }));
-
-    let user = this.storage.getAuthUser();
-    this.customersApi.getCustomerById(user.id).subscribe(result => {
-      console.log(result)
-      this.userData = result;
-    });
+    this.user = this.storage.getAuthUser()
+    if (this.user.role == "organizer")
+      this.getEventsOrganizer(this.user.id)
+    else
+      this.getEventsCustomer(this.user.id)
   }
 
-  retrieveUser(id: number): void {
-    this.customersApi.getCustomerById(id)
-      .subscribe(response => {
-        this.userData = response;
-      });
-  }
-  refreshUser(){
-    this.retrieveUser(this.userId);
-  }
-  resetUser(): void {
-    this.userData = this.defaultUser;
-  }
-  cancelEdit(): void {
+  getEventsOrganizer(id : number) {
+    this.organizerEventsApi.getEventsByOrganizerId(id)
+      .subscribe((result : any) => {
+        this.events = result.content
+      })
   }
 
-  updateUser(): void {
-    this.customersApi.updateCustomer(this.userData.id, this.userData as Customer)
-      .subscribe(response => {
-        console.log(response);
-      });
+  deleteEvent(id : number) {
+    let organizerId = this.user.id
+    this.organizerEventsApi.deleteEvent(organizerId, id)
+      .subscribe((result : any) => {
+        this.getEventsOrganizer(organizerId)
+      })
+  }
+
+  updateEvent(id : number) {
+
+  }
+
+  getEventsCustomer(id: number) {
+
   }
 
 }

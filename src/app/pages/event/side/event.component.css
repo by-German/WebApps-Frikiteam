@@ -9,7 +9,7 @@
   margin-top: 5%;
   margin-bottom: 5%;
   width: 100%;
-  border-bottom: 1px solid #99DCFF;
+  border-bottom: 1px solid #464361;
 }
 
 /**
@@ -112,9 +112,10 @@
 }
 .event-options {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30%;
+  flex-wrap: wrap;
+  /*flex-direction: column;*/
+  justify-content: space-around;
+  width: 100%;
 }
 
 /*event Description*/
@@ -127,7 +128,8 @@
 
 /*buttons*/
 button {
-  margin: 3%;
   background: #464361 !important;
 }
-
+.event-options button {
+  width: 25%;
+}

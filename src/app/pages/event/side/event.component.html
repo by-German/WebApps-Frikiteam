@@ -12,7 +12,7 @@
         </div>
         <div class="divider"></div>
         <div class="info-organizer card-info">
-          <div class="profile" [ngStyle]="{'background' : 'url(https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)'}">
+          <div class="profile" [ngStyle]="{'background' : 'url('+organizer.logo+')'}">
           </div>
           <h3>{{ organizer.firstName }} {{ organizer.lastName }}</h3>
           <button mat-raised-button color="primary">FOLLOW</button>
@@ -22,22 +22,12 @@
       <div class="side-content-list">
 
         <div class="list-content">
-          <h2>Itinerary</h2>
+          <h2 style="text-align: center">Itinerary</h2>
 
           <ul *ngFor="let itinerary of itineraries">
             <li>{{itinerary.name}}</li>
           </ul>
         </div>
-
-      <!--
-      <div class="list-content">
-          <h2>Schedule</h2>
-          <ul>
-            <li>Jueves 8:00 a 10:00</li>
-            <li>Viernes 20:00 a 22:00</li>
-          </ul>
-      </div>
-      -->
 
     </div>
     </div>

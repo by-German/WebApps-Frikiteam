@@ -6,13 +6,6 @@ import {TokenStorageService} from "../../../services/token-storage.service";
 import {CloudinaryApiService} from "../../../services/cloudinary-api.service";
 import {OrganizerEventApiService} from "../../../services/event/organizer-event-api.service";
 import {PlacesApiService} from "../../../services/event/places-api.service";
-import {subscribeToResult} from "rxjs/internal-compatibility";
-
-interface Name {
-  id: number;
-  name: string;
-}
-
 
 @Component({
   selector: 'app-general-information',
