@@ -82,7 +82,7 @@
   justify-content: center;
   background-color: #464361;
   height: 100%;
-  width: 50%;
+  /*width: 50%;*/
 }
 
 button mat-icon {

@@ -14,6 +14,7 @@
 
       <div class="text-content">
         <h2>{{ event.name }}</h2>
+        <p style="color: white">Price: S/. {{ event.price }}</p>
         <p>{{ event.information }}</p>
 
         <div *ngIf="user.role == 'organizer'" class="options">
@@ -29,9 +30,9 @@
 
     </div>
 
-    <div class="loading-bar">
-      <p>50 / 100</p>
-      <div class="bar"></div>
+    <div *ngIf="user.role == 'organizer'" class="loading-bar">
+      <p>{{ event.sold }} / {{ event.quantity }}</p>
+      <div class="bar" [style.width]="sold(event)+'%'"></div>
     </div>
 
   </div>

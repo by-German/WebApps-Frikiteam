@@ -11,7 +11,9 @@
   width: 100%;
   border-bottom: 1px solid #464361;
 }
-
+.not-border {
+  border: 0;
+}
 /**
  Sidenav content
  */
@@ -132,4 +134,69 @@ button {
 }
 .event-options button {
   width: 25%;
+}
+
+
+/**
+ Show Dialog
+ */
+
+.dialog {
+  position: absolute;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  width: 100%;
+  z-index: 1;
+  top: 100px;
+  left: 0;
+}
+.dialog .show {
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: white;
+  border-radius: 5px 5px;
+}
+.dialog-content {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-content: space-evenly;
+  justify-content: space-evenly;
+}
+.dialog-content ::ng-deep .mat-form-field .mat-form-field-flex {
+  background-color: white;
+}
+
+.credit-card {
+  width: 100%;
+  margin-top: 20px;
+}
+.credit-card .card {
+  display: flex;
+  flex-direction: column;
+}
+.credit-card .card mat-form-field {
+  margin-bottom: 20px;
+}
+.credit-card .card ngx-stripe-card {
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.28);
+}
+.card .options {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+.credit-card .card .options button {
+  width: 30%;
+}
+
+.free {
+  color: green;
 }

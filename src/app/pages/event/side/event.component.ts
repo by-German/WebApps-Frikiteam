@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Organizer} from "../../../models/organizer";
 import {OrganizersApiService} from "../../../services/User/organizers-api.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -7,7 +7,9 @@ import {EventItinerariesApiService} from "../../../services/event/event-itinerar
 import {FollowEventsService} from "../../../services/Social/follow-events.service";
 import {FollowOrganizersService} from "../../../services/Social/follow-organizers.service";
 import {TokenStorageService} from "../../../services/token-storage.service";
-
+import {PaymentService} from "../../../services/Payment/payment.service";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import { StripeService, StripeCardComponent } from 'ngx-stripe';
 
 @Component({
   selector: 'app-event',
@@ -27,28 +29,37 @@ export class EventComponent implements OnInit {
               private itinerariesApi : EventItinerariesApiService,
               private followEvents : FollowEventsService,
               private followOrganizers : FollowOrganizersService,
+              private paymentService: PaymentService,
               private storage: TokenStorageService,
               private router: Router,
               private route: ActivatedRoute,
-              private eventsApi: EventsApiService) {
+              private eventsApi: EventsApiService,
+              private fb: FormBuilder,
+              private stripeService: StripeService) {
 
     this.organizer = {} as Organizer
     this.eventId = this.route.snapshot.params.id
   }
 
   ngOnInit(): void {
+    // @ts-ignore
+    document.getElementsByClassName("dialog")[0].style.visibility = 'hidden';
+
     this.user = this.storage.getAuthUser()
+    if (this.user ) this.formPay = this.fb.group({email: [this.user.username, [Validators.required, Validators.email]]});
+    else this.formPay = this.fb.group({email: ['', [Validators.required, Validators.email]]});
+
 
     this.eventsApi.getEventById(this.eventId).subscribe((result: any) => {
       // event
       this.event = result;
-      this.isFollowingEvent()
+      if (this.user) this.isFollowingEvent()
 
       // organizer
       this.organizersApi.getOrganizerById(result.organizerId)
         .subscribe( ( result => {
           this.organizer = result;
-          this.isFollowingOrganizer()
+          if (this.user) this.isFollowingOrganizer()
         }));
     })
 
@@ -108,4 +119,52 @@ export class EventComponent implements OnInit {
     this.router.navigate(['/events/'+id+'/information'] )
       .then(() => console.log('render event information with id' + id));
   }
+
+  //@ts-ignore
+  @ViewChild(StripeCardComponent) card: StripeCardComponent;
+  //@ts-ignore
+  formPay: FormGroup;
+  error : String | undefined
+
+  renderPayment(): void {
+    // @ts-ignore
+    document.getElementsByClassName("dialog")[0].style.visibility = 'visible';
+    // if (!this.user)
+
+  }
+
+  createToken(): void {
+    const email = this.formPay.get('email')?.value;
+    let id = 0
+    if (this.user) id = this.user.id
+    this.stripeService.createToken(this.card.element, { name: email })
+      .subscribe((result) => {
+        if (result.token) {
+          let item = {
+            description: this.event.name,
+            amount: this.event.price * 100,
+            currency: 'pen',
+            email: email,
+            customerId: id,
+            eventId: this.event.id,
+          };
+          this.paymentService.createPayment(item).subscribe((result: any) => {
+            this.paymentService.confirmPayment(result.id).subscribe((confirm:any)=> {
+              //@ts-ignore
+              document.getElementsByClassName("dialog")[0].style.visibility = 'hidden';
+              window.open(confirm.charges.data[0]['receipt_url']);
+            })
+          })
+        } else if (result.error) {
+          this.error = result.error.message;
+        }
+      });
+  }
+
+  cancelBuy() {
+    // @ts-ignore
+    document.getElementsByClassName("dialog")[0].style.visibility = 'hidden';
+    return
+  }
 }
+

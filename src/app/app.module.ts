@@ -49,6 +49,8 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { UserComponent } from './pages/users/side/user.component';
 import { FavoriteComponent } from './pages/favorites/side/favorite.component';
 import { FollowsComponent } from './pages/favorites/follows/follows.component';
+import { NgxStripeModule } from 'ngx-stripe';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCHOyue5J5xvSQMWy0wygE3HYKvF3Lexy4",
@@ -125,9 +127,9 @@ const firebaseConfig = {
     MatTabsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireStorageModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCtz7v_IiSCZxQwE0Fz6vtfuXFjseNXAJY'
-    }),
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyCtz7v_IiSCZxQwE0Fz6vtfuXFjseNXAJY'}),
+    NgxStripeModule.forRoot('pk_test_51JkIRwHuC2BvrhslZ7rxjQD6VM9Cnqo5uUMlUOXu5L7h2j8qXhPp3yzQVbKwfyLKMlRvqGDcqC1reJVmegkNMrl400u3knGHqS'),
+
   ],
   providers: [
     authInterceptorProviders,

@@ -7,6 +7,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {TokenStorageService} from "../../../services/token-storage.service";
 import {OrganizersApiService} from "../../../services/User/organizers-api.service";
 import {OrganizerEventApiService} from "../../../services/event/organizer-event-api.service";
+import {PaymentService} from "../../../services/Payment/payment.service";
 
 @Component({
   selector: 'app-user-profile',
@@ -22,7 +23,8 @@ export class UserProfileComponent implements OnInit {
               private organizerEventsApi : OrganizerEventApiService,
               private router: Router,
               private route: ActivatedRoute,
-              private storage: TokenStorageService) { }
+              private storage: TokenStorageService,
+              private payment: PaymentService) { }
 
   ngOnInit(): void {
     this.user = this.storage.getAuthUser()
@@ -48,11 +50,18 @@ export class UserProfileComponent implements OnInit {
   }
 
   updateEvent(id : number) {
-
+    this.router.navigate([`update-event/${id}/general-information`]).then()
   }
 
   getEventsCustomer(id: number) {
+    this.payment.getAllTicketsByCustomerId(id).subscribe((result: any) => {
+      this.events = result
+      console.log(this.events)
+    })
+  }
 
+  sold(event: any) : number {
+    return (event.sold / event.quantity)  * 100;
   }
 
 }

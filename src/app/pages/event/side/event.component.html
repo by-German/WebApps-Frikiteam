@@ -50,7 +50,7 @@
     <div class="event-options">
       <button mat-raised-button color="primary" (click)="renderInformation(event.id)">INFORMATION</button>
       <button mat-raised-button color="primary" (click)="renderLocation(1)">SEE LOCATION</button>
-      <button mat-raised-button color="primary">BUY TICKETS </button>
+      <button mat-raised-button color="primary" (click)="renderPayment()">BUY TICKETS </button>
     </div>
 
     <div class="divider"></div>
@@ -63,3 +63,33 @@
 
 </mat-drawer-container>
 
+<div class="dialog" >
+
+  <div class="show">
+    <h1>Buy tickets for: {{ event.name}}</h1>
+    <h2 *ngIf="event.price != 0">S/. {{ event.price }}</h2>
+    <h2 *ngIf="event.price == 0" class="free">FREE</h2>
+
+    <div class="dialog-content" >
+      <div class="credit-card">
+
+        <form novalidate (ngSubmit)="createToken()" [formGroup]="formPay" class="card">
+          <mat-form-field appearance="fill">
+            <mat-label>E-mail</mat-label>
+            <input matInput formControlName="email" type="email">
+          </mat-form-field>
+
+          <ngx-stripe-card></ngx-stripe-card>
+          <div [textContent]="error" style="color: red"></div>
+
+          <div class="options">
+            <button *ngIf="event.price != 0" mat-raised-button color="primary" type="submit">BUY</button>
+            <button mat-raised-button color="primary" type="reset" (click)="cancelBuy()">CANCEL</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>
