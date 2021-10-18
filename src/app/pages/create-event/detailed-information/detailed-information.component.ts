@@ -14,6 +14,7 @@ import {CloudinaryApiService} from "../../../services/cloudinary-api.service";
 })
 export class DetailedInformationComponent implements OnInit {
   eventId: number = -1
+  modeEdit: Boolean = false
 
   // itineraries
   listItineraries : any[] = [];
@@ -45,23 +46,43 @@ export class DetailedInformationComponent implements OnInit {
 
   ngOnInit(): void {
     this.eventId = this.route.snapshot.params.id
-    console.log(this.eventId)
+    this.modeEdit = this.route.snapshot.queryParams["mode_edit"]
 
-    this.listItineraries.push(++this.countIt)
-    this.listInformation.push(++this.countInf)
+    if (this.modeEdit) {
+      this.itinerariesService.getAllByEventId(this.eventId)
+        .subscribe( (result: any) => {
+          for (let i = 0; i < result.length; i++) {
+            console.log(result.length)
+            this.addItinerary(result[i].name)
+          }
+          console.log(this.itineraries.value)
+        })
+      this.informationService.getEventInformation(this.eventId)
+        .subscribe((result:any) => {
+         // console.log(result)
+        })
+    } else {
+      this.listItineraries.push(++this.countIt)
+      this.listInformation.push(++this.countInf)
+    }
+
+    // begin in 1, the two
+
+
   }
 
-  onSubmit() {
-    this.onSubmitItineraries()
-    this.onSubmitInformation()
+  async onSubmit() {
+    await this.onSubmitItineraries()
+    await this.onSubmitInformation()
+    this.router.navigate([`create-event/${this.eventId}/optional-information`]).then()
   }
 
   /*
   * Itineraries
   * */
-  addItinerary() {
+  addItinerary(value: string = '') {
     this.listItineraries.push(++this.countIt);
-    this.itineraries.addControl("itinerary" + this.countIt, new FormControl('', [Validators.required]))
+    this.itineraries.addControl("itinerary" + this.countIt, new FormControl(value, [Validators.required]))
   }
   onSubmitItineraries(): void {
     if (this.itineraries.invalid) {
@@ -97,8 +118,7 @@ export class DetailedInformationComponent implements OnInit {
             title: "" + this.information.value[`title${i}`],
             description: "" + this.information.value[`description${i}`],
             image: "" + url
-          }).subscribe(result =>  // navigate next form
-            this.router.navigate([`create-event/${this.eventId}/optional-information`]));
+          }).subscribe(result => console.log(result));
         })
       })
     }

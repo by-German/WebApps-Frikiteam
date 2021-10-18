@@ -50,7 +50,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   updateEvent(id : number) {
-    this.router.navigate([`update-event/${id}/general-information`]).then()
+    this.router.navigate([`create-event/general-information`], { queryParams: {id: id, mode_edit: true}}).then()
   }
 
   getEventsCustomer(id: number) {

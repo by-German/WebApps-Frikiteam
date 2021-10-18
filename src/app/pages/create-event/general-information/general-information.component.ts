@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, NgZone, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../../services/auth.service";
 import {TokenStorageService} from "../../../services/token-storage.service";
 import {CloudinaryApiService} from "../../../services/cloudinary-api.service";
 import {OrganizerEventApiService} from "../../../services/event/organizer-event-api.service";
 import {PlacesApiService} from "../../../services/event/places-api.service";
+import {EventsApiService} from "../../../services/event/events-api.service";
 
 @Component({
   selector: 'app-general-information',
@@ -14,7 +15,7 @@ import {PlacesApiService} from "../../../services/event/places-api.service";
 })
 export class GeneralInformationComponent implements OnInit {
 
-  form = new FormGroup({
+  form : FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     information: new FormControl('', [Validators.required, Validators.maxLength(130)]),
     countryId: new FormControl('', [Validators.required]),
@@ -24,29 +25,46 @@ export class GeneralInformationComponent implements OnInit {
     reference: new FormControl(''),
     price: new FormControl('', [Validators.required]),
     quantity: new FormControl('', [Validators.required]),
-    startDate: new FormControl(''),
-    endDate: new FormControl('')
+    startDate: new FormControl('', [Validators.required]),
+    endDate: new FormControl('', [Validators.required])
   })
 
   file : any;
-
   countries: any[] = []
   cities: any[] = []
   districts: any[] = []
-
   selectedValue: string | undefined;
-
   pathImg : string | undefined
+  eventId: number = -1
+  organizerId : number = -1
+  modeEdit: Boolean = false
+  event : any = {}
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private authService: AuthService,
     private tokenStorageService: TokenStorageService,
     private cloudinary: CloudinaryApiService,
     private organizerEventService: OrganizerEventApiService,
-    private placeService: PlacesApiService ) {
-  }
+    private placeService: PlacesApiService,
+    private eventService: EventsApiService) { }
+
   ngOnInit(): void {
+    this.modeEdit = this.route.snapshot.queryParams['mode_edit']
+    this.eventId = this.route.snapshot.queryParams['id']
+    this.organizerId = this.tokenStorageService.getAuthUser().id
+
+    if (this.modeEdit) {
+      this.eventService.getEventById(this.eventId).subscribe( (result: any) => {
+        this.event = result
+        this.form.controls["name"].setValue(result.name)
+        this.form.patchValue({ information: result.information });
+        this.form.setControl("quantity", new FormControl(result.quantity))
+        this.pathImg = result.logo
+      })
+    }
+
     this.getCountries()
   }
 
@@ -72,9 +90,8 @@ export class GeneralInformationComponent implements OnInit {
             this.form.value.placeId = result.id
 
             // creation event by an organizer
-            this.organizerEventService.createNewEvent(this.form.value, 1)
+            this.organizerEventService.createNewEvent(this.form.value, this.organizerId)
               .subscribe(result => {
-                console.log(result)
 
                 // navigate next form
                 this.router.navigate([`create-event/${result.id}/detailed-information`])
@@ -126,4 +143,13 @@ export class GeneralInformationComponent implements OnInit {
       .subscribe(result => console.log(result))
   }
 
+  save() {
+    this.event.name = this.form.value.name
+    this.event.information = this.form.value.information
+    this.event.quantity = this.form.value.quantity
+    this.event.logo = this.pathImg
+    this.organizerEventService.updateEvent(this.event, this.organizerId, this.eventId)
+      .subscribe(result=> console.log(result))
+    console.log("save!")
+  }
 }
