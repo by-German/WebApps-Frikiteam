@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-event',
@@ -7,25 +7,33 @@ import { Router } from "@angular/router";
   styleUrls: ['./create-event.component.css']
 })
 export class CreateEventComponent implements OnInit {
-  constructor(private router: Router) {
+  modeEdit : Boolean = false
+  eventId : number | undefined
+
+  constructor(private router: Router,private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.eventId = this.route.snapshot.queryParams['id']
+    this.modeEdit = this.route.snapshot.queryParams['mode_edit']
   }
 
   renderGeneralInformation(): void {
-    this.router.navigate(['create-event/general-information']);
+    if (this.modeEdit)
+      this.router.navigate([`create-event/general-information`],
+        { queryParams: {id: this.eventId, mode_edit: true}});
   }
 
   renderDetailedInformation(): void {
-    // if (eventId) update-event/id/detailed-information
-    // this.router.navigate(['update-event/id/detailed-information']);
+    if (this.modeEdit)
+      this.router.navigate([`create-event/${this.eventId}/detailed-information`],
+        { queryParams: {id: this.eventId, mode_edit: true}});
   }
 
   renderOptionalInformation(): void {
-    // if (eventId exist)
-    // this.router.navigate(['update-event/id/optional-information']);
-
+    if (this.modeEdit)
+      this.router.navigate([`create-event/${this.eventId}/optional-information`],
+        { queryParams: {id: this.eventId, mode_edit: true}});
   }
 
 }

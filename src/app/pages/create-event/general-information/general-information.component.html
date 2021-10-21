@@ -24,9 +24,9 @@
       </div>
     </div>
 
-    <h2>Event address</h2>
+    <h2 *ngIf="!modeEdit" >Event address</h2>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field *ngIf="!modeEdit" appearance="fill">
       <mat-label>Country</mat-label>
       <mat-select formControlName="countryId" (ngModelChange)="getCities($event)">
         <mat-option *ngFor="let country of countries" [value]="country.id">
@@ -34,7 +34,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field *ngIf="!modeEdit" appearance="fill">
       <mat-label>City</mat-label>
       <mat-select formControlName="cityId" (ngModelChange)="getDistricts($event)">
         <mat-option *ngFor="let city of cities" [value]="city.id">
@@ -42,7 +42,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field *ngIf="!modeEdit" appearance="fill">
       <mat-label>District</mat-label>
       <mat-select formControlName="districtId">
         <mat-option *ngFor="let district of districts" [value]="district.id">
@@ -50,18 +50,18 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field *ngIf="!modeEdit" appearance="fill">
       <mat-label>Place / address</mat-label>
       <input matInput formControlName="place">
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field *ngIf="!modeEdit" appearance="fill">
       <mat-label>Reference</mat-label>
       <input matInput formControlName="reference">
     </mat-form-field>
 
     <h2>Business information</h2>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field *ngIf="!modeEdit" appearance="fill">
       <mat-label>Price</mat-label>
       <input matInput formControlName="price" type="number">
     </mat-form-field>
@@ -69,7 +69,7 @@
       <mat-label>Number of entries</mat-label>
       <input matInput formControlName="quantity" type="number">
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field *ngIf="!modeEdit" appearance="fill">
       <mat-label>Enter a date range</mat-label>
       <mat-date-range-input [formGroup]="form" [rangePicker]="picker">
         <input matStartDate formControlName="startDate" placeholder="Start date">
@@ -84,11 +84,18 @@
 
     <br>
 
-    <button mat-raised-button
+    <button *ngIf="!modeEdit" mat-raised-button
             type="submit"
             class="btn-submit"
             [disabled]="!form.valid">
       NEXT
+    </button>
+
+    <button *ngIf="modeEdit" mat-raised-button
+            type="button"
+            class="btn-submit"
+            (click)="save()">
+      SAVE
     </button>
 
   </form>

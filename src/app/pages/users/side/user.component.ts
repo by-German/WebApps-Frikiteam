@@ -102,7 +102,8 @@ export class UserComponent implements OnInit {
 
     this.organizersApi.updateOrganizer(id, user).subscribe(result => {
       console.log(result)
-      window.location.reload()
+      this.router.navigate([`user-profile/${id}`])
+      // window.location.reload()
     })
   }
 
@@ -111,7 +112,8 @@ export class UserComponent implements OnInit {
 
     this.customerApi.updateCustomer(id, user).subscribe(result => {
       console.log(result)
-      window.location.reload()
+      this.router.navigate([`user-profile/${id}`])
+      // window.location.reload()
     })
   }
 

@@ -80,3 +80,6 @@ mat-form-field {
 ::ng-deep .mat-form-field .mat-form-field-flex {
   background-color: white;
 }
+::ng-deep .mat-form-field-disabled .mat-form-field-flex  {
+  background-color: white !important;
+}
