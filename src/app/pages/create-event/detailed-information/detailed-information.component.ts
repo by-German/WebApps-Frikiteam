@@ -19,6 +19,7 @@ export class DetailedInformationComponent implements OnInit {
   // itineraries
   listItineraries : any[] = [];
   countIt : number = 0;
+  beginEditIt: number = 0;
   itineraries = new FormGroup({
     itinerary1: new FormControl('', [Validators.required]),
   })
@@ -26,6 +27,7 @@ export class DetailedInformationComponent implements OnInit {
   // information
   listInformation : any[] = [];
   countInf : number = 0;
+  beginEditInf: number = 0;
   information = new FormGroup({
     title1: new FormControl('', [Validators.required]),
     description1: new FormControl('', [Validators.required])
@@ -52,23 +54,31 @@ export class DetailedInformationComponent implements OnInit {
       this.itinerariesService.getAllByEventId(this.eventId)
         .subscribe( (result: any) => {
           for (let i = 0; i < result.length; i++) {
-            console.log(result.length)
+            if (i == 0) {
+              this.itineraries.controls["itinerary1"].setValue(result[i].name)
+              this.itineraries.controls["itinerary1"].disable()
+            }
             this.addItinerary(result[i].name)
           }
-          console.log(this.itineraries.value)
+          this.beginEditIt = result.length + 1
         })
       this.informationService.getEventInformation(this.eventId)
         .subscribe((result:any) => {
-         // console.log(result)
+          console.log(result)
+          for (let i = 0; i < result.length; i++) {
+            if (i == 0) {
+              this.information.controls['title1'].setValue(result[i].title)
+              this.information.controls['description1'].setValue(result[i].description)
+            }
+            this.addInformation(result[i].title, result[i].description)
+            this.pathImg.push(result[i].image)
+          }
+          this.beginEditInf = result.length + 1
         })
     } else {
       this.listItineraries.push(++this.countIt)
       this.listInformation.push(++this.countInf)
     }
-
-    // begin in 1, the two
-
-
   }
 
   async onSubmit() {
@@ -83,6 +93,7 @@ export class DetailedInformationComponent implements OnInit {
   addItinerary(value: string = '') {
     this.listItineraries.push(++this.countIt);
     this.itineraries.addControl("itinerary" + this.countIt, new FormControl(value, [Validators.required]))
+    if (value != '') this.itineraries.controls["itinerary" + this.countIt].disable()
   }
   onSubmitItineraries(): void {
     if (this.itineraries.invalid) {
@@ -95,14 +106,20 @@ export class DetailedInformationComponent implements OnInit {
       }).subscribe(result => console.log(result))
     }
   }
-
+  onSaveItineraries(): void {
+    for (let i = this.beginEditIt; i <= this.listItineraries.length; i++) {
+      this.itinerariesService.postByEventId(this.eventId, {
+        name: "" + this.itineraries.value[`itinerary${i}`]
+      }).subscribe(result => console.log(result))
+    }
+  }
   /*
   * Information
   * */
-  addInformation() {
+  addInformation(title: string = '', description: string = '') {
     this.listInformation.push(++this.countInf);
-    this.information.addControl("title" + this.countInf, new FormControl('', [Validators.required]))
-    this.information.addControl("description" + this.countInf, new FormControl('', [Validators.required]))
+    this.information.addControl("title" + this.countInf, new FormControl(title, [Validators.required]))
+    this.information.addControl("description" + this.countInf, new FormControl(description, [Validators.required]))
   }
   onSubmitInformation(): void {
     if (this.information.invalid) {
@@ -134,5 +151,8 @@ export class DetailedInformationComponent implements OnInit {
     console.log(this.files)
   }
 
+  async onSave() {
+    await this.onSaveItineraries()
 
+  }
 }
