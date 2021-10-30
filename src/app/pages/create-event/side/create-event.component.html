@@ -4,8 +4,8 @@
     <mat-nav-list class="sidenav-list">
       <h2>EVENT INFORMATION</h2>
       <mat-list-item (click)="renderGeneralInformation()">GENERAL INFORMATION</mat-list-item>
-      <mat-list-item (click)="renderDetailedInformation()">DETAILED INFORMATION</mat-list-item>
-      <mat-list-item (click)="renderOptionalInformation()">OPTIONAL INFORMATION</mat-list-item>
+      <mat-list-item *ngIf="!modeEdit" (click)="renderDetailedInformation()">DETAILED INFORMATION</mat-list-item>
+      <mat-list-item *ngIf="!modeEdit" (click)="renderOptionalInformation()">OPTIONAL INFORMATION</mat-list-item>
     </mat-nav-list>
   </mat-drawer>
 
