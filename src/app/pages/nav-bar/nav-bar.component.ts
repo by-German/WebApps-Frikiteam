@@ -18,17 +18,17 @@ export class NavBarComponent implements OnInit {
 
   navigateToEvents(): void {
     this.router.navigate(['/events'])
-      .then(() => console.log('Navigated to events'));
+      .then(() => {});
   }
 
   navigateToLogin(): void {
     this.router.navigate(['/login'])
-      .then(() => console.log('Navigated to login'));
+      .then(() => {});
   }
 
   navigateToCreate(): void {
     this.router.navigate(['/create-event/general-information'])
-      .then(() => console.log('Navigated to create'));
+      .then(() => {});
   }
 
   logout() {

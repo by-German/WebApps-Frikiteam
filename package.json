@@ -1,5 +1,6 @@
 {
   "name": "friki-team",
+  "author": "by-German",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

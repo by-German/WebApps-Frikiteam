@@ -16,10 +16,7 @@ export class OrganizersApiService {
     })
   }
 
-
   constructor(private http: HttpClient) { }
-
-
 
   getOrganizerById(id : number) : Observable<Organizer>{
     return this.http.get<Organizer>(BASE_PATH + `/organizers/${id}`)

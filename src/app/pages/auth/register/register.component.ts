@@ -41,7 +41,6 @@ export class RegisterComponent implements OnInit {
 
   userRegister(): void {
     this.user.value.logo = "default"
-    console.log(this.user.value);
 
     this.customerApi.addCustomer(this.user.value)
       .subscribe( result => {

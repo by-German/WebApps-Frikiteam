@@ -19,8 +19,8 @@ export class EventLocationComponent implements OnInit {
   }
 
   navigateToEvent(id: number): void {
-    this.router.navigate(['/events/'+id])
-      .then(() => console.log('Navigated to event with id' + id));
+    this.router.navigate([`/events/${id}`])
+      .then(() => {});
   }
 
 }

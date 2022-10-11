@@ -1,7 +1,3 @@
-// auth.interceptor.ts
-// Inspection and Transformation Method
-// to add Token if available
-
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,
@@ -13,6 +9,10 @@ import {
 import { Observable } from 'rxjs';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
+// auth.interceptor.ts
+// Inspection and Transformation Method
+// to add Token if available
+
 const TOKEN_HEADER_KEY = 'Authorization';
 
 @Injectable()
@@ -23,8 +23,6 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let authRequest = request;
     const authUser = this.tokenStorageService.getAuthUser();
-    console.log("auth.interceptor")
-    console.log(authUser)
     if (authUser != null) {
       authRequest = request.clone({
         headers: request.headers.set(TOKEN_HEADER_KEY, `Bearer ${authUser.token}`)});

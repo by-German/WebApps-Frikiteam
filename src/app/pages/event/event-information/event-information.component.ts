@@ -25,7 +25,6 @@ export class EventInformationComponent implements OnInit {
       this.event = result;
       this.informationApi.getEventInformation(result.id)
         .subscribe(result => {
-          console.log(result)
           this.informations = result;
         });
     })

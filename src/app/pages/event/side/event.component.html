@@ -4,7 +4,7 @@
     <div class="flex-container">
       <div class="side-content">
         <div class="card-info">
-          <img [src]="event.logo" style="width: 200px" alt="event">
+          <img [src]="event?.logo" style="width: 200px" alt="event">
           <div class="qualification" >
             <mat-icon  *ngFor="let i of [1,2,3,4,5]">star rate</mat-icon>
           </div>
@@ -13,7 +13,7 @@
         </div>
         <div class="divider"></div>
         <div class="info-organizer card-info">
-          <div class="profile" [ngStyle]="{'background' : 'url('+organizer.logo+')'}">
+          <div class="profile" [ngStyle]="{'background' : (organizer.logo) ? 'url('+organizer.logo+')' : 'none' }">
           </div>
           <h3>{{ organizer.firstName }} {{ organizer.lastName }}</h3>
           <button *ngIf="!followingOrganizer" mat-raised-button color="primary" (click)="followOrganizer(organizer.id)">FOLLOW</button>
@@ -43,12 +43,12 @@
       <mat-icon *ngIf="drawer.opened">arrow_back_ios</mat-icon>
     </button>
 
-    <h1>{{event.name}}</h1>
+    <h1>{{event?.name}}</h1>
 
     <div class="divider"></div>
 
     <div class="event-options">
-      <button mat-raised-button color="primary" (click)="renderInformation(event.id)">INFORMATION</button>
+      <button mat-raised-button color="primary" (click)="renderInformation(event?.id)">INFORMATION</button>
       <button mat-raised-button color="primary" (click)="renderLocation(1)">SEE LOCATION</button>
       <button mat-raised-button color="primary" (click)="renderPayment()">BUY TICKETS </button>
     </div>
@@ -66,9 +66,9 @@
 <div class="dialog" >
 
   <div class="show">
-    <h1>Buy tickets for: {{ event.name}}</h1>
-    <h2 *ngIf="event.price != 0">S/. {{ event.price }}</h2>
-    <h2 *ngIf="event.price == 0" class="free">FREE</h2>
+    <h1>Buy tickets for: {{ event?.name}}</h1>
+    <h2 *ngIf="event?.price != 0">S/. {{ event?.price }}</h2>
+    <h2 *ngIf="event?.price == 0" class="free">FREE</h2>
 
     <div class="dialog-content" >
       <div class="credit-card">
@@ -83,7 +83,7 @@
           <div [textContent]="error" style="color: red"></div>
 
           <div class="options">
-            <button *ngIf="event.price != 0" mat-raised-button color="primary" type="submit">BUY</button>
+            <button *ngIf="event?.price != 0" mat-raised-button color="primary" type="submit">BUY</button>
             <button mat-raised-button color="primary" type="reset" (click)="cancelBuy()">CANCEL</button>
           </div>
         </form>

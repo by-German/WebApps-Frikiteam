@@ -51,8 +51,6 @@ export class UserComponent implements OnInit {
     this.organizersApi.getOrganizerById(this.user.id).subscribe(result => {
       this.user = result;
       this.pathImg = result.logo
-      console.log(result)
-
     })
   }
 
@@ -77,8 +75,6 @@ export class UserComponent implements OnInit {
 
   onSubmit(): void {
     if (this.pathImg != this.user.logo) {
-      console.log("entro a logo")
-      console.log(this.form.value)
       let ref = this.cloudinary.reference(this.file.name)
       this.cloudinary.post(this.file).then(result => {
         ref.getDownloadURL().subscribe((url: any) => {
@@ -88,7 +84,6 @@ export class UserComponent implements OnInit {
         })
       })
     } else {
-      console.log("no entro a logo")
       this.form.value.logo = this.user.logo
       if (this.role == "organizer")
         this.updateOrganizer(this.user.id, this.form.value)
@@ -101,7 +96,6 @@ export class UserComponent implements OnInit {
     let user = this.updateUser(organizer)
 
     this.organizersApi.updateOrganizer(id, user).subscribe(result => {
-      console.log(result)
       this.router.navigate([`user-profile/${id}`])
       // window.location.reload()
     })
@@ -111,7 +105,6 @@ export class UserComponent implements OnInit {
     let user = this.updateUser(customer)
 
     this.customerApi.updateCustomer(id, user).subscribe(result => {
-      console.log(result)
       this.router.navigate([`user-profile/${id}`])
       // window.location.reload()
     })

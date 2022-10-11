@@ -56,7 +56,6 @@ export class UserProfileComponent implements OnInit {
   getEventsCustomer(id: number) {
     this.payment.getAllTicketsByCustomerId(id).subscribe((result: any) => {
       this.events = result
-      console.log(this.events)
     })
   }
 

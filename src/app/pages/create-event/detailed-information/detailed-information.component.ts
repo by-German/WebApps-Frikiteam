@@ -64,7 +64,6 @@ export class DetailedInformationComponent implements OnInit {
         })
       this.informationService.getEventInformation(this.eventId)
         .subscribe((result:any) => {
-          console.log(result)
           for (let i = 0; i < result.length; i++) {
             if (i == 0) {
               this.information.controls['title1'].setValue(result[i].title)
@@ -103,14 +102,14 @@ export class DetailedInformationComponent implements OnInit {
     for (let i = 1; i < this.countIt + 1; i++) {
       this.itinerariesService.postByEventId(this.eventId, {
         name: "" + this.itineraries.value[`itinerary${i}`]
-      }).subscribe(result => console.log(result))
+      }).subscribe(result => {})
     }
   }
   onSaveItineraries(): void {
     for (let i = this.beginEditIt; i <= this.listItineraries.length; i++) {
       this.itinerariesService.postByEventId(this.eventId, {
         name: "" + this.itineraries.value[`itinerary${i}`]
-      }).subscribe(result => console.log(result))
+      }).subscribe(result => {})
     }
   }
   /*
@@ -135,7 +134,7 @@ export class DetailedInformationComponent implements OnInit {
             title: "" + this.information.value[`title${i}`],
             description: "" + this.information.value[`description${i}`],
             image: "" + url
-          }).subscribe(result => console.log(result));
+          }).subscribe(result => {});
         })
       })
     }
@@ -147,12 +146,9 @@ export class DetailedInformationComponent implements OnInit {
     // @ts-ignore
     let path = URL.createObjectURL(img.files[0]);
     this.pathImg.push(path)
-
-    console.log(this.files)
   }
 
   async onSave() {
     await this.onSaveItineraries()
-
   }
 }

@@ -77,7 +77,6 @@ export class GeneralInformationComponent implements OnInit {
     let ref = this.cloudinary.reference(this.file.name)
     this.cloudinary.post(this.file).then(result => {
       ref.getDownloadURL().subscribe((url: any) => {
-        console.log(url)
         this.form.value.logo = url
 
         // creation place
@@ -95,7 +94,7 @@ export class GeneralInformationComponent implements OnInit {
 
                 // navigate next form
                 this.router.navigate([`create-event/${result.id}/detailed-information`])
-                  .then(() => console.log('Navigate to detailed information for event id ' + result.id));
+                  .then(() => {});
               })
 
           })
@@ -140,7 +139,7 @@ export class GeneralInformationComponent implements OnInit {
     }
 
     this.placeService.postPlaces(this.form.value.districtId, place)
-      .subscribe(result => console.log(result))
+      .subscribe(result => {})
   }
 
   save() {
@@ -149,7 +148,6 @@ export class GeneralInformationComponent implements OnInit {
     this.event.quantity = this.form.value.quantity
     this.event.logo = this.pathImg
     this.organizerEventService.updateEvent(this.event, this.organizerId, this.eventId)
-      .subscribe(result=> console.log(result))
-    console.log("save!")
+      .subscribe(result=> {})
   }
 }

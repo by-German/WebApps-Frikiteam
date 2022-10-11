@@ -15,6 +15,6 @@ export class CreateComponent implements OnInit {
 
   createEvent(): void{
     this.router.navigate(['create-event/general-information'])
-      .then(() => console.log('Creating event'));
+      .then(() => {});
   }
 }

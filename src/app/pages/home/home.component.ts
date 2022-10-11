@@ -44,7 +44,6 @@ export class HomeComponent implements OnInit {
 
   searchEvents(searchValue : String) {
     this.eventsApi.getSearchEvents(searchValue.trim().toLowerCase()).subscribe( (result:any) => {
-        console.log(result)
         this.events = result;
       }
     )
@@ -52,7 +51,7 @@ export class HomeComponent implements OnInit {
 
   navigateToEvent(id: number): void {
     this.router.navigate([`/events/${id}`])
-      .then(() => console.log('Navigated to event with id' + id));
+      .then(() => {});
   }
 
 

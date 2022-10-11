@@ -53,13 +53,14 @@ export class EventComponent implements OnInit {
     this.eventsApi.getEventById(this.eventId).subscribe((result: any) => {
       // event
       this.event = result;
-      if (this.user) this.isFollowingEvent()
+      // only one consumer can follow event or organizers 
+      if (this.user && this.user?.role != 'organizer')  this.isFollowingEvent()
 
       // organizer
       this.organizersApi.getOrganizerById(result.organizerId)
         .subscribe( ( result => {
           this.organizer = result;
-          if (this.user) this.isFollowingOrganizer()
+          if (this.user && this.user?.role != 'organizer') this.isFollowingOrganizer()
         }));
     })
 
@@ -112,12 +113,12 @@ export class EventComponent implements OnInit {
 
   renderLocation(id: number): void {
     this.router.navigate(['/events/'+id+'/location'])
-      .then(() => console.log('Navigate to event location with id' + id));
+      .then(() => {});
   }
 
   renderInformation(id: number): void {
     this.router.navigate(['/events/'+id+'/information'] )
-      .then(() => console.log('render event information with id' + id));
+      .then(() => {});
   }
 
   //@ts-ignore

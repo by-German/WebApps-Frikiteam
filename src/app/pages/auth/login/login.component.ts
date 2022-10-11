@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit{
       return;
     }
 
-    console.log(this.form.value)
     this.authService.login(this.form.value).subscribe( result => {
       this.tokenStorageService.saveUserAuth(result); // this return authUser
       return this.router.navigate(['/']).then(() => window.location.reload())})
