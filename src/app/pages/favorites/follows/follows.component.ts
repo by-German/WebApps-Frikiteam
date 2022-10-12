@@ -38,6 +38,11 @@ export class FollowsComponent implements OnInit {
     this.organizerEventsApi.getEventsByOrganizerId(id)
       .subscribe((result : any) => {
         this.events = result.content
+        this.events = this.events.map((event : any) => {
+          let date = new Date(event.startDate)
+          event.startDate = date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
+          return event;
+        })
       })
   }
 
@@ -45,8 +50,13 @@ export class FollowsComponent implements OnInit {
     this.followEvents.getEventsFollowedByCustomer(this.user.id)
       .subscribe((result: any) => {
         this.events = result.content
+        this.events = this.events.map((event : any) => {
+          let date = new Date(event.startDate)
+          event.startDate = date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
+          return event;
+        })
       })
-  }
+  }   
 
   selectEvent(id : number) {
     this.router.navigate([`events/${id}`])

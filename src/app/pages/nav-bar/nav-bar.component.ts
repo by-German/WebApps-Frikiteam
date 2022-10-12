@@ -27,8 +27,13 @@ export class NavBarComponent implements OnInit {
   }
 
   navigateToCreate(): void {
-    this.router.navigate(['/create-event/general-information'])
-      .then(() => {});
+    if (this.isLogged() && this.user.role == 'organizer') {
+      this.router.navigate(['/create-event/general-information'])
+        .then(() => {});
+      return;
+    }
+
+    window.alert("You need an organizer account to create events");
   }
 
   logout() {
@@ -37,7 +42,12 @@ export class NavBarComponent implements OnInit {
   }
 
   navigateToFavorites() {
-    this.router.navigate(["/favorites"]).then();
+    if (this.isLogged() && this.user.role != 'organizer') {
+      this.router.navigate(["/favorites"]).then();
+      return;
+    }
+
+    window.alert("You need an customer account to follow events and organizers");
   }
 
   navigateToRegister() {

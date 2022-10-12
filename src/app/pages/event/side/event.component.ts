@@ -70,8 +70,13 @@ export class EventComponent implements OnInit {
   }
 
   followEvent(id: number) {
-    this.followEvents.assignCustomerEventToFollow(this.user.id, id)
-      .subscribe(result => this.followingEvent = true)
+    if (this.user && this.user.role != 'organizer') {
+      this.followEvents.assignCustomerEventToFollow(this.user.id, id)
+        .subscribe(result => this.followingEvent = true)
+      return;
+    }
+
+    window.alert("You need an customer account to follow events and organizers");
   }
 
   notFollowEvent(id: number) {
@@ -92,8 +97,13 @@ export class EventComponent implements OnInit {
   }
 
   followOrganizer(id: number) {
-    this.followOrganizers.assignCustomerOrganizerToFollow(this.user.id, id)
-      .subscribe(result => this.followingOrganizer = true)
+    if (this.user && this.user.role != 'organizer') {
+      this.followOrganizers.assignCustomerOrganizerToFollow(this.user.id, id)
+        .subscribe(result => this.followingOrganizer = true)
+      return;
+    }
+    
+    window.alert("You need an customer account to follow events and organizers");
   }
   notFollowOrganizer(id: number) {
     this.followOrganizers.unassignCustomerOrganizerToFollow(this.user.id, id)
