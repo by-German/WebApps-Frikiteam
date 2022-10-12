@@ -39,6 +39,7 @@ export class GeneralInformationComponent implements OnInit {
   organizerId : number = -1
   modeEdit: Boolean = false
   event : any = {}
+  isLoading : Boolean = false;
 
   constructor(
     private router: Router,
@@ -74,6 +75,8 @@ export class GeneralInformationComponent implements OnInit {
     // first execute onChange "validate"
 
     // creation of link of event logo
+    this.isLoading = true;
+
     let ref = this.cloudinary.reference(this.file.name)
     this.cloudinary.post(this.file).then(result => {
       ref.getDownloadURL().subscribe((url: any) => {
@@ -91,7 +94,7 @@ export class GeneralInformationComponent implements OnInit {
             // creation event by an organizer
             this.organizerEventService.createNewEvent(this.form.value, this.organizerId)
               .subscribe(result => {
-
+                this.isLoading = false;
                 // navigate next form
                 this.router.navigate([`create-event/${result.id}/detailed-information`])
                   .then(() => {});
@@ -143,6 +146,8 @@ export class GeneralInformationComponent implements OnInit {
   }
 
   save() { // this only for mode update
+    this.isLoading = true;
+
     let ref = this.cloudinary.reference(this.file.name)
     this.cloudinary.post(this.file).then(result => {
       ref.getDownloadURL().subscribe((url: any) => {
@@ -151,7 +156,10 @@ export class GeneralInformationComponent implements OnInit {
         this.event.quantity = this.form.value.quantity
         this.event.logo = url
         this.organizerEventService.updateEvent(this.event, this.organizerId, this.eventId)
-          .subscribe((_) => this.router.navigate([`user-profile/${this.organizerId}`]).then())
+          .subscribe((_) => {
+            this.isLoading = false;
+            this.router.navigate([`user-profile/${this.organizerId}`]).then()
+          })
       })
     })
   }

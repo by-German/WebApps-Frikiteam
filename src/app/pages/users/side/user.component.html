@@ -93,7 +93,11 @@
 
     </div>
 
-    <div class="options">
+    <div *ngIf="loading" class="options">
+      <mat-spinner [diameter]="50"></mat-spinner>
+    </div>
+
+    <div *ngIf="!loading" class="options">
       <button mat-raised-button color="primary"
               [disabled]="!form.valid"
               (click)="onSubmit()">SAVE</button>

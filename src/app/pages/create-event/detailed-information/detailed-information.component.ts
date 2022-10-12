@@ -34,6 +34,7 @@ export class DetailedInformationComponent implements OnInit {
   })
   pathImg : any[] = []
   files : any[] = [];
+  isLoading : Boolean = false;
 
 
   constructor(
@@ -81,8 +82,10 @@ export class DetailedInformationComponent implements OnInit {
   }
 
   async onSubmit() {
+    this.isLoading = true;
     await this.onSubmitItineraries()
     await this.onSubmitInformation()
+    this.isLoading = false;
     this.router.navigate([`create-event/${this.eventId}/optional-information`]).then()
   }
 

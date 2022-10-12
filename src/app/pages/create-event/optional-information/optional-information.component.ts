@@ -13,14 +13,21 @@ export class OptionalInformationComponent implements OnInit {
   form = new FormGroup({
     website: new FormControl(''),
   })
+  organizerId : number = -1
 
-  constructor(private router: Router, private authService: AuthService, private tokenStorageService: TokenStorageService) {
+  constructor(
+    private router: Router, 
+    private authService: AuthService, 
+    private tokenStorageService: TokenStorageService) {
   }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void {  
+    this.organizerId = this.tokenStorageService.getAuthUser().id
+  }
 
   onSubmit(): void {
-    this.router.navigate([`events`]);
+    window.alert("Event created successfully")
+    this.router.navigate([`user-profile/${this.organizerId}`]).then();
   }
 
 }

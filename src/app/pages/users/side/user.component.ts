@@ -19,6 +19,7 @@ export class UserComponent implements OnInit {
   file : any
   pathImg : string | undefined
   pathImgPreview : string | undefined
+  loading : boolean = false;
 
   // @ts-ignore
   form : FormGroup
@@ -77,7 +78,8 @@ export class UserComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log("on submit executing")
+    this.loading = true;
+
     if (this.pathImgPreview != this.user.logo) {
       let ref = this.cloudinary.reference(this.file.name)
       this.cloudinary.post(this.file).then(result => {
@@ -85,6 +87,7 @@ export class UserComponent implements OnInit {
           this.form.value.logo = url
           if (this.role == "organizer") this.updateOrganizer(this.user.id, this.form.value)
           else this.updateCustomer(this.user.id, this.form.value)
+          this.loading = false;
           location.reload();
         })
       })

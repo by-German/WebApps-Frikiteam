@@ -84,19 +84,23 @@
 
     <br>
 
-    <button *ngIf="!modeEdit" mat-raised-button
+    <button *ngIf="!modeEdit && !isLoading" mat-raised-button
             type="submit"
             class="btn-submit"
             [disabled]="!form.valid">
       NEXT
     </button>
 
-    <button *ngIf="modeEdit" mat-raised-button
+    <button *ngIf="modeEdit && !isLoading" mat-raised-button
             type="button"
             class="btn-submit"
             (click)="save()">
       SAVE
     </button>
+
+    <div style="display: flex; justify-content: center;">
+      <mat-spinner *ngIf="isLoading" [diameter]="50"></mat-spinner>
+    </div>
 
   </form>
 

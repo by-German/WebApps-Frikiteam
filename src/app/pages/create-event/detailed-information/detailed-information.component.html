@@ -54,9 +54,14 @@
     </button>
 
     <br>
-    <button *ngIf="!modeEdit" mat-raised-button type="submit" [disabled]="information.invalid || itineraries.invalid" class="btn-submit">
+
+    <button *ngIf="!modeEdit && !isLoading" mat-raised-button type="submit" [disabled]="information.invalid || itineraries.invalid" class="btn-submit">
       NEXT
     </button>
+
+    <div style="display: flex; justify-content: center;">
+      <mat-spinner *ngIf="isLoading" [diameter]="50"></mat-spinner>
+    </div>
 <!--    <button mat-raised-button type="button" class="btn-submit" (click)="onSave()">-->
 <!--      SAVE-->
 <!--    </button>-->
