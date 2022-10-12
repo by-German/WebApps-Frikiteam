@@ -9,7 +9,7 @@
 
       <div class="list-organizers" *ngFor="let organizer of organizers; let i = index">
         <mat-list-item (click)="renderOrganizerEvents(organizer.id)">
-          <img src="{{organizer.logo}}" alt="">
+          <img [src]="(organizer.logo && organizer.logo != 'default') ? organizer.logo : ''" alt="">
           {{organizer.firstName + " " + organizer.lastName}}
         </mat-list-item>
       </div>

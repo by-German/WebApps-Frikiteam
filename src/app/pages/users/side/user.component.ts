@@ -18,6 +18,7 @@ export class UserComponent implements OnInit {
   update : boolean = false
   file : any
   pathImg : string | undefined
+  pathImgPreview : string | undefined
 
   // @ts-ignore
   form : FormGroup
@@ -44,13 +45,15 @@ export class UserComponent implements OnInit {
     this.customerApi.getCustomerById(this.user.id).subscribe(result => {
       this.user = result
       this.pathImg = result.logo
+      this.pathImgPreview = result.logo
     })
   }
-
+  
   loadOrganizerInformation() {
     this.organizersApi.getOrganizerById(this.user.id).subscribe(result => {
       this.user = result;
       this.pathImg = result.logo
+      this.pathImgPreview = (result.logo != 'default') ? result.logo : ''; 
     })
   }
 
@@ -70,17 +73,19 @@ export class UserComponent implements OnInit {
     let img = document.getElementById('input-img');
     // @ts-ignore
     this.file  = img.files[0]
-    this.pathImg = URL.createObjectURL(this.file);
+    this.pathImgPreview = URL.createObjectURL(this.file);
   }
 
   onSubmit(): void {
-    if (this.pathImg != this.user.logo) {
+    console.log("on submit executing")
+    if (this.pathImgPreview != this.user.logo) {
       let ref = this.cloudinary.reference(this.file.name)
       this.cloudinary.post(this.file).then(result => {
         ref.getDownloadURL().subscribe((url: any) => {
           this.form.value.logo = url
           if (this.role == "organizer") this.updateOrganizer(this.user.id, this.form.value)
           else this.updateCustomer(this.user.id, this.form.value)
+          location.reload();
         })
       })
     } else {
@@ -89,6 +94,7 @@ export class UserComponent implements OnInit {
         this.updateOrganizer(this.user.id, this.form.value)
       else
         this.updateCustomer(this.user.id, this.form.value)
+      location.reload();  
     }
   }
 
@@ -97,7 +103,6 @@ export class UserComponent implements OnInit {
 
     this.organizersApi.updateOrganizer(id, user).subscribe(result => {
       this.router.navigate([`user-profile/${id}`])
-      // window.location.reload()
     })
   }
 
@@ -106,13 +111,12 @@ export class UserComponent implements OnInit {
 
     this.customerApi.updateCustomer(id, user).subscribe(result => {
       this.router.navigate([`user-profile/${id}`])
-      // window.location.reload()
     })
   }
 
   cancelDialog(): any {
-    this.update = false
-
+    this.update = !this.update
+    this.pathImgPreview = (this.pathImg && this.pathImg != 'default') ? this.pathImg : '';
   }
 
   updateUser(user: any) {

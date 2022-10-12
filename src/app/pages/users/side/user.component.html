@@ -6,11 +6,11 @@
       <div class="side-content">
 
         <div class="card-info">
-          <img [src]="pathImg" style="width: 200px" alt="{{user.firstName}}">
+          <img *ngIf="(pathImg !== 'default')" [src]="pathImg" style="width: 200px" alt="{{user.firstName}}">
           <button *ngIf="user.id == userId"
                   mat-raised-button
                   color="primary"
-                  (click)="showDialog()">UPDATE</button>
+                  (click)="showDialog()">UPDATE LOGO</button>
           <button *ngIf="user.id != userId"  mat-raised-button color="primary">FOLLOW</button>
         </div>
 
@@ -61,7 +61,7 @@
 
       <div class="flex-container-img">
         <p>Choose an image fot your profile:</p>
-        <div class="img-upload" [style.background]="'url(' + pathImg + ')'">
+        <div class="img-upload" [style.background]="(pathImgPreview) ? 'url(' + pathImgPreview + ')' : ''">
           <label for="input-img" class="btn-upload">UPLOAD IMAGE</label>
           <input type="file" name="image" id="input-img" (change)="onChange()"
                  style="display: none" accept="image/png, image/jpeg, image/jpg">
@@ -98,7 +98,7 @@
               [disabled]="!form.valid"
               (click)="onSubmit()">SAVE</button>
       <button mat-raised-button color="primary"
-              (click)="update = !update">CANCEL</button>
+              (click)="cancelDialog()">CANCEL</button>
     </div>
 
   </div>

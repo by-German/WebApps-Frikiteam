@@ -40,6 +40,8 @@ export class FavoriteComponent implements OnInit {
   }
 
   renderOrganizerEvents(id: number) {
+    // TODO: refresh only the component FollowsComponent, not the whole page
     this.router.navigate([`favorites/organizers/${id}`])
+      .then( _ => location.reload())
   }
 }

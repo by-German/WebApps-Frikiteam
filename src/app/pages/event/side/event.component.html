@@ -13,7 +13,7 @@
         </div>
         <div class="divider"></div>
         <div class="info-organizer card-info">
-          <div class="profile" [ngStyle]="{'background' : (organizer.logo) ? 'url('+organizer.logo+')' : 'none' }">
+          <div class="profile" [ngStyle]="{'background' : (organizer.logo && organizer.logo != 'default') ? 'url('+organizer.logo+')' : 'rgb(25, 25, 25)' }">
           </div>
           <h3>{{ organizer.firstName }} {{ organizer.lastName }}</h3>
           <button *ngIf="!followingOrganizer" mat-raised-button color="primary" (click)="followOrganizer(organizer.id)">FOLLOW</button>

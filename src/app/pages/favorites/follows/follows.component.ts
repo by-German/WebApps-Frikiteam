@@ -26,12 +26,11 @@ export class FollowsComponent implements OnInit {
     this.user = this.storage.getAuthUser()
     this.organizerId = this.route.snapshot.params.id
 
-
     if (this.organizerId == undefined) {
       this.geEventsFollowed()
     }
     else {
-      this.getEventsOrganizer(1)
+      this.getEventsOrganizer(this.organizerId)
     }
   }
 
