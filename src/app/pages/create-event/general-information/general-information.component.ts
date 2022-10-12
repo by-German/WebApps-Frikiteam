@@ -68,7 +68,7 @@ export class GeneralInformationComponent implements OnInit {
     this.getCountries()
   }
 
-  onSubmit(): void {
+  onSubmit(): void { // this only for mode create
     if (this.form.invalid) return
 
     // first execute onChange "validate"
@@ -142,12 +142,17 @@ export class GeneralInformationComponent implements OnInit {
       .subscribe(result => {})
   }
 
-  save() {
-    this.event.name = this.form.value.name
-    this.event.information = this.form.value.information
-    this.event.quantity = this.form.value.quantity
-    this.event.logo = this.pathImg
-    this.organizerEventService.updateEvent(this.event, this.organizerId, this.eventId)
-      .subscribe(result=> {})
+  save() { // this only for mode update
+    let ref = this.cloudinary.reference(this.file.name)
+    this.cloudinary.post(this.file).then(result => {
+      ref.getDownloadURL().subscribe((url: any) => {
+        this.event.name = this.form.value.name
+        this.event.information = this.form.value.information
+        this.event.quantity = this.form.value.quantity
+        this.event.logo = url
+        this.organizerEventService.updateEvent(this.event, this.organizerId, this.eventId)
+          .subscribe((_) => this.router.navigate([`user-profile/${this.organizerId}`]).then())
+      })
+    })
   }
 }

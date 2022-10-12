@@ -40,7 +40,7 @@
 
       <div class="flex-container-img">
         <p>Choose an image for the event logo:</p>
-        <div class="img-upload" [style.background]="'url(' + pathImg[i-1] + ')'">
+        <div class="img-upload" [style.background]="(pathImg[i-1]) ? 'url(' + pathImg[i-1] + ')' : 'none'">
           <label for="input-img" class="btn-upload">UPLOAD IMAGE</label>
           <input type="file" name="image" id="input-img" (change)="onChange()"
                  style="display: none" accept="image/png, image/jpeg, image/jpg">
