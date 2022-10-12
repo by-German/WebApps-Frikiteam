@@ -27,13 +27,16 @@ export class HomeComponent implements OnInit {
   }
 
   getAllEvents(): void {
-
     this.eventsApi.getAllEvents().subscribe((response: Model.Event[]) => {
       this.events = response;
+      this.events = this.events.map(event => {
+        let date = new Date(event.startDate)
+        event.startDate = date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
+        return event;
+      })
     });
 
   }
-
 
   applySearch(event: Event): void {
     // @ts-ignore
