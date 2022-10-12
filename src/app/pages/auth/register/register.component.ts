@@ -50,7 +50,11 @@ export class RegisterComponent implements OnInit {
             this.router.navigate(['/']).then()
           })
         }
-      });
+      },
+      error => {
+        window.alert("User already exists")
+      }
+      );
   }
 
   organizerRegister(): void {
@@ -65,6 +69,10 @@ export class RegisterComponent implements OnInit {
             this.router.navigate(['/']).then()
           })
         }
-      });
+      },
+      error => {
+        window.alert("User already exists")
+      }
+      );
   }
 }

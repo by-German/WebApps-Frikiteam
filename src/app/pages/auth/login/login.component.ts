@@ -28,9 +28,14 @@ export class LoginComponent implements OnInit{
       return;
     }
 
-    this.authService.login(this.form.value).subscribe( result => {
-      this.tokenStorageService.saveUserAuth(result); // this return authUser
-      return this.router.navigate(['/']).then(() => window.location.reload())})
+    this.authService.login(this.form.value).subscribe( 
+      result => {
+        this.tokenStorageService.saveUserAuth(result); // this return authUser
+        return this.router.navigate(['/']).then(() => window.location.reload())
+      },
+      error => {
+        window.alert("Incorrect credentials")
+      })
   }
 
   navigateToRegister() {
