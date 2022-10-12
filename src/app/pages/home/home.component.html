@@ -1,4 +1,11 @@
-<div class="event-list">
+<div *ngIf="!isConnected" class="event-list">
+  <mat-spinner></mat-spinner>
+  <div class="header-home">
+    <p>Server down, trying to connect, please wait a few moments</p>
+  </div>
+</div>
+
+<div *ngIf="isConnected" class="event-list">
   <div class="header-home">
     <h2>LAST EVENTS</h2>
     <p>Somos Findevents, un espacio pensado para ti. Encuentra eventos alucinantes sobre el mundo Friki!!</p>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import { EventsApiService } from 'src/app/services/event/events-api.service';
 import {TokenStorageService} from "../../services/token-storage.service";
 
 @Component({
@@ -10,7 +11,11 @@ import {TokenStorageService} from "../../services/token-storage.service";
 export class NavBarComponent implements OnInit {
   user : any
 
-  constructor(private router: Router, private storage: TokenStorageService) { }
+  constructor(
+    private router: Router, 
+    private storage: TokenStorageService,
+    private eventsService: EventsApiService
+    ) { }
 
   ngOnInit(): void {
     this.user = this.storage.getAuthUser()
@@ -61,4 +66,5 @@ export class NavBarComponent implements OnInit {
   navigateToProfile() {
     this.router.navigate([`user-profile/${this.user.id}`]).then();
   }
+
 }
